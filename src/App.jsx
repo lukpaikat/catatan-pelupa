@@ -1,5 +1,6 @@
 import React from 'react';
 import { getInitialData, showFormattedDate } from './utils/index';
+import AppBar from './components/AppBar';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
     const { notes } = this.state;
     return (
       <>
+        <AppBar />
         <h1 className="text-xl font-bold">Initial data content</h1>
         {notes.map((note) => <p>{showFormattedDate(note.createdAt)}</p>)}
       </>
