@@ -12,11 +12,12 @@ class App extends React.Component {
 
   render() {
     const { notes } = this.state;
+
     return (
       <>
         <AppBar />
-        <h1 className="text-xl font-bold">Initial data content</h1>
-        {notes.map((note) => <p>{showFormattedDate(note.createdAt)}</p>)}
+        <h1 className="text-xl font-bold text-white-text-color">Initial data content</h1>
+        {notes.map((note) => <p className="text-white-text-color" key={note.id}>{showFormattedDate(note.createdAt)}</p>)}
       </>
     );
   }
