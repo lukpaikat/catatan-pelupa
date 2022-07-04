@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MagnifyingGlass } from 'phosphor-react';
 
-function SearchButton({ onSearching }) {
+function SearchButton({ onClick }) {
   return (
-    <button type="button" onClick={onSearching}>
+    <button type="button" onClick={onClick} className="min-h-[44px]">
       <MagnifyingGlass size={32} color="#f5f5f5" />
     </button>
   );
 }
 
 SearchButton.propTypes = {
-  onSearching: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default SearchButton;
