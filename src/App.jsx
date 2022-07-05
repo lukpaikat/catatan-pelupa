@@ -1,6 +1,7 @@
 import React from 'react';
-import { getInitialData, showFormattedDate } from './utils/index';
+import { getInitialData } from './utils/index';
 import AppBar from './components/AppBar';
+import NoteCard from './components/NoteCard';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,8 +17,18 @@ class App extends React.Component {
     return (
       <>
         <AppBar />
-        <h1 className="text-xl font-bold text-white-text-color">Initial data content</h1>
-        {notes.map((note) => <p className="text-white-text-color" key={note.id}>{showFormattedDate(note.createdAt)}</p>)}
+        <div className="px-2">
+          <h1 className="text-xl font-bold text-white-text-color">Initial data content</h1>
+          {notes.map((note) => (
+            <NoteCard
+              color={note.color}
+              title={note.title}
+              body={note.body}
+              createdAt={note.createdAt}
+              key={note.id}
+            />
+          ))}
+        </div>
       </>
     );
   }
