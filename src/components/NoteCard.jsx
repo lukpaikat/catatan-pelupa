@@ -5,13 +5,15 @@ import NoteButtonRed from './NoteButtonRed';
 import { showFormattedDate, getNoteColorClassName } from '../utils';
 
 function NoteCard({
-  color, title, body, createdAt,
+  data: {
+    color, title, body, createdAt,
+  },
 }) {
   const formattedDate = showFormattedDate(createdAt);
   const noteColorClassName = getNoteColorClassName(color);
   return (
     <article
-      className={`rounded-lg px-4 py-5 text-black-text-color mb-2 ${noteColorClassName}`}
+      className={`rounded-lg px-4 py-5 text-black-text-color ${noteColorClassName}`}
     >
       <h1 className="font-bold text-2xl mb-1">
         {title}
@@ -29,17 +31,19 @@ function NoteCard({
 }
 
 NoteCard.propTypes = {
-  color: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  body: PropTypes.string,
-  createdAt: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    color: PropTypes.string,
+    title: PropTypes.string,
+    body: PropTypes.string,
+    createdAt: PropTypes.string,
+  }).isRequired,
   // id: PropTypes.number.isRequired,
   // untuk archived
 };
 
-NoteCard.defaultProps = {
-  color: 'orange',
-  body: '',
-};
+// NoteCard.defaultProps = {
+//   color: 'orange',
+//   body: '',
+// };
 
 export default NoteCard;
