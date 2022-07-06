@@ -5,9 +5,7 @@ import NoteButtonRed from './NoteButtonRed';
 import { showFormattedDate, getNoteColorClassName } from '../utils';
 
 function NoteCard({
-  data: {
-    color, title, body, createdAt, id, onMoveNote, archived, onDeleteNote,
-  },
+  color, title, body, createdAt, id, onMoveNote, archived, onDeleteNote,
 }) {
   const formattedDate = showFormattedDate(createdAt);
   const noteColorClassName = getNoteColorClassName(color);
@@ -32,16 +30,18 @@ function NoteCard({
 }
 
 NoteCard.propTypes = {
-  data: PropTypes.shape({
-    id: PropTypes.number,
-    color: PropTypes.string,
-    title: PropTypes.string,
-    body: PropTypes.string,
-    createdAt: PropTypes.string,
-    archived: PropTypes.bool,
-    onMoveNote: PropTypes.func,
-    onDeleteNote: PropTypes.func,
-  }).isRequired,
+  id: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string,
+  createdAt: PropTypes.string.isRequired,
+  archived: PropTypes.bool.isRequired,
+  onMoveNote: PropTypes.func.isRequired,
+  onDeleteNote: PropTypes.func.isRequired,
+};
+
+NoteCard.defaultProps = {
+  body: '',
 };
 
 export default NoteCard;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { getInitialData } from './utils/index';
 import AppBar from './components/AppBar';
-import NoteCard from './components/NoteCard';
+import NoteList from './components/NoteList';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class App extends React.Component {
         <AppBar />
         <div className="px-2">
           <h1 className="text-xl font-bold text-white-text-color">Initial data content</h1>
-          {notes.map((note) => {
+          {/* {notes.map((note) => {
             const {
               color,
               title,
@@ -67,7 +67,8 @@ class App extends React.Component {
                 onDeleteNote={this.deleteNote}
               />
             );
-          })}
+          })} */}
+          <NoteList notes={notes} onMoveNote={this.moveNote} onDeleteNote={this.deleteNote} />
         </div>
       </>
     );
