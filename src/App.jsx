@@ -2,6 +2,7 @@ import React from 'react';
 import { getInitialData } from './utils/index';
 import AppBar from './components/AppBar';
 import NoteList from './components/NoteList';
+import NewNoteForm from './components/NewNoteForm';
 
 class App extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class App extends React.Component {
       <>
         <AppBar />
         <div className="px-2">
+          <NewNoteForm />
           <NoteList notes={notes} onMoveNote={this.moveNote} onDeleteNote={this.deleteNote} />
         </div>
       </>

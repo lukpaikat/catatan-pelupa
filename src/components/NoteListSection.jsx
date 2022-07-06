@@ -13,6 +13,7 @@ function NoteListSection({
           <div className="md:grid md:gap-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {notes.map((note) => (
               <NoteCard
+                key={note.id}
                 color={note.color}
                 title={note.title}
                 body={note.body}
