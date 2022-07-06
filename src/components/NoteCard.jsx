@@ -11,18 +11,18 @@ function NoteCard({
   const noteColorClassName = getNoteColorClassName(color);
   return (
     <article
-      className={`rounded-lg px-4 py-5 text-black-text-color ${noteColorClassName}`}
+      className={`flex flex-col rounded-lg px-4 py-5 my-2 md:my-0 text-black-text-color ${noteColorClassName}`}
     >
-      <h1 className="font-bold text-2xl mb-1">
+      <h1 className="font-bold text-xl 2xl:text-3xl mb-1">
         {title}
       </h1>
-      <small>{formattedDate}</small>
+      <small className="2xl:text-lg">{formattedDate}</small>
       <small className="py-1 block">{`${archived}`}</small>
-      <p className="mb-4 mt-1">
+      <p className="mb-4 mt-1 2xl:text-2xl">
         {body}
       </p>
-      <div className="flex justify-between">
-        <NoteButton text="Arsipkan" onClick={() => onMoveNote(id)} />
+      <div className="flex justify-between mt-auto">
+        <NoteButton text={archived ? 'Aktifkan' : 'Arsipkan'} onClick={() => onMoveNote(id)} />
         <NoteButtonRed text="hapus" onClick={() => onDeleteNote(id)} />
       </div>
     </article>
