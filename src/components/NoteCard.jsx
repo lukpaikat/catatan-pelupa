@@ -6,7 +6,7 @@ import { showFormattedDate, getNoteColorClassName } from '../utils';
 
 function NoteCard({
   data: {
-    color, title, body, createdAt,
+    color, title, body, createdAt, id, onMoveNote, archived, onDeleteNote,
   },
 }) {
   const formattedDate = showFormattedDate(createdAt);
@@ -19,12 +19,13 @@ function NoteCard({
         {title}
       </h1>
       <small>{formattedDate}</small>
+      <small className="py-1 block">{`${archived}`}</small>
       <p className="mb-4 mt-1">
         {body}
       </p>
       <div className="flex justify-between">
-        <NoteButton text="Arsipkan" />
-        <NoteButtonRed text="hapus" />
+        <NoteButton text="Arsipkan" onClick={() => onMoveNote(id)} />
+        <NoteButtonRed text="hapus" onClick={() => onDeleteNote(id)} />
       </div>
     </article>
   );
@@ -32,18 +33,15 @@ function NoteCard({
 
 NoteCard.propTypes = {
   data: PropTypes.shape({
+    id: PropTypes.number,
     color: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.string,
     createdAt: PropTypes.string,
+    archived: PropTypes.bool,
+    onMoveNote: PropTypes.func,
+    onDeleteNote: PropTypes.func,
   }).isRequired,
-  // id: PropTypes.number.isRequired,
-  // untuk archived
 };
-
-// NoteCard.defaultProps = {
-//   color: 'orange',
-//   body: '',
-// };
 
 export default NoteCard;
