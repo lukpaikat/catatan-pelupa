@@ -22,7 +22,7 @@ class AppBar extends React.Component {
     const { isShowSearchbox } = this.state;
     const titleDisplayClass = isShowSearchbox ? 'hidden' : 'block';
     return (
-      <header className="px-3 py-1 w-full flex items-center justify-between min-h-[44px]">
+      <header className="bg-black-background-color px-3 py-1 w-full flex items-center justify-between min-h-[44px] sticky z-10 top-0">
         <h1 className={`text-lg font-bold text-white-text-color ${titleDisplayClass}`}>Catatan Pelupa</h1>
         {isShowSearchbox
           ? <SearchBox closeSearchBox={this.closeSearchBox} />
