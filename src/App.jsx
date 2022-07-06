@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Masonry } from 'masonic';
 import { getInitialData } from './utils/index';
 import AppBar from './components/AppBar';
 import NoteCard from './components/NoteCard';
@@ -40,24 +39,12 @@ class App extends React.Component {
 
   render() {
     const { notes } = this.state;
-    // const notesWithClicks = notes.map((note) => ({
-    //   ...note,
-    //   onMoveNote: this.moveNote,
-    //   onDeleteNote: this.deleteNote,
-    // }));
 
     return (
       <>
         <AppBar />
         <div className="px-2">
           <h1 className="text-xl font-bold text-white-text-color">Initial data content</h1>
-          {/* <Masonry
-            items={notesWithClicks}
-            itemKey={(data) => data.id}
-            render={NoteCard}
-            columnGutter={8}
-            columnWidth={300}
-          /> */}
           {notes.map((note) => {
             const {
               color,
