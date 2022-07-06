@@ -44,30 +44,6 @@ class App extends React.Component {
       <>
         <AppBar />
         <div className="px-2">
-          <h1 className="text-xl font-bold text-white-text-color">Initial data content</h1>
-          {/* {notes.map((note) => {
-            const {
-              color,
-              title,
-              body,
-              createdAt,
-              id,
-              archived,
-            } = note;
-
-            return (
-              <NoteCard
-                color={color}
-                title={title}
-                body={body}
-                createdAt={createdAt}
-                id={id}
-                archived={archived}
-                onMoveNote={this.moveNote}
-                onDeleteNote={this.deleteNote}
-              />
-            );
-          })} */}
           <NoteList notes={notes} onMoveNote={this.moveNote} onDeleteNote={this.deleteNote} />
         </div>
       </>
