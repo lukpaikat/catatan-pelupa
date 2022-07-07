@@ -1,5 +1,5 @@
 import React from 'react';
-import { getInitialData } from './utils/index';
+import { getInitialData, getFilteredNotes } from './utils/index';
 import AppBar from './components/AppBar';
 import NoteList from './components/NoteList';
 import NewNoteForm from './components/NewNoteForm';
@@ -12,13 +12,13 @@ class App extends React.Component {
       // eslint-disable-next-line react/no-unused-state
       searchKeyword: '',
     };
-    this.onAddNote = this.onAddNote.bind(this);
+    this.addNote = this.addNote.bind(this);
     this.moveNote = this.moveNote.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
     this.searchNote = this.searchNote.bind(this);
   }
 
-  onAddNote({ title, body, color }) {
+  addNote({ title, body, color }) {
     this.setState((prevState) => {
       const currentList = prevState.notes;
       const id = +new Date();
@@ -74,12 +74,8 @@ class App extends React.Component {
   render() {
     const { notes, searchKeyword } = this.state;
     let notesToRender = [];
-    const upperCaseKeyword = searchKeyword.toUpperCase();
     if (searchKeyword) {
-      const filteredNotes = notes.filter((note) => (
-        note.title.toUpperCase().indexOf(upperCaseKeyword) > -1
-        || note.body.toUpperCase().indexOf(upperCaseKeyword) > -1));
-      notesToRender = filteredNotes;
+      notesToRender = getFilteredNotes(notes, searchKeyword);
     } else {
       notesToRender = notes;
     }
@@ -88,7 +84,7 @@ class App extends React.Component {
       <>
         <AppBar onSearchNote={this.searchNote} />
         <div className="px-2">
-          <NewNoteForm onAddNote={this.onAddNote} />
+          <NewNoteForm onAddNote={this.addNote} />
           <NoteList
             notes={notesToRender}
             onMoveNote={this.moveNote}
