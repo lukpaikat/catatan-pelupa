@@ -48,7 +48,7 @@ function NoteListSection({
                         ...defaultStyle,
                         ...transitionStyles[state],
                       }}
-                      forwardRef={itemRef}
+                      forwardedRef={itemRef}
                     />
                   )}
                 </Transition>
