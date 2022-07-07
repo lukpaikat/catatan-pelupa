@@ -5,13 +5,14 @@ import NoteButtonRed from './NoteButtonRed';
 import { showFormattedDate, getNoteColorClassName } from '../utils';
 
 function NoteCard({
-  color, title, body, createdAt, id, onMoveNote, archived, onDeleteNote,
+  color, title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style,
 }) {
   const formattedDate = showFormattedDate(createdAt);
   const noteColorClassName = getNoteColorClassName(color);
   return (
     <article
       className={`flex flex-col rounded-lg px-4 py-5 my-2 md:my-0 text-black-text-color ${noteColorClassName}`}
+      style={style}
     >
       <h1 className="font-bold text-xl 2xl:text-3xl mb-1">
         {title}
@@ -37,6 +38,10 @@ NoteCard.propTypes = {
   archived: PropTypes.bool.isRequired,
   onMoveNote: PropTypes.func.isRequired,
   onDeleteNote: PropTypes.func.isRequired,
+  style: PropTypes.shape({
+    transition: PropTypes.string,
+    opacity: PropTypes.number,
+  }).isRequired,
 };
 
 NoteCard.defaultProps = {

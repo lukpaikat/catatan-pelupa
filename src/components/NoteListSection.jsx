@@ -1,30 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TransitionGroup, Transition } from 'react-transition-group';
 import NoteCard from './NoteCard';
 
 function NoteListSection({
   title, notes, onMoveNote, onDeleteNote,
 }) {
+  const duration = 300;
+  const defaultStyle = {
+    transition: `opacity ${duration}ms ease-in-out`,
+    opacity: 0,
+  };
+
+  const transitionStyles = {
+    entering: { opacity: 1 },
+    entered: { opacity: 1 },
+    exiting: { opacity: 0 },
+    exited: { opacity: 0 },
+  };
+
   return (
     <section className="min-h-[200px]">
       <h2 className="text-lg 2xl:text-3xl font-bold text-white-text-color my-6">{title}</h2>
       {notes.length
         ? (
-          <div className="md:grid md:gap-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+          <TransitionGroup className="md:grid md:gap-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {notes.map((note) => (
-              <NoteCard
+              <Transition
                 key={note.id}
-                color={note.color}
-                title={note.title}
-                body={note.body}
-                createdAt={note.createdAt}
-                id={note.id}
-                archived={note.archived}
-                onMoveNote={onMoveNote}
-                onDeleteNote={onDeleteNote}
-              />
+                timeout={500}
+              >
+                {(state) => (
+                  <NoteCard
+                  // key={note.id}
+                    color={note.color}
+                    title={note.title}
+                    body={note.body}
+                    createdAt={note.createdAt}
+                    id={note.id}
+                    archived={note.archived}
+                    onMoveNote={onMoveNote}
+                    onDeleteNote={onDeleteNote}
+                    style={{
+                      ...defaultStyle,
+                      ...transitionStyles[state],
+                    }}
+                  />
+                )}
+              </Transition>
             ))}
-          </div>
+          </TransitionGroup>
         )
         : <p className="text-center text-white-text-color mt-10 2xl:text-lg">Tidak ada catatan</p>}
     </section>
