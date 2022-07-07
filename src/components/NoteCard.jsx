@@ -15,11 +15,11 @@ function NoteCard({
       style={style}
       ref={forwardedRef}
     >
-      <h1 className="font-bold text-xl 2xl:text-3xl mb-1">
+      <h1 className="font-bold text-xl 2xl:text-2xl mb-1">
         {title}
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
-      <p className="mb-4 mt-1 2xl:text-2xl">
+      <p className="mb-4 mt-1 2xl:text-lg">
         {body}
       </p>
       <div className="flex justify-between mt-auto">
