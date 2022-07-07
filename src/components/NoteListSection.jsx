@@ -13,9 +13,9 @@ function NoteListSection({
   };
 
   const transitionStyles = {
-    entering: { opacity: 0 },
+    entering: { opacity: 0.1 },
     entered: { opacity: 1 },
-    exiting: { opacity: 0 },
+    exiting: { opacity: 0.1 },
     exited: { opacity: 0 },
   };
 
