@@ -27,7 +27,7 @@ class SearchBox extends React.Component {
 
     return (
       <form className="flex items-center w-full justify-end">
-        <label htmlFor="searchBox" className="w-full max-w-xs">
+        <label htmlFor="searchBox" className="w-full sm:max-w-xs">
           <span className="sr-only">SearchBox</span>
           <input type="text" id="searchBox" placeholder="cari" onChange={this.onChangeHandler} value={searchKey} className="2xl:text-lg block w-full bg-white-text-color min-h-[44px] pl-2 rounded-l-lg" />
         </label>
