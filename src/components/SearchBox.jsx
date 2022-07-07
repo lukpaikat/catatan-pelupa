@@ -11,15 +11,18 @@ class SearchBox extends React.Component {
   }
 
   onChangeHandler(event) {
-    this.setState(() => ({ searchKey: event.target.value }));
-    // tambahkan fungsi dari props kesini
-    // fungsi yang menerima searchKey state
+    const { onSearchNote } = this.props;
+    const { value } = event.target;
+    this.setState(() => ({ searchKey: value }));
+    onSearchNote(value);
   }
 
   onCloseHandler() {
+    const { onSearchNote } = this.props;
     const { closeSearchBox } = this.props;
     this.setState(() => ({ searchKey: '' }));
     closeSearchBox();
+    onSearchNote('');
   }
 
   render() {
@@ -39,6 +42,7 @@ class SearchBox extends React.Component {
 
 SearchBox.propTypes = {
   closeSearchBox: PropTypes.func.isRequired,
+  onSearchNote: PropTypes.func.isRequired,
 };
 
 export default SearchBox;
