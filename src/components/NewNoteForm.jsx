@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SubmitButton from './SubmitButton';
+import ColorSelect from './ColorSelect';
+import { getNoteColorClassName } from '../utils';
 
 class NewNoteForm extends React.Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class NewNoteForm extends React.Component {
     };
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onBodyChange = this.onBodyChange.bind(this);
+    this.onColorChange = this.onColorChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -34,6 +37,15 @@ class NewNoteForm extends React.Component {
     }));
   }
 
+  onColorChange(event) {
+    const { value: color } = event.target;
+
+    this.setState((prevState) => ({
+      ...prevState,
+      color,
+    }));
+  }
+
   onSubmit(event) {
     event.preventDefault();
     const { onAddNote } = this.props;
@@ -45,17 +57,19 @@ class NewNoteForm extends React.Component {
     });
   }
 
-  // TODO: ganti warna; filter daftar
   render() {
-    const { title, body } = this.state;
+    const { title, body, color } = this.state;
     return (
-      <form className="py-2 px-6 w-full max-w-lg bg-orange-note-color mx-auto rounded-lg" onSubmit={this.onSubmit}>
+      <form className={`py-2 px-6 w-full max-w-lg ${getNoteColorClassName(color)} mx-auto rounded-lg`} onSubmit={this.onSubmit}>
         <label htmlFor="judulCatatan">
           <span className="sr-only">Judul Catatan</span>
           <input className="block placeholder-black placeholder-opacity-50 bg-transparent border border-button-border-color my-2 w-full rounded-lg p-2 text-black-text-color" type="text" id="judulCatatan" value={title} maxLength="50" onChange={this.onTitleChange} placeholder="Judul Catatan" />
         </label>
         <textarea className="block w-full my-2 border border-button-border-color bg-transparent p-2 placeholder-black placeholder-opacity-50 rounded-lg" rows="8" placeholder="tulis catatan disini" onChange={this.onBodyChange} value={body} />
-        <SubmitButton text="Submit" />
+        <div className="flex justify-between">
+          <ColorSelect value={color} onChange={this.onColorChange} />
+          <SubmitButton text="Submit" />
+        </div>
       </form>
     );
   }
