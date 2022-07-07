@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CloseSearchButton from './CloseSearchButton';
+import 'animate.css';
 
 class SearchBox extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class SearchBox extends React.Component {
     const { searchKey } = this.state;
 
     return (
-      <form className="flex items-center w-full justify-end">
+      <form className="flex items-center w-full justify-end animate__animated animate__fadeIn">
         <label htmlFor="searchBox" className="w-full sm:max-w-xs">
           <span className="sr-only">SearchBox</span>
           <input type="text" id="searchBox" placeholder="cari" onChange={this.onChangeHandler} value={searchKey} className="2xl:text-lg block w-full bg-white-text-color min-h-[44px] pl-2 rounded-l-lg" />
