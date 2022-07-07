@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import NoteCard from './NoteCard';
@@ -6,14 +6,14 @@ import NoteCard from './NoteCard';
 function NoteListSection({
   title, notes, onMoveNote, onDeleteNote,
 }) {
-  const duration = 300;
+  const duration = 150;
   const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0,
   };
 
   const transitionStyles = {
-    entering: { opacity: 1 },
+    entering: { opacity: 0 },
     entered: { opacity: 1 },
     exiting: { opacity: 0 },
     exited: { opacity: 0 },
@@ -25,33 +25,42 @@ function NoteListSection({
       {notes.length
         ? (
           <TransitionGroup className="md:grid md:gap-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
-            {notes.map((note) => (
-              <Transition
-                key={note.id}
-                timeout={500}
-              >
-                {(state) => (
-                  <NoteCard
+            {notes.map((note) => {
+              const itemRef = createRef(null);
+              return (
+                <Transition
+                  nodeRef={itemRef}
+                  key={note.id}
+                  timeout={duration}
+                >
+                  {(state) => (
+                    <NoteCard
                   // key={note.id}
-                    color={note.color}
-                    title={note.title}
-                    body={note.body}
-                    createdAt={note.createdAt}
-                    id={note.id}
-                    archived={note.archived}
-                    onMoveNote={onMoveNote}
-                    onDeleteNote={onDeleteNote}
-                    style={{
-                      ...defaultStyle,
-                      ...transitionStyles[state],
-                    }}
-                  />
-                )}
-              </Transition>
-            ))}
+                      color={note.color}
+                      title={note.title}
+                      body={note.body}
+                      createdAt={note.createdAt}
+                      id={note.id}
+                      archived={note.archived}
+                      onMoveNote={onMoveNote}
+                      onDeleteNote={onDeleteNote}
+                      style={{
+                        ...defaultStyle,
+                        ...transitionStyles[state],
+                      }}
+                      forwardRef={itemRef}
+                    />
+                  )}
+                </Transition>
+              );
+            })}
           </TransitionGroup>
         )
-        : <p className="text-center text-white-text-color mt-10 2xl:text-lg">Tidak ada catatan</p>}
+        : (
+          <p className="text-center text-white-text-color mt-10 2xl:text-lg">
+            Tidak ada catatan
+          </p>
+        )}
     </section>
   );
 }
