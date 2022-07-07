@@ -60,7 +60,7 @@ class NewNoteForm extends React.Component {
   render() {
     const { title, body, color } = this.state;
     return (
-      <form className={`py-2 px-6 w-full max-w-lg ${getNoteColorClassName(color)} mx-auto rounded-lg`} onSubmit={this.onSubmit}>
+      <form className={`py-2 px-6 w-full max-w-lg ${getNoteColorClassName(color)} mx-auto rounded-lg transition-all duration-150`} onSubmit={this.onSubmit}>
         <label htmlFor="judulCatatan">
           <span className="sr-only">Judul Catatan</span>
           <input className="block placeholder-black placeholder-opacity-50 bg-transparent border border-button-border-color my-2 w-full rounded-lg p-2 text-black-text-color" type="text" id="judulCatatan" value={title} maxLength="50" onChange={this.onTitleChange} placeholder="Judul Catatan" required />
