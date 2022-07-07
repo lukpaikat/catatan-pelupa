@@ -11,13 +11,12 @@ function NoteCard({
   const noteColorClassName = getNoteColorClassName(color);
   return (
     <article
-      className={`flex flex-col rounded-lg px-4 py-5 my-2 md:my-0 text-black-text-color ${noteColorClassName}`}
+      className={`flex flex-col rounded-lg px-4 py-5 my-2 md:my-0 text-black-text-color ${noteColorClassName} animate__animated animate__fadeIn`}
     >
       <h1 className="font-bold text-xl 2xl:text-3xl mb-1">
         {title}
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
-      <small className="py-1 block">{`${archived}`}</small>
       <p className="mb-4 mt-1 2xl:text-2xl">
         {body}
       </p>
