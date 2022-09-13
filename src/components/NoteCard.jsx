@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NoteButton from './NoteButton';
 import NoteButtonRed from './NoteButtonRed';
-import { showFormattedDate, getNoteColorClassName } from '../utils';
+import { showFormattedDate } from '../utils';
+import getNoteColorClassName from '../utils/getNoteColorClassName';
 
 function NoteCard({
-  color, title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
+  title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
 }) {
   const formattedDate = showFormattedDate(createdAt);
-  const noteColorClassName = getNoteColorClassName(color);
+  const noteColorClassName = getNoteColorClassName();
   return (
     <article
       className={`flex flex-col rounded-lg px-4 py-5 my-2 md:my-0 text-black-text-color ${noteColorClassName}`}
@@ -32,7 +33,6 @@ function NoteCard({
 
 NoteCard.propTypes = {
   id: PropTypes.number.isRequired,
-  color: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string,
   createdAt: PropTypes.string.isRequired,
