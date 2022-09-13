@@ -4,7 +4,7 @@ import { TransitionGroup, Transition } from 'react-transition-group';
 import NoteCard from './NoteCard';
 
 function NoteListSection({
-  title, notes, onMoveNote, onDeleteNote,
+  notes, onMoveNote, onDeleteNote,
 }) {
   const duration = 150;
   const defaultStyle = {
@@ -20,8 +20,7 @@ function NoteListSection({
   };
 
   return (
-    <section className="min-h-[200px]">
-      <h2 className="text-lg 2xl:text-3xl font-bold text-white-text-color my-6">{title}</h2>
+    <section className="min-h-[200px] mb-12">
       {notes.length
         ? (
           <TransitionGroup className="md:grid md:gap-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
@@ -66,9 +65,8 @@ function NoteListSection({
 }
 
 NoteListSection.propTypes = {
-  title: PropTypes.string.isRequired,
   notes: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     color: PropTypes.string,
     title: PropTypes.string,
     body: PropTypes.string,

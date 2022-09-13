@@ -20,9 +20,7 @@ class SearchBox extends React.Component {
 
   onCloseHandler() {
     const { onSearchNote } = this.props;
-    const { closeSearchBox } = this.props;
     this.setState(() => ({ searchKey: '' }));
-    closeSearchBox();
     onSearchNote('');
   }
 
@@ -42,7 +40,6 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.propTypes = {
-  closeSearchBox: PropTypes.func.isRequired,
   onSearchNote: PropTypes.func.isRequired,
 };
 

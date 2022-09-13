@@ -32,7 +32,7 @@ function NoteCard({
 }
 
 NoteCard.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   body: PropTypes.string,
   createdAt: PropTypes.string.isRequired,
