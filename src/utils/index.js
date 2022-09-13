@@ -59,18 +59,6 @@ const showFormattedDate = (date) => {
   return new Date(date).toLocaleDateString('id-ID', options);
 };
 
-const getNoteColorClassName = (color) => {
-  const noteColorClassName = {
-    orange: 'bg-orange-note-color',
-    red: 'bg-red-note-color',
-    green: 'bg-green-note-color',
-    blue: 'bg-blue-note-color',
-    purple: 'bg-purple-note-color',
-  };
-
-  return noteColorClassName[color];
-};
-
 const getFilteredNotes = (notes, keyword) => {
   const upperCaseKeyword = keyword.toUpperCase();
   const filteredNotes = notes.filter((note) => (
@@ -81,5 +69,5 @@ const getFilteredNotes = (notes, keyword) => {
 };
 
 export {
-  getInitialData, showFormattedDate, getNoteColorClassName, getFilteredNotes,
+  getInitialData, showFormattedDate, getFilteredNotes,
 };
