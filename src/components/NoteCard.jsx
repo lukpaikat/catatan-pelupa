@@ -9,7 +9,7 @@ function NoteCard({
   title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
 }) {
   const formattedDate = showFormattedDate(createdAt);
-  const noteColorClassName = getNoteColorClassName();
+  const noteColorClassName = getNoteColorClassName(title);
   return (
     <article
       className={`flex flex-col rounded-lg px-4 py-5 my-2 md:my-0 text-black-text-color ${noteColorClassName}`}
