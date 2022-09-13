@@ -5,7 +5,6 @@ import NoteListSection from './NoteListSection';
 function NoteList({ notes, onMoveNote, onDeleteNote }) {
   return (
     <NoteListSection
-      title="Catatan Aktif"
       notes={notes}
       onMoveNote={onMoveNote}
       onDeleteNote={onDeleteNote}
