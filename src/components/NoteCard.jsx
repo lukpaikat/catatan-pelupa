@@ -20,7 +20,7 @@ function NoteCard({
         {title}
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
-      <p className="mb-4 mt-1 2xl:text-lg">
+      <p className="mb-4 mt-1 2xl:text-lg line-clamp-6">
         {body}
       </p>
       <div className="flex justify-between mt-auto">
