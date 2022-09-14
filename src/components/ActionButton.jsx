@@ -17,7 +17,7 @@ function ActionButton({ title, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className={`h-[44px] w-[44px] rounded-lg ${buttonBackgrounds[title]}`}
+      className={`h-[44px] w-[44px] drop-shadow-lg rounded-lg ${buttonBackgrounds[title]}`}
     >
       {buttonIcons[title]}
     </button>
