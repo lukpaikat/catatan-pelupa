@@ -4,6 +4,7 @@ import AppBar from './components/AppBar';
 import HomePage from './pages/HomePage';
 import ArchivePage from './pages/ArchivePage';
 import Page404 from './pages/Page404';
+import NewNotePage from './pages/NewNotePage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/archive" element={<ArchivePage />} />
+          <Route path="/notes/new" element={<NewNotePage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </main>
