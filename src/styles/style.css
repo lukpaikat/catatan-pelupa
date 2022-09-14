@@ -9,3 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.new-note-body:empty:before {
+  content: attr(data-placeholder);
+}
