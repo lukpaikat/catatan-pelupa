@@ -1,8 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import ContentEditable from 'react-contenteditable';
 import getNoteColorClassName from '../utils/getNoteColorClassName';
 import { addNote } from '../utils/local-data';
 import ActionButton from '../components/ActionButton';
+import FloatingContainer from '../components/FloatingContainer';
+
+function NewNotePageWrapper() {
+  const navigate = useNavigate();
+
+  const onAddNoteHandler = (note) => {
+    addNote(note);
+    navigate('/');
+  };
+
+  return (
+    <NewNotePage onAddNoteHandler={onAddNoteHandler} />
+  );
+}
 
 class NewNotePage extends React.Component {
   constructor(props) {
@@ -34,11 +50,8 @@ class NewNotePage extends React.Component {
   }
 
   onSubmit() {
-    addNote(this.state);
-    this.setState({
-      title: '',
-      body: '',
-    });
+    const { onAddNoteHandler } = this.props;
+    onAddNoteHandler(this.state);
   }
 
   render() {
@@ -60,12 +73,16 @@ class NewNotePage extends React.Component {
           data-placeholder="tulis catatan disini"
           onChange={this.onBodyChange}
         />
-        <div className="flex gap-2 fixed bottom-8 right-8">
+        <FloatingContainer>
           <ActionButton title="save" onClick={this.onSubmit} />
-        </div>
+        </FloatingContainer>
       </section>
     );
   }
 }
 
-export default NewNotePage;
+NewNotePage.propTypes = {
+  onAddNoteHandler: PropTypes.func.isRequired,
+};
+
+export default NewNotePageWrapper;
