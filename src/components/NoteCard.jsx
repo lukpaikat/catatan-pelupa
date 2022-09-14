@@ -1,4 +1,5 @@
 import React from 'react';
+import parser from 'html-react-parser';
 import PropTypes from 'prop-types';
 import NoteButton from './NoteButton';
 import NoteButtonRed from './NoteButtonRed';
@@ -21,7 +22,7 @@ function NoteCard({
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
       <p className="mb-4 mt-1 2xl:text-lg line-clamp-6">
-        {body}
+        {parser(body)}
       </p>
       <div className="flex justify-between mt-auto">
         <NoteButton text={archived ? 'Aktifkan' : 'Arsipkan'} onClick={() => onMoveNote(id)} />
