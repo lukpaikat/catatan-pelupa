@@ -17,7 +17,7 @@ function ActionButton({ title, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className={`h-[44px] w-[44px] drop-shadow-lg rounded-lg ${buttonBackgrounds[title]} active:translate-y-1 active:drop-shadow-md`}
+      className={`h-[44px] w-[44px] drop-shadow-lg rounded-lg ${buttonBackgrounds[title]} active:translate-y-1 active:drop-shadow-md transition-colors duration-300`}
     >
       {buttonIcons[title]}
     </button>

@@ -4,7 +4,7 @@ import { House, Archive } from 'phosphor-react';
 
 function AppBar() {
   const NavLinkActiveClass = (isActive) => {
-    const defaultNavLinkClass = 'hover:bg-gray-600 focus:bg-gray-600 active:bg-gray-400 rounded-md min-h-[44px] min-w-[44px] flex';
+    const defaultNavLinkClass = 'hover:bg-gray-600 focus:bg-gray-600 active:bg-gray-400 rounded-md min-h-[44px] min-w-[44px] flex transition-colors duration-300';
     const activeClass = isActive ? 'bg-gray-600' : 'bg-transparent';
 
     return `${activeClass} ${defaultNavLinkClass}`;
