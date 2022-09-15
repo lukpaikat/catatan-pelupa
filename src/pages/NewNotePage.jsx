@@ -64,10 +64,10 @@ class NewNotePage extends React.Component {
       >
         <label htmlFor="judulCatatan">
           <span className="sr-only">Judul Catatan</span>
-          <input className="block placeholder-black placeholder-opacity-50 bg-transparent my-2 w-full rounded-lg p-2 text-black-text-color text-2xl xl:text-4xl font-bold" type="text" id="judulCatatan" value={title} maxLength="50" onChange={this.onTitleChange} placeholder="Judul Catatan ..." required />
+          <input className="block placeholder-black placeholder-opacity-50 bg-transparent my-2 w-full rounded-lg p-2 text-black-text-color text-2xl lg:text-4xl 2xl:text-6xl font-bold" type="text" id="judulCatatan" value={title} maxLength="50" onChange={this.onTitleChange} placeholder="Judul Catatan ..." required />
         </label>
         <ContentEditable
-          className="new-note-body block w-full min-h-[360px] h-[79vh] my-2 p-2 rounded-lg text-lg xl:text-xl"
+          className="new-note-body block w-full min-h-[80vh] h-fit my-2 p-2 rounded-lg text-xl lg:text-3xl 2xl:text-4xl"
           innerRef={this.contentEditable}
           html={body}
           data-placeholder="tulis catatan disini"
