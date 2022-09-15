@@ -3,20 +3,21 @@ import PropTypes from 'prop-types';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import NoteCard from './NoteCard';
 import noDataIllustration from '../assets/undraw_no_data_dark.svg';
+import 'animate.css';
 
 function NoteListSection({
   notes, onMoveNote, onDeleteNote,
 }) {
-  const duration = 150;
+  const duration = 300;
   const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0,
   };
 
   const transitionStyles = {
-    entering: { opacity: 0.1 },
+    entering: { opacity: 1 },
     entered: { opacity: 1 },
-    exiting: { opacity: 0.1 },
+    exiting: { opacity: 0 },
     exited: { opacity: 0 },
   };
 
@@ -58,7 +59,7 @@ function NoteListSection({
         )
         : (
           <>
-            <img className="w-[80%] max-w-[180px] mx-auto mt-[10vh]" src={noDataIllustration} alt="no data" />
+            <img className="w-[80%] max-w-[120px] xl:max-w-[220px] mx-auto mt-[10vh] animate__animated animate__headShake" src={noDataIllustration} alt="no data" />
             <p className="text-center text-white-text-color mt-5 2xl:text-lg">
               Tidak ada catatan
             </p>
