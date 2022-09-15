@@ -1,12 +1,12 @@
 import React from 'react';
-import cat404 from '../assets/cat404.svg';
+// import cat404 from '../assets/cat404.svg';
+import pageNotFoundIllustration from '../assets/undraw_page_not_found_green.svg';
 
 function Page404() {
   return (
     <>
-      <img className="w-full max-w-sm md:max-w-md mx-auto mt-[10vh]" src={cat404} alt="404 cat" />
-      <h1 className="text-white-text-color font-extrabold text-6xl text-center">404</h1>
-      <p className="text-white-text-color text-xl text-center mb-[20vh]">Halaman yang kamu cari tidak ditemukan</p>
+      <img className="w-[80%] max-w-sm md:max-w-md mx-auto mt-[10vh]" src={pageNotFoundIllustration} alt="404 mountain" />
+      <p className="text-white-text-color text-xl text-center mt-7 mb-[20vh]">Halaman yang kamu cari tidak ditemukan</p>
     </>
   );
 }

@@ -2,6 +2,7 @@ import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import NoteCard from './NoteCard';
+import noDataIllustration from '../assets/undraw_no_data_dark.svg';
 
 function NoteListSection({
   notes, onMoveNote, onDeleteNote,
@@ -56,9 +57,12 @@ function NoteListSection({
           </TransitionGroup>
         )
         : (
-          <p className="text-center text-white-text-color mt-10 2xl:text-lg">
-            Tidak ada catatan
-          </p>
+          <>
+            <img className="w-[80%] max-w-[180px] mx-auto mt-[10vh]" src={noDataIllustration} alt="no data" />
+            <p className="text-center text-white-text-color mt-5 2xl:text-lg">
+              Tidak ada catatan
+            </p>
+          </>
         )}
     </section>
   );
