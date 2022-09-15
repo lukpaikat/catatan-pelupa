@@ -59,7 +59,7 @@ class NewNotePage extends React.Component {
     return (
       <section
         role="form"
-        className={`py-2 px-6 w-full ${getNoteColorClassName() || 'bg-orange-note-color'} mx-auto rounded-lg transition-all duration-150`}
+        className={`py-2 px-6 w-full ${getNoteColorClassName(title) || 'bg-orange-note-color'} mx-auto rounded-lg transition-all duration-150`}
         onSubmit={this.onSubmit}
       >
         <label htmlFor="judulCatatan">
