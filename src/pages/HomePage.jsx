@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import NoteList from '../components/NoteList';
 import { getActiveNotes, archiveNote, deleteNote } from '../utils/local-data';
 import filterNotes from '../utils/filterNotes';
@@ -10,11 +10,22 @@ import ActionButton from '../components/ActionButton';
 
 function HomePageWrapper() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchKeyword = searchParams.get('keyword');
+  const changeSearchParams = (keyword) => {
+    setSearchParams({ keyword });
+  };
   const toAddNotePage = () => {
     navigate('/notes/new');
   };
 
-  return <HomePage toAddNotePage={toAddNotePage} />;
+  return (
+    <HomePage
+      toAddNotePage={toAddNotePage}
+      defaultKeyword={searchKeyword}
+      keywordChange={changeSearchParams}
+    />
+  );
 }
 
 class HomePage extends React.Component {
@@ -23,7 +34,7 @@ class HomePage extends React.Component {
 
     this.state = {
       notes: getActiveNotes(),
-      keyword: '',
+      keyword: props.defaultKeyword || '',
     };
     this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
     this.archiveNoteHandler = this.archiveNoteHandler.bind(this);
@@ -50,19 +61,23 @@ class HomePage extends React.Component {
   }
 
   keywordChangeHandler(keyword) {
+    const { keywordChange } = this.props;
     this.setState(() => (
       {
         keyword,
       }
     ));
+    keywordChange(keyword);
   }
 
   clearKeywordHandler() {
+    const { keywordChange } = this.props;
     this.setState(() => (
       {
         keyword: '',
       }
     ));
+    keywordChange('');
   }
 
   render() {
@@ -93,6 +108,12 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
   toAddNotePage: PropTypes.func.isRequired,
+  defaultKeyword: PropTypes.string,
+  keywordChange: PropTypes.func.isRequired,
+};
+
+HomePage.defaultProps = {
+  defaultKeyword: '',
 };
 
 export default HomePageWrapper;

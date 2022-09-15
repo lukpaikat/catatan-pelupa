@@ -1,8 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { useSearchParams } from 'react-router-dom';
 import NoteList from '../components/NoteList';
 import { getArchivedNotes, unarchiveNote, deleteNote } from '../utils/local-data';
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
+
+function ArchivePageWrapper() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchKeyword = searchParams.get('keyword');
+  const changeSearchParams = (keyword) => {
+    setSearchParams({ keyword });
+  };
+
+  return (
+    <ArchivePage
+      defaultKeyword={searchKeyword}
+      keywordChange={changeSearchParams}
+    />
+  );
+}
 
 class ArchivePage extends React.Component {
   constructor(props) {
@@ -10,7 +27,7 @@ class ArchivePage extends React.Component {
 
     this.state = {
       notes: getArchivedNotes(),
-      keyword: '',
+      keyword: props.defaultKeyword || '',
     };
     this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
     this.archiveNoteHandler = this.archiveNoteHandler.bind(this);
@@ -37,19 +54,24 @@ class ArchivePage extends React.Component {
   }
 
   keywordChangeHandler(keyword) {
+    const { keywordChange } = this.props;
     this.setState(() => (
       {
         keyword,
       }
     ));
+
+    keywordChange(keyword);
   }
 
   clearKeywordHandler() {
+    const { keywordChange } = this.props;
     this.setState(() => (
       {
         keyword: '',
       }
     ));
+    keywordChange('');
   }
 
   render() {
@@ -74,4 +96,13 @@ class ArchivePage extends React.Component {
   }
 }
 
-export default ArchivePage;
+ArchivePage.propTypes = {
+  defaultKeyword: PropTypes.string,
+  keywordChange: PropTypes.func.isRequired,
+};
+
+ArchivePage.defaultProps = {
+  defaultKeyword: '',
+};
+
+export default ArchivePageWrapper;
