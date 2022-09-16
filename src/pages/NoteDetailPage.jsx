@@ -44,7 +44,7 @@ function NoteDetailPage() {
       </>
     );
   }
-  return <Navigate to="/404page" />;
+  return <Navigate to="/404page" replace />;
 }
 
 export default NoteDetailPage;
