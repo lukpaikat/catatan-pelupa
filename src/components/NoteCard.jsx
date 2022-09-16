@@ -21,9 +21,9 @@ function NoteCard({
         <Link className="underline" to={`/notes/${id}`}>{title}</Link>
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
-      <p className="mb-4 mt-1 2xl:text-lg line-clamp-6">
+      <div className="mb-4 mt-1 2xl:text-lg line-clamp-6">
         {parser(body)}
-      </p>
+      </div>
       <div className="flex justify-between mt-auto">
         <NoteButton text={archived ? 'Aktifkan' : 'Arsipkan'} onClick={() => onMoveNote(id)} />
         <NoteButton text="hapus" onClick={() => onDeleteNote(id)} bgColor="red" />
