@@ -2,7 +2,6 @@ import React from 'react';
 import parser from 'html-react-parser';
 import PropTypes from 'prop-types';
 import NoteButton from './NoteButton';
-import NoteButtonRed from './NoteButtonRed';
 import getFormattedDate from '../utils/getFormattedDate';
 import getNoteColorClassName from '../utils/getNoteColorClassName';
 
@@ -26,7 +25,7 @@ function NoteCard({
       </p>
       <div className="flex justify-between mt-auto">
         <NoteButton text={archived ? 'Aktifkan' : 'Arsipkan'} onClick={() => onMoveNote(id)} />
-        <NoteButtonRed text="hapus" onClick={() => onDeleteNote(id)} />
+        <NoteButton text="hapus" onClick={() => onDeleteNote(id)} bgColor="red" />
       </div>
     </article>
   );
