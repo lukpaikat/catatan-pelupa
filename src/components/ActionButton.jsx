@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FloppyDisk, Plus } from 'phosphor-react';
+import {
+  FloppyDisk, Plus, ArchiveBox, TrashSimple, PushPin,
+} from 'phosphor-react';
 
 function ActionButton({ title, onClick }) {
   const buttonIcons = {
     save: <FloppyDisk className="m-auto text-3xl text-white-text-color" weight="light" />,
     add: <Plus className="m-auto text-3xl text-white-text-color" weight="light" />,
+    archive: <ArchiveBox className="m-auto text-3xl text-white-text-color" weight="light" />,
+    unarchive: <PushPin className="m-auto text-3xl text-white-text-color" weight="light" />,
+    delete: <TrashSimple className="m-auto text-3xl text-white-text-color" weight="light" />,
   };
 
   const buttonBackgrounds = {
     save: 'bg-sky-600 hover:bg-sky-400 focus:bg-sky-400 active:bg-sky-500',
     add: 'bg-gray-600 hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-500',
+    archive: 'bg-gray-600 hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-500',
+    unarchive: 'bg-gray-600 hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-500',
+    delete: 'bg-red-600 hover:bg-red-400 focus:bg-red-400 active:bg-red-500',
   };
 
   return (
