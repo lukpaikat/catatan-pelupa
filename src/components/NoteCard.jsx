@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import parser from 'html-react-parser';
 import PropTypes from 'prop-types';
 import NoteButton from './NoteButton';
@@ -17,7 +18,7 @@ function NoteCard({
       ref={forwardedRef}
     >
       <h1 className="font-bold text-xl 2xl:text-2xl mb-1">
-        {title}
+        <Link className="underline" to={`/notes/${id}`}>{title}</Link>
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
       <p className="mb-4 mt-1 2xl:text-lg line-clamp-6">
