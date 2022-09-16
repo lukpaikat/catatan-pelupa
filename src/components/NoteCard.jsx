@@ -3,13 +3,13 @@ import parser from 'html-react-parser';
 import PropTypes from 'prop-types';
 import NoteButton from './NoteButton';
 import NoteButtonRed from './NoteButtonRed';
-import { showFormattedDate } from '../utils';
+import getFormattedDate from '../utils/getFormattedDate';
 import getNoteColorClassName from '../utils/getNoteColorClassName';
 
 function NoteCard({
   title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
 }) {
-  const formattedDate = showFormattedDate(createdAt);
+  const formattedDate = getFormattedDate(createdAt);
   const noteColorClassName = getNoteColorClassName(title);
   return (
     <article
