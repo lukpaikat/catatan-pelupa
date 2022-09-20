@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import parser from 'html-react-parser';
 import PropTypes from 'prop-types';
-import NoteButton from './NoteButton';
 import getFormattedDate from '../utils/getFormattedDate';
 import getNoteColorClassName from '../utils/getNoteColorClassName';
 import { NOTES_DETAIL } from '../config/paths';
+import NoteButtonTransparent from './buttons/NoteButtonTransparent';
+import NoteButtonRed from './buttons/NoteButtonRed';
 
 function NoteCard({
   title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
@@ -26,8 +27,8 @@ function NoteCard({
         {parser(body)}
       </div>
       <div className="flex justify-between mt-auto">
-        <NoteButton text={archived ? 'Aktifkan' : 'Arsipkan'} onClick={() => onMoveNote(id)} />
-        <NoteButton text="hapus" onClick={() => onDeleteNote(id)} bgColor="red" />
+        <NoteButtonTransparent text={archived ? 'Aktifkan' : 'Arsipkan'} onClick={() => onMoveNote(id)} />
+        <NoteButtonRed text="hapus" onClick={() => onDeleteNote(id)} />
       </div>
     </article>
   );
