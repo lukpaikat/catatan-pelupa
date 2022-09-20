@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import NoteButton from './NoteButton';
 import getFormattedDate from '../utils/getFormattedDate';
 import getNoteColorClassName from '../utils/getNoteColorClassName';
+import { NOTES_DETAIL } from '../config/paths';
 
 function NoteCard({
   title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
@@ -18,7 +19,7 @@ function NoteCard({
       ref={forwardedRef}
     >
       <h1 className="font-bold text-xl 2xl:text-2xl mb-1">
-        <Link className="underline" to={`/notes/${id}`}>{title}</Link>
+        <Link className="underline" to={NOTES_DETAIL + id}>{title}</Link>
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
       <div className="mb-4 mt-1 2xl:text-lg line-clamp-6">

@@ -10,6 +10,7 @@ import FloatingContainer from '../components/FloatingContainer';
 import ActionButtonArchive from '../components/buttons/ActionButtonArchive';
 import ActionButtonUnarchive from '../components/buttons/ActionButtonUnarchive';
 import ActionButtonDelete from '../components/buttons/ActionButtonDelete';
+import { HOME, ARCHIVE, PAGE404 } from '../config/paths';
 
 function NoteDetailPage() {
   const { id } = useParams();
@@ -17,15 +18,15 @@ function NoteDetailPage() {
   const navigate = useNavigate();
   const deleteNoteHandler = () => {
     deleteNote(note.id);
-    navigate('/');
+    navigate(HOME);
   };
   const archiveNoteHandler = () => {
     archiveNote(note.id);
-    navigate('/archive');
+    navigate(ARCHIVE);
   };
   const unarchiveNoteHandler = () => {
     unarchiveNote(note.id);
-    navigate('/');
+    navigate(HOME);
   };
   if (note !== 'noData') {
     return (
@@ -46,7 +47,7 @@ function NoteDetailPage() {
       </>
     );
   }
-  return <Navigate to="/404page" replace />;
+  return <Navigate to={PAGE404} replace />;
 }
 
 export default NoteDetailPage;

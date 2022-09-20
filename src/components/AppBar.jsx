@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { House, Archive } from 'phosphor-react';
+import { HOME, ARCHIVE } from '../config/paths';
 
 function AppBar() {
   const NavLinkActiveClass = (isActive) => {
@@ -14,10 +15,10 @@ function AppBar() {
     <header className="bg-black-background-color px-3 py-1 w-full flex items-center justify-between min-h-[44px] sticky z-10 top-0">
       <h1 className="my-2 text-xl 2xl:text-4xl font-bold text-white-text-color block">Catatan Pelupa</h1>
       <nav className="flex gap-3">
-        <NavLink className={({ isActive }) => NavLinkActiveClass(isActive)} to="/" end>
+        <NavLink className={({ isActive }) => NavLinkActiveClass(isActive)} to={HOME} end>
           <House className="text-3xl text-white-text-color m-auto" weight="light" />
         </NavLink>
-        <NavLink className={({ isActive }) => NavLinkActiveClass(isActive)} to="/archive">
+        <NavLink className={({ isActive }) => NavLinkActiveClass(isActive)} to={ARCHIVE}>
           <Archive className="text-3xl text-white-text-color m-auto" />
         </NavLink>
       </nav>

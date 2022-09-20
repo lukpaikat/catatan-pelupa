@@ -6,13 +6,14 @@ import getNoteColorClassName from '../utils/getNoteColorClassName';
 import { addNote } from '../utils/local-data';
 import ActionButtonSave from '../components/buttons/ActionButtonSave';
 import FloatingContainer from '../components/FloatingContainer';
+import { HOME } from '../config/paths';
 
 function NewNotePageWrapper() {
   const navigate = useNavigate();
 
   const onAddNoteHandler = (note) => {
     addNote(note);
-    navigate('/');
+    navigate(HOME);
   };
 
   return (

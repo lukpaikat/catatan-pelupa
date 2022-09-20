@@ -19,7 +19,7 @@ function App() {
           <Route path={HOME} element={<HomePage />} />
           <Route path={ARCHIVE} element={<ArchivePage />} />
           <Route path={NOTES_NEW} element={<NewNotePage />} />
-          <Route path={NOTES_DETAIL} element={<NoteDetailPage />} />
+          <Route path={`${NOTES_DETAIL}:id`} element={<NoteDetailPage />} />
           <Route path={PAGE404} element={<Page404 />} />
           <Route path="*" element={<Navigate to={PAGE404} />} />
         </Routes>
