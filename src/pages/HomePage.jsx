@@ -6,7 +6,7 @@ import { getActiveNotes, archiveNote, deleteNote } from '../utils/local-data';
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
 import FloatingContainer from '../components/FloatingContainer';
-import ActionButton from '../components/ActionButton';
+import ActionButtonAdd from '../components/buttons/ActionButtonAdd';
 
 function HomePageWrapper() {
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ class HomePage extends React.Component {
           onDeleteNote={this.deleteNoteHandler}
         />
         <FloatingContainer>
-          <ActionButton title="add" onClick={toAddNotePage} />
+          <ActionButtonAdd onClick={toAddNotePage} />
         </FloatingContainer>
       </>
     );

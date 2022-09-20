@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ContentEditable from 'react-contenteditable';
 import getNoteColorClassName from '../utils/getNoteColorClassName';
 import { addNote } from '../utils/local-data';
-import ActionButton from '../components/ActionButton';
+import ActionButtonSave from '../components/buttons/ActionButtonSave';
 import FloatingContainer from '../components/FloatingContainer';
 
 function NewNotePageWrapper() {
@@ -74,7 +74,7 @@ class NewNotePage extends React.Component {
           onChange={this.onBodyChange}
         />
         <FloatingContainer>
-          <ActionButton title="save" onClick={this.onSubmit} />
+          <ActionButtonSave onClick={this.onSubmit} />
         </FloatingContainer>
       </section>
     );

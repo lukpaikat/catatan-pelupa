@@ -7,7 +7,9 @@ import {
 import getFormattedDate from '../utils/getFormattedDate';
 import getNoteColorClassName from '../utils/getNoteColorClassName';
 import FloatingContainer from '../components/FloatingContainer';
-import ActionButton from '../components/ActionButton';
+import ActionButtonArchive from '../components/buttons/ActionButtonArchive';
+import ActionButtonUnarchive from '../components/buttons/ActionButtonUnarchive';
+import ActionButtonDelete from '../components/buttons/ActionButtonDelete';
 
 function NoteDetailPage() {
   const { id } = useParams();
@@ -37,9 +39,9 @@ function NoteDetailPage() {
         </article>
         <FloatingContainer>
           {note.archived
-            ? <ActionButton title="unarchive" onClick={unarchiveNoteHandler} />
-            : <ActionButton title="archive" onClick={archiveNoteHandler} />}
-          <ActionButton title="delete" onClick={deleteNoteHandler} />
+            ? <ActionButtonUnarchive onClick={unarchiveNoteHandler} />
+            : <ActionButtonArchive onClick={archiveNoteHandler} />}
+          <ActionButtonDelete onClick={deleteNoteHandler} />
         </FloatingContainer>
       </>
     );
