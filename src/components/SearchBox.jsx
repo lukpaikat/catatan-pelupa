@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CloseSearchButton from './CloseSearchButton';
+import CloseSearchButton from './buttons/CloseSearchButton';
 
 function SearchBox({ keyword, keywordChange, clearKeyword }) {
   return (
