@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   FloppyDisk, Plus, ArchiveBox, TrashSimple, PushPin,
 } from 'phosphor-react';
-
+// TODO: ubah jadi masing tombol, tanpa flagging
 function ActionButton({ title, onClick }) {
   const buttonIcons = {
     save: <FloppyDisk className="m-auto text-3xl text-white-text-color" weight="light" />,

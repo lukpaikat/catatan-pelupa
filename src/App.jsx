@@ -6,7 +6,7 @@ import ArchivePage from './pages/ArchivePage';
 import Page404 from './pages/Page404';
 import NewNotePage from './pages/NewNotePage';
 import NoteDetailPage from './pages/NoteDetailPage';
-
+// TODO: simpan nama path dengan constant (nanti cek sarannya lagi, di folder apa)
 function App() {
   return (
     <>
