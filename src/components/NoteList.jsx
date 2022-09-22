@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NoteListSection from './NoteListSection';
-
+// TODO: sepertinya komponen ini bisa dihapus.
+// jadi langsung pakai noteListSection aja
 function NoteList({ notes, onMoveNote, onDeleteNote }) {
   return (
     <NoteListSection

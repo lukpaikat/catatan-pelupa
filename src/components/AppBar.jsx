@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { House, Archive } from 'phosphor-react';
+import { PushPin, Archive } from 'phosphor-react';
 import { HOME, ARCHIVE } from '../config/paths';
 
 function AppBar() {
@@ -16,7 +16,8 @@ function AppBar() {
       <h1 className="my-2 text-xl 2xl:text-4xl font-bold text-white-text-color block">Catatan Pelupa</h1>
       <nav className="flex gap-3">
         <NavLink className={({ isActive }) => NavLinkActiveClass(isActive)} to={HOME} end>
-          <House className="text-3xl text-white-text-color m-auto" weight="light" />
+          <PushPin className="text-3xl text-white-text-color m-auto" weight="light" />
+          {/* TODO: mending ganti dengan icon puspin */}
         </NavLink>
         <NavLink className={({ isActive }) => NavLinkActiveClass(isActive)} to={ARCHIVE}>
           <Archive className="text-3xl text-white-text-color m-auto" />

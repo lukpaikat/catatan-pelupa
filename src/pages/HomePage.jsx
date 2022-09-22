@@ -8,6 +8,8 @@ import SearchBox from '../components/SearchBox';
 import FloatingContainer from '../components/FloatingContainer';
 import ActionButtonAdd from '../components/buttons/ActionButtonAdd';
 
+// TODO: selagi effect dijalankan, data yang dikirim ke daftar adalah data skeleton?
+
 function HomePageWrapper() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();

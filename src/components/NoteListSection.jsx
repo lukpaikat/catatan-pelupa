@@ -21,6 +21,13 @@ function NoteListSection({
     exited: { opacity: 0 },
   };
 
+  // pilihan lain: mungkin disini tambah conditional rendering yang menerima state loading
+  // bila loading di return komponen daftar catatan skeleton
+
+  // pilihan lain: dibuat data-data catatan yang berisi komponen-komponen skeleton
+  // dalam data itu ada key isSkeleton
+  // jadi selagi data sedang dipanggil, data pada state di inisiasi dengan data skeleton dulu
+
   return (
     <section className="min-h-[200px] mb-12">
       {notes.length
