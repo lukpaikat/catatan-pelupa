@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import ContentEditable from 'react-contenteditable';
-import getNoteColorClassName from '../utils/getNoteColorClassName';
 import { addNote } from '../utils/local-data';
 import ActionButtonSave from '../components/buttons/ActionButtonSave';
 import FloatingContainer from '../components/FloatingContainer';
+import NotePaper from '../components/NotePaper';
 import { HOME } from '../config/paths';
 
 function NewNotePageWrapper() {
@@ -58,12 +58,7 @@ class NewNotePage extends React.Component {
   render() {
     const { title, body } = this.state;
     return (
-      <section
-        role="form"
-        className={`py-2 px-6 w-full max-w-[700px] lg:max-w-[1000px] 2xl:max-w-[1300px]
-        ${getNoteColorClassName(title) || 'bg-orange-note-color'} mx-auto rounded-lg transition-all duration-150`}
-        onSubmit={this.onSubmit}
-      >
+      <NotePaper noteTitle={title}>
         <label htmlFor="judulCatatan">
           <span className="sr-only">Judul Catatan</span>
           <input className="block placeholder-black placeholder-opacity-50 bg-transparent my-2 w-full rounded-lg p-2 text-black-text-color text-2xl lg:text-4xl 2xl:text-6xl font-bold" type="text" id="judulCatatan" value={title} maxLength="50" onChange={this.onTitleChange} placeholder="Judul Catatan ..." required />
@@ -78,7 +73,7 @@ class NewNotePage extends React.Component {
         <FloatingContainer>
           <ActionButtonSave onClick={this.onSubmit} />
         </FloatingContainer>
-      </section>
+      </NotePaper>
     );
   }
 }
