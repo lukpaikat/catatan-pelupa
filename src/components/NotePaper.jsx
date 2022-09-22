@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import getNoteColorClassName from '../utils/getNoteColorClassName';
 
-function NotePaperLarge({ children, noteTitle }) {
+function NotePaper({ children, noteTitle }) {
   return (
     <section
       className={`py-2 px-6 w-full max-w-[700px] lg:max-w-[1000px] 2xl:max-w-[1300px]
@@ -14,13 +14,13 @@ function NotePaperLarge({ children, noteTitle }) {
   );
 }
 
-NotePaperLarge.propTypes = {
+NotePaper.propTypes = {
   children: PropTypes.node.isRequired,
   noteTitle: PropTypes.string,
 };
 
-NotePaperLarge.defaultProps = {
+NotePaper.defaultProps = {
   noteTitle: 'ini judul placeholder',
 };
 
-export default NotePaperLarge;
+export default NotePaper;
