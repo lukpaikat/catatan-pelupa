@@ -16,9 +16,15 @@ function App() {
   const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'semiDark');
 
   const changeTheme = (newTheme) => {
-    // opsi tema: dark; semiDark
+    // opsi tema: dark; semiDark; light
     setTheme(() => newTheme);
+    localStorage.setItem('theme', newTheme);
   };
+
+  // pakai useEffect untuk mengatur tema
+  React.useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const themeContextValue = React.useMemo(() => ({
     theme,
