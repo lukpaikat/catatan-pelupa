@@ -9,11 +9,11 @@ function ThemeMenuButton({ title, currentTheme, setCurrentTheme }) {
   const opacityClass = currentTheme === camelCasedTitle ? 'opacity-100' : 'opacity-25 hover:opacity-90 focus:opacity-90';
 
   return (
-    <button onClick={setCurrentTheme} type="button" className={`flex gap-2 p-2 w-full hover:bg-gray-600 rounded-lg ${opacityClass}`}>
-      {title === 'Dark' && <Moon className="text-3xl text-white-text-color" />}
-      {title === 'Light' && <Sun className="text-3xl text-white-text-color" />}
-      {title === 'Semi Dark' && <SunHorizon className="text-3xl text-white-text-color" />}
-      <span className="text-white-text-color">{title}</span>
+    <button onClick={setCurrentTheme} type="button" className={`menu-item-button ${opacityClass}`}>
+      {title === 'Dark' && <Moon className="text-3xl" />}
+      {title === 'Light' && <Sun className="text-3xl" />}
+      {title === 'Semi Dark' && <SunHorizon className="text-3xl" />}
+      <span>{title}</span>
     </button>
   );
 }
