@@ -13,11 +13,11 @@ function ThemeItemButton({ onClick }) {
         event.stopPropagation();
         onClick();
       }}
-      className="hover:bg-gray-600 focus:bg-gray-600 active:bg-gray-400 rounded-md min-h-[44px] min-w-[44px] flex transition-colors duration-300"
+      className="app-bar-button"
     >
       { theme === 'dark' && <Moon className="text-3xl text-white-text-color m-auto" weight="light" />}
       { theme === 'semiDark' && <SunHorizon className="text-3xl text-white-text-color m-auto" weight="light" />}
-      { theme === 'light' && <Sun className="text-3xl text-white-text-color m-auto" weight="light" />}
+      { theme === 'light' && <Sun className="text-3xl text-gray-text-color hover:text-black-text-color m-auto" weight="light" />}
     </button>
   );
 }
