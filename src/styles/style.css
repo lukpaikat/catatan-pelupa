@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-white-text-color semiDark:bg-black-background-color dark:bg-black-background-color m-0;
+    @apply bg-white-background-color semiDark:bg-black-background-color dark:bg-black-background-color m-0;
   }
 }
 
