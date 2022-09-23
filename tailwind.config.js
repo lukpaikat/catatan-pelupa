@@ -4,13 +4,15 @@ const plugin = require('tailwindcss/plugin');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: ['class', '[data-theme="dark"]'],
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
         'white-text-color': '#f5f5f5',
+        'gray-text-color': '#505050',
         'black-background-color': '#252525',
+        'white-background-color': '#f5f5f5',
         'black-text-color': '#121212',
         'orange-note-color': '#ffd179',
         'red-note-color': '#FF7C81',
@@ -30,7 +32,7 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
     plugin(({ addVariant, e }) => {
       addVariant('semiDark', ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => `.semiDark .${e(`semiDark${separator}${className}`)}`);
+        modifySelectors(({ className }) => `[data-theme="semiDark"] .${e(`semiDark${separator}${className}`)}`);
       });
     }),
   ],
