@@ -12,6 +12,10 @@ function AppBar() {
     setIsThemeMenuHidden((prevState) => !prevState);
   };
 
+  const menuOutsideClick = () => {
+    setIsThemeMenuHidden(() => true);
+  };
+
   return (
     <header className="bg-white-background-color dark:bg-black-background-color semiDark:bg-black-background-color px-3 py-1 w-full flex items-center justify-between min-h-[44px] sticky z-10 top-0">
       <h1 className="my-2 text-xl 2xl:text-4xl font-bold text-gray-text-color semiDark:text-white-text-color dark:text-white-text-color block">Catatan Pelupa</h1>
@@ -25,10 +29,13 @@ function AppBar() {
           </NavLinkButton>
         </nav>
         <ThemeButton onClick={themeMenuToggler} />
-        <ThemeMenuContainer
-          themeMenuToggler={themeMenuToggler}
-          isThemeMenuHidden={isThemeMenuHidden}
-        />
+        { !isThemeMenuHidden && (
+          <ThemeMenuContainer
+            menuOutsideClick={() => menuOutsideClick()}
+            themeMenuToggler={themeMenuToggler}
+            isThemeMenuHidden={isThemeMenuHidden}
+          />
+        )}
       </div>
     </header>
   );
