@@ -2,7 +2,9 @@ import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import NoteCard from './NoteCard';
-import noDataIllustration from '../assets/undraw_no_data_dark.svg';
+import noDataIllustrationDark from '../assets/undraw_no_data_dark.svg';
+import noDataIllustrationLight from '../assets/undraw_no_data_light.svg';
+import ThemeContext from '../contexts/ThemeContext';
 
 function NoteListSection({
   notes, onMoveNote, onDeleteNote,
@@ -12,6 +14,10 @@ function NoteListSection({
     transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0,
   };
+
+  const { theme } = React.useContext(ThemeContext);
+
+  const noDataIllustration = theme === 'light' ? noDataIllustrationLight : noDataIllustrationDark;
 
   const transitionStyles = {
     entering: { opacity: 0 },
@@ -66,7 +72,7 @@ function NoteListSection({
         : (
           <>
             <img className="w-[80%] max-w-[120px] xl:max-w-[220px] mx-auto mt-[10vh] animate__animated animate__headShake" src={noDataIllustration} alt="no data" />
-            <p className="text-center text-white-text-color mt-5 2xl:text-lg">
+            <p className="text-center text-gray-text-color semi-and-dark-text mt-5 2xl:text-lg">
               Tidak ada catatan
             </p>
           </>
