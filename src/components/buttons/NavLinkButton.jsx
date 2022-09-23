@@ -9,14 +9,7 @@ function NavLinkButton({ children, to, end }) {
       to={to}
       // TODO: mungkin dibikin abstraction @apply components aja
       className={({ isActive }) => [
-        'bg-white-background-color dark:bg-black-background-color semiDark:bg-black-background-color',
-        'dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:active:bg-gray-400',
-        'semiDark:hover:bg-gray-600 semiDark:focus:bg-gray-600 semiDark:active:bg-gray-400',
-        'rounded-md min-h-[44px] min-w-[44px] flex transition-colors duration-300',
-        'hover:shadow-md active:shadow-inner transition-all',
-        'text-gray-text-color hover:text-black-text-color focus:text-black-text-color',
-        'semiDark:text-white-text-color semiDark:hover:text-white-text-color semiDark:focus:text-white-text-color',
-        'dark:text-white-text-color dark:hover:text-white-text-color dark:focus:text-white-text-color',
+        'app-bar-button',
         isActive ? ' !text-blue-700 dark:!text-blue-note-color semiDark:!text-blue-note-color' : null,
       ].filter(Boolean).join(' ')}
     >
