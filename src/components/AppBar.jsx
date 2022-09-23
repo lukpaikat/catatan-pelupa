@@ -8,7 +8,7 @@ import NavLinkButton from './buttons/NavLinkButton';
 function AppBar() {
   const [isThemeMenuHidden, setIsThemeMenuHidden] = React.useState(true);
 
-  const themeMenuHandler = () => {
+  const themeMenuToggler = () => {
     setIsThemeMenuHidden((prevState) => !prevState);
   };
 
@@ -24,9 +24,9 @@ function AppBar() {
             <Archive className="text-3xl block m-auto" weight="light" />
           </NavLinkButton>
         </nav>
-        <ThemeButton onClick={themeMenuHandler} />
+        <ThemeButton onClick={themeMenuToggler} />
         <ThemeMenuContainer
-          themeMenuHandler={themeMenuHandler}
+          themeMenuToggler={themeMenuToggler}
           isThemeMenuHidden={isThemeMenuHidden}
         />
       </div>

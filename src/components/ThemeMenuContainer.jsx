@@ -1,27 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ThemeMenuButton from './buttons/ThemeMenuButton';
+import ThemeContext from '../contexts/ThemeContext';
 
-function ThemeMenuContainer({ isThemeMenuHidden, themeMenuHandler }) {
+function ThemeMenuContainer({ isThemeMenuHidden, themeMenuToggler }) {
+  const { theme, changeTheme } = React.useContext(ThemeContext);
+
+  const setCurrentTheme = (camelCasedThemeName) => {
+    changeTheme(camelCasedThemeName);
+    themeMenuToggler();
+  };
+
   return (
     <ul
       className={`flex flex-col p-1 absolute top-full right-0 mt-2 bg-gray-700 shadow-md rounded-lg ${isThemeMenuHidden && 'invisible opacity-0'}`}
     >
       <li>
-        <ThemeMenuButton title="Light" themeMenuHandler={themeMenuHandler} />
+        <ThemeMenuButton currentTheme={theme} title="Light" setCurrentTheme={() => setCurrentTheme('light')} />
       </li>
       <li>
-        <ThemeMenuButton title="Semi Dark" themeMenuHandler={themeMenuHandler} />
+        <ThemeMenuButton currentTheme={theme} title="Semi Dark" setCurrentTheme={() => setCurrentTheme('semiDark')} />
       </li>
       <li>
-        <ThemeMenuButton title="Dark" themeMenuHandler={themeMenuHandler} />
+        <ThemeMenuButton currentTheme={theme} title="Dark" setCurrentTheme={() => setCurrentTheme('dark')} />
       </li>
     </ul>
   );
 }
 
 ThemeMenuContainer.propTypes = {
-  themeMenuHandler: PropTypes.func.isRequired,
+  themeMenuToggler: PropTypes.func.isRequired,
   isThemeMenuHidden: PropTypes.bool.isRequired,
 };
 
