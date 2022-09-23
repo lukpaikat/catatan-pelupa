@@ -8,8 +8,8 @@ function NavLinkButton({ children, to, end }) {
       end={end}
       to={to}
       className={({ isActive }) => [
-        'app-bar-button',
-        isActive ? ' !text-blue-700 dark:!text-blue-note-color semiDark:!text-blue-note-color' : null,
+        'app-bar-button-simplified',
+        isActive ? ' !text-blue-700 semi-and-dark:!text-blue-note-color' : null,
       ].filter(Boolean).join(' ')}
     >
       {children}

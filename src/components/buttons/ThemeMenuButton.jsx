@@ -13,7 +13,7 @@ function ThemeItemButton({ onClick }) {
         event.stopPropagation();
         onClick();
       }}
-      className="app-bar-button"
+      className="app-bar-button-simplified"
     >
       { theme === 'dark' && <Moon className="text-3xl text-white-text-color m-auto" weight="light" />}
       { theme === 'semiDark' && <SunHorizon className="text-3xl text-white-text-color m-auto" weight="light" />}

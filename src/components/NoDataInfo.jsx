@@ -10,7 +10,7 @@ function NoDataInfo() {
   return (
     <>
       <img className="w-[80%] max-w-[120px] xl:max-w-[220px] mx-auto mt-[10vh] animate__animated animate__headShake" src={noDataIllustration} alt="no data" />
-      <p className="text-center text-gray-text-color semi-and-dark-text mt-5 2xl:text-lg">
+      <p className="text-center text-gray-text-color semi-and-dark:text-white-text-color mt-5 2xl:text-lg">
         Tidak ada catatan
       </p>
     </>

@@ -28,7 +28,7 @@ function ThemeMenuContainer({ isThemeMenuHidden, themeMenuToggler, menuOutsideCl
     <ul
       ref={ref}
       className="flex flex-col transition-all p-1 absolute top-full right-0 mt-2
-      bg-white-background-color semiDark:bg-gray-700 dark:bg-gray-700 shadow-md rounded-lg"
+      bg-white-background-color semi-and-dark:bg-gray-700 shadow-md rounded-lg"
     >
       <li>
         <ThemeItemButton currentTheme={theme} title="Light" setCurrentTheme={() => setCurrentTheme('light')} />
