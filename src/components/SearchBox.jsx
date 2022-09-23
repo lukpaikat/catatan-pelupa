@@ -7,7 +7,14 @@ function SearchBox({ keyword, keywordChange, clearKeyword }) {
     <div className="flex items-center w-full justify-end mb-6">
       <label htmlFor="searchBox" className="w-full">
         <span className="sr-only">SearchBox</span>
-        <input type="text" id="searchBox" placeholder="cari" onChange={(event) => keywordChange(event.target.value)} value={keyword} className="text-white-text-color 2xl:text-lg block w-full bg-gray-600 min-h-[44px] pl-2 rounded-l-lg" />
+        <input
+          type="text"
+          id="searchBox"
+          placeholder="cari"
+          onChange={(event) => keywordChange(event.target.value)}
+          value={keyword}
+          className="text-gray-text-color semi-and-dark-text 2xl:text-lg block w-full bg-gray-200 dark:bg-gray-600 semiDark:bg-gray-600 min-h-[44px] pl-2 rounded-l-lg"
+        />
       </label>
       <CloseSearchButton onClick={clearKeyword} />
     </div>
