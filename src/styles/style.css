@@ -23,7 +23,7 @@
     hover:shadow-md active:shadow-inner transition-all;
   }
 
-  .semiDarkAndDark-text-white-text-color {
+  .semi-and-dark-text {
     @apply dark:text-white-text-color semiDark:text-white-text-color
   }
 
