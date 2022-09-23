@@ -1,4 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable global-require */
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -22,5 +25,12 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    plugin(({ addVariant, e }) => {
+      addVariant('semiDark', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => `.semiDark .${e(`semiDark${separator}${className}`)}`);
+      });
+    }),
+  ],
 };
