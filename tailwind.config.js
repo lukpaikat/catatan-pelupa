@@ -30,10 +30,10 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
-    plugin(({ addVariant, e }) => {
-      addVariant('semiDark', ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => `[data-theme="semiDark"] .${e(`semiDark${separator}${className}`)}`);
-      });
+    plugin(({ addVariant }) => {
+      addVariant('semi-dark', '[data-theme="semiDark"] &');
+      addVariant('semi-and-dark', ['[data-theme="semiDark"] &', '[data-theme="dark"] &']);
+      addVariant('hocus', ['&:hover', '&:focus']);
     }),
   ],
 };
