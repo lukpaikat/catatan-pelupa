@@ -9,10 +9,23 @@ import ArchivePage from './pages/ArchivePage';
 import Page404 from './pages/Page404';
 import NewNotePage from './pages/NewNotePage';
 import NoteDetailPage from './pages/NoteDetailPage';
-// TODO: simpan nama path dengan constant (nanti cek sarannya lagi, di folder apa)
+import { ThemeProvider } from './contexts/ThemeContext';
+
 function App() {
+  const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'semiDark');
+
+  const changeTheme = (newTheme) => {
+    // opsi tema: dark; semiDark
+    setTheme(() => newTheme);
+  };
+
+  const themeContextValue = React.useMemo(() => ({
+    theme,
+    changeTheme,
+  }), [theme]);
+
   return (
-    <>
+    <ThemeProvider value={themeContextValue}>
       <AppBar />
       <main className="px-2">
         <Routes>
@@ -24,7 +37,7 @@ function App() {
           <Route path="*" element={<Navigate to={PAGE404} />} />
         </Routes>
       </main>
-    </>
+    </ThemeProvider>
   );
 }
 
