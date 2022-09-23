@@ -80,7 +80,7 @@ class ArchivePage extends React.Component {
 
     return (
       <>
-        <h2 className="text-lg 2xl:text-3xl font-bold text-white-text-color my-6">Catatan Arsip</h2>
+        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semiDarkAndDark-text-white-text-color my-6">Catatan Arsip</h2>
         <SearchBox
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}
