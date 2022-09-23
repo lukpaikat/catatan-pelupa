@@ -2,7 +2,7 @@ import React from 'react';
 import pageNotFoundIllustratioGreen from '../assets/undraw_page_not_found_green.svg';
 import pageNotFoundIllustrationBlack from '../assets/undraw_page_not_found_black.svg';
 import ThemeContext from '../contexts/ThemeContext';
-// TODO: make it adaptable to ThemeContext
+
 function Page404() {
   const { theme } = React.useContext(ThemeContext);
 
