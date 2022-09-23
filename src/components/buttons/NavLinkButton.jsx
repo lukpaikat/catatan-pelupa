@@ -7,7 +7,6 @@ function NavLinkButton({ children, to, end }) {
     <NavLink
       end={end}
       to={to}
-      // TODO: mungkin dibikin abstraction @apply components aja
       className={({ isActive }) => [
         'app-bar-button',
         isActive ? ' !text-blue-700 dark:!text-blue-note-color semiDark:!text-blue-note-color' : null,
