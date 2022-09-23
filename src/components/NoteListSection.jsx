@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import NoteCard from './NoteCard';
 import noDataIllustration from '../assets/undraw_no_data_dark.svg';
-import 'animate.css';
 
 function NoteListSection({
   notes, onMoveNote, onDeleteNote,

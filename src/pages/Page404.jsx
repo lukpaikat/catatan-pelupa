@@ -1,6 +1,5 @@
 import React from 'react';
 import pageNotFoundIllustration from '../assets/undraw_page_not_found_green.svg';
-import 'animate.css';
 
 function Page404() {
   return (

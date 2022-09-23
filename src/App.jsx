@@ -10,6 +10,7 @@ import Page404 from './pages/Page404';
 import NewNotePage from './pages/NewNotePage';
 import NoteDetailPage from './pages/NoteDetailPage';
 import { ThemeProvider } from './contexts/ThemeContext';
+import 'animate.css';
 
 function App() {
   const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'semiDark');
