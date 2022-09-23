@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ThemeMenuButton from './buttons/ThemeMenuButton';
+import ThemeItemButton from './buttons/ThemeItemButton';
 import ThemeContext from '../contexts/ThemeContext';
 
 function ThemeMenuContainer({ isThemeMenuHidden, themeMenuToggler, menuOutsideClick }) {
@@ -22,21 +22,21 @@ function ThemeMenuContainer({ isThemeMenuHidden, themeMenuToggler, menuOutsideCl
     return () => {
       document.removeEventListener('click', menuOutsideClickHandler);
     };
-  }, [menuOutsideClick]);
+  }, [isThemeMenuHidden]);
 
   return (
     <ul
       ref={ref}
-      className={`flex flex-col transition-all p-1 absolute top-full right-0 mt-2 bg-gray-700 shadow-md rounded-lg ${isThemeMenuHidden && 'invisible opacity-0'}`}
+      className="flex flex-col transition-all p-1 absolute top-full right-0 mt-2 bg-gray-700 shadow-md rounded-lg"
     >
       <li>
-        <ThemeMenuButton currentTheme={theme} title="Light" setCurrentTheme={() => setCurrentTheme('light')} />
+        <ThemeItemButton currentTheme={theme} title="Light" setCurrentTheme={() => setCurrentTheme('light')} />
       </li>
       <li>
-        <ThemeMenuButton currentTheme={theme} title="Semi Dark" setCurrentTheme={() => setCurrentTheme('semiDark')} />
+        <ThemeItemButton currentTheme={theme} title="Semi Dark" setCurrentTheme={() => setCurrentTheme('semiDark')} />
       </li>
       <li>
-        <ThemeMenuButton currentTheme={theme} title="Dark" setCurrentTheme={() => setCurrentTheme('dark')} />
+        <ThemeItemButton currentTheme={theme} title="Dark" setCurrentTheme={() => setCurrentTheme('dark')} />
       </li>
     </ul>
   );

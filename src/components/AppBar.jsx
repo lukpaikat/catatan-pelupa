@@ -1,7 +1,7 @@
 import React from 'react';
 import { PushPin, Archive } from 'phosphor-react';
 import { HOME, ARCHIVE } from '../config/paths';
-import ThemeButton from './buttons/ThemeButton';
+import ThemeMenuButton from './buttons/ThemeMenuButton';
 import ThemeMenuContainer from './ThemeMenuContainer';
 import NavLinkButton from './buttons/NavLinkButton';
 
@@ -28,7 +28,7 @@ function AppBar() {
             <Archive className="text-3xl block m-auto" weight="light" />
           </NavLinkButton>
         </nav>
-        <ThemeButton onClick={themeMenuToggler} />
+        <ThemeMenuButton onClick={themeMenuToggler} />
         { !isThemeMenuHidden && (
           <ThemeMenuContainer
             menuOutsideClick={() => menuOutsideClick()}
