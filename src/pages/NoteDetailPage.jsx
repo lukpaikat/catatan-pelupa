@@ -12,7 +12,7 @@ import ActionButtonDelete from '../components/buttons/ActionButtonDelete';
 import NotePaper from '../components/NotePaper';
 import { HOME, ARCHIVE, PAGE404 } from '../config/paths';
 import LocaleContext from '../contexts/LocaleContext';
-// TODO: translate tanggal
+
 function NoteDetailPage() {
   const { id } = useParams();
   const note = getNote(id) || 'noData';
