@@ -7,11 +7,13 @@ import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
 import FloatingContainer from '../components/FloatingContainer';
 import ActionButtonAdd from '../components/buttons/ActionButtonAdd';
+import LocaleContext from '../contexts/LocaleContext';
 
 // TODO: selagi effect dijalankan, data yang dikirim ke daftar adalah data skeleton?
 
 function HomePageWrapper() {
   const navigate = useNavigate();
+  const { locale } = React.useContext(LocaleContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchKeyword = searchParams.get('keyword');
   const changeSearchParams = (keyword) => {
@@ -23,6 +25,7 @@ function HomePageWrapper() {
 
   return (
     <HomePage
+      locale={locale}
       toAddNotePage={toAddNotePage}
       defaultKeyword={searchKeyword}
       keywordChange={changeSearchParams}
@@ -83,13 +86,13 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const { toAddNotePage } = this.props;
+    const { toAddNotePage, locale } = this.props;
     const { notes, keyword } = this.state;
     const filteredNotes = filterNotes(notes, keyword);
 
     return (
       <>
-        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semi-and-dark:text-white-text-color my-6">Catatan Aktif</h2>
+        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semi-and-dark:text-white-text-color my-6">{ locale === 'id' ? 'Catatan Aktif' : 'Active Notes'}</h2>
         <SearchBox
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}
@@ -109,6 +112,7 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
+  locale: PropTypes.string.isRequired,
   toAddNotePage: PropTypes.func.isRequired,
   defaultKeyword: PropTypes.string,
   keywordChange: PropTypes.func.isRequired,
