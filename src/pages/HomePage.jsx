@@ -92,7 +92,7 @@ class HomePage extends React.Component {
 
     return (
       <>
-        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semi-and-dark:text-white-text-color my-6">{ locale === 'id' ? 'Catatan Aktif' : 'Active Notes'}</h2>
+        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semi-and-dark:text-white-text-color my-6">{locale === 'id' ? 'Catatan Aktif' : 'Active Notes'}</h2>
         <SearchBox
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}

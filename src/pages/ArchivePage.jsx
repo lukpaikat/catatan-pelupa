@@ -5,8 +5,10 @@ import NoteList from '../components/NoteList';
 import { getArchivedNotes, unarchiveNote, deleteNote } from '../utils/local-data';
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
+import LocaleContext from '../contexts/LocaleContext';
 
 function ArchivePageWrapper() {
+  const { locale } = React.useContext(LocaleContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchKeyword = searchParams.get('keyword');
   const changeSearchParams = (keyword) => {
@@ -15,6 +17,7 @@ function ArchivePageWrapper() {
 
   return (
     <ArchivePage
+      locale={locale}
       defaultKeyword={searchKeyword}
       keywordChange={changeSearchParams}
     />
@@ -75,12 +78,13 @@ class ArchivePage extends React.Component {
   }
 
   render() {
+    const { locale } = this.props;
     const { notes, keyword } = this.state;
     const filteredNotes = filterNotes(notes, keyword);
 
     return (
       <>
-        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semi-and-dark:text-white-text-color my-6">Catatan Arsip</h2>
+        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semi-and-dark:text-white-text-color my-6">{locale === 'id' ? 'Catatan Arsip' : 'Archived Notes'}</h2>
         <SearchBox
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}
@@ -97,6 +101,7 @@ class ArchivePage extends React.Component {
 }
 
 ArchivePage.propTypes = {
+  locale: PropTypes.string.isRequired,
   defaultKeyword: PropTypes.string,
   keywordChange: PropTypes.func.isRequired,
 };
