@@ -34,6 +34,7 @@ module.exports = {
       addVariant('semi-dark', '[data-theme="semiDark"] &');
       addVariant('semi-and-dark', ['[data-theme="semiDark"] &', '[data-theme="dark"] &']);
       addVariant('hocus', ['&:hover', '&:focus']);
+      addVariant('light', '[data-theme="light"] &');
     }),
   ],
 };
