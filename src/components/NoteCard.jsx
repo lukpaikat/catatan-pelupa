@@ -15,7 +15,7 @@ function NoteCard({
   const noteColorClassName = getNoteColorClassName(title);
   return (
     <article
-      className={`flex flex-col rounded-lg px-4 py-5 my-2 md:my-0 text-black-text-color ${noteColorClassName}`}
+      className={`flex flex-col rounded-lg px-4 py-5 my-2 md:my-0 text-black-text-color dark:text-gray-200 ${noteColorClassName}`}
       style={style}
       ref={forwardedRef}
     >
