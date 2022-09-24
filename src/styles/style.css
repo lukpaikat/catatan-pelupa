@@ -17,7 +17,7 @@
     text-gray-text-color hocus:text-black-text-color
     semi-and-dark:text-white-text-color semi-and-dark:hocus:text-white-text-color
     rounded-md min-h-[44px] min-w-[44px] flex duration-300
-    hover:shadow-md active:shadow-inner transition-all justify-center items-center;
+    hover:shadow-md active:shadow-inner transition-all justify-center items-center p-2 text-xl 2xl:text-4xl;
   }
 
   .menu-item-button {
