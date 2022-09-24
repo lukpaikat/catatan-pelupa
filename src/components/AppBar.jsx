@@ -4,6 +4,7 @@ import { HOME, ARCHIVE } from '../config/paths';
 import ThemeMenuButton from './buttons/ThemeMenuButton';
 import ThemeMenuContainer from './ThemeMenuContainer';
 import NavLinkButton from './buttons/NavLinkButton';
+import LocaleToggleButton from './buttons/LocaleToggleButton';
 
 function AppBar() {
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
@@ -34,6 +35,7 @@ function AppBar() {
           themeMenuToggler={themeMenuToggler}
           isThemeMenuDisplayed={isThemeMenuDisplayed}
         />
+        <LocaleToggleButton />
       </div>
     </header>
   );
