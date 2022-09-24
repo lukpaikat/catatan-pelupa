@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CloseSearchButton from './buttons/CloseSearchButton';
+import ClearSearchButton from './buttons/ClearSearchButton';
 
 function SearchBox({ keyword, keywordChange, clearKeyword }) {
   return (
@@ -13,10 +13,10 @@ function SearchBox({ keyword, keywordChange, clearKeyword }) {
           placeholder="cari"
           onChange={(event) => keywordChange(event.target.value)}
           value={keyword}
-          className="text-gray-text-color semi-and-dark:text-white-text-color 2xl:text-lg block w-full bg-gray-200 semi-and-dark:bg-gray-600 min-h-[44px] pl-2 rounded-l-lg"
+          className="text-gray-text-color semi-and-dark:text-white-text-color 2xl:text-lg block w-full bg-gray-200 semi-and-dark:bg-gray-700 min-h-[44px] pl-2 rounded-l-lg semi-and-dark:bg-opacity-80"
         />
       </label>
-      <CloseSearchButton onClick={clearKeyword} />
+      <ClearSearchButton onClick={clearKeyword} />
     </div>
   );
 }
