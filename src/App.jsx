@@ -21,6 +21,7 @@ function App() {
     setLocale((prevState) => {
       const newLocale = prevState === 'id' ? 'en' : 'id';
       localStorage.setItem('locale', newLocale);
+      return newLocale;
     });
   };
 
