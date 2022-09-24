@@ -10,9 +10,9 @@ function ThemeMenuButton({ title, currentTheme, setCurrentTheme }) {
 
   return (
     <button onClick={setCurrentTheme} type="button" className={`menu-item-button ${opacityClass}`}>
-      {title === 'Dark' && <Moon className="text-3xl" />}
-      {title === 'Light' && <Sun className="text-3xl" />}
-      {title === 'Semi Dark' && <SunHorizon className="text-3xl" />}
+      {title === 'Dark' && <Moon className="text-3xl 2xl:text-5xl" />}
+      {title === 'Light' && <Sun className="text-3xl 2xl:text-5xl" />}
+      {title === 'Semi Dark' && <SunHorizon className="text-3xl 2xl:text-5xl" />}
       <span>{title}</span>
     </button>
   );

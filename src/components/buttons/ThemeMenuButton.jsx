@@ -15,9 +15,9 @@ function ThemeItemButton({ onClick }) {
       }}
       className="app-bar-button-simplified"
     >
-      { theme === 'dark' && <Moon className="text-3xl text-white-text-color m-auto" weight="light" />}
-      { theme === 'semiDark' && <SunHorizon className="text-3xl text-white-text-color m-auto" weight="light" />}
-      { theme === 'light' && <Sun className="text-3xl text-gray-text-color hover:text-black-text-color m-auto" weight="light" />}
+      { theme === 'dark' && <Moon className="text-3xl 2xl:text-5xl text-white-text-color m-auto" weight="light" />}
+      { theme === 'semiDark' && <SunHorizon className="text-3xl 2xl:text-5xl text-white-text-color m-auto" weight="light" />}
+      { theme === 'light' && <Sun className="text-3xl 2xl:text-5xl text-gray-text-color hover:text-black-text-color m-auto" weight="light" />}
     </button>
   );
 }
