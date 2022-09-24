@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ThemeItemButton from './buttons/ThemeItemButton';
 import ThemeContext from '../contexts/ThemeContext';
+// TODO: buat supaya ngetrap fokus keyboard
 
 function ThemeMenuContainer({ isThemeMenuDisplayed, themeMenuToggler, menuOutsideClick }) {
   const { theme, changeTheme } = React.useContext(ThemeContext);
