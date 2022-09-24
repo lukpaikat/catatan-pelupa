@@ -1,18 +1,19 @@
 import React from 'react';
 import ThemeContext from '../contexts/ThemeContext';
+import LocaleContext from '../contexts/LocaleContext';
 import noDataIllustrationLight from '../assets/undraw_no_data_light.svg';
 import noDataIllustrationDark from '../assets/undraw_no_data_dark.svg';
 
 function NoDataInfo() {
+  const { locale } = React.useContext(LocaleContext);
   const { theme } = React.useContext(ThemeContext);
   const noDataIllustration = theme === 'light' ? noDataIllustrationLight : noDataIllustrationDark;
-
+  const description = locale === 'id' ? 'Tidak ada catan' : 'No notes found';
   return (
     <>
       <img className="w-[80%] max-w-[120px] xl:max-w-[220px] mx-auto mt-[10vh] animate__animated animate__headShake" src={noDataIllustration} alt="no data" />
       <p className="text-center text-gray-text-color semi-and-dark:text-white-text-color mt-5 2xl:text-lg">
-        {/* TODO: translate ini */}
-        Tidak ada catatan
+        {description}
       </p>
     </>
   );
