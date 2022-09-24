@@ -32,7 +32,7 @@ body {
 }
 
 .new-note-body:empty:before {
-  content: attr(data-placeholder);
+  content: attr(placeholder);
   opacity: .5;
 }
 
