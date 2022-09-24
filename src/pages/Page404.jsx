@@ -11,6 +11,7 @@ function Page404() {
   return (
     <>
       <img className="w-[80%] max-w-sm md:max-w-md mx-auto mt-[10vh] animate__animated animate__fadeIn" src={pageNotFoundIllustration} alt="404" />
+      {/* TODO: translate ini */}
       <p className="text-gray-text-color semi-and-dark:text-white-text-color text-xl text-center mt-7 mb-[20vh]">Halaman yang kamu cari tidak ditemukan</p>
     </>
   );

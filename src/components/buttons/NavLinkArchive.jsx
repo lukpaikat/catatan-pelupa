@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Archive } from 'phosphor-react';
-
+// TODO: tambah screen reader
 function NavLinkPushPin({ to, end }) {
   return (
     <NavLink
