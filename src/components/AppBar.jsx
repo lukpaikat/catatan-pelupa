@@ -1,11 +1,11 @@
 import React from 'react';
-import { PushPin, Archive } from 'phosphor-react';
 import { HOME, ARCHIVE } from '../config/paths';
 import ThemeMenuButton from './buttons/ThemeMenuButton';
 import ThemeMenuContainer from './ThemeMenuContainer';
-import NavLinkButton from './buttons/NavLinkButton';
+import NavLinkArchive from './buttons/NavLinkArchive';
 import LocaleToggleButton from './buttons/LocaleToggleButton';
 import LocaleContext from '../contexts/LocaleContext';
+import NavLinkPushPin from './buttons/NavLinkPushPin';
 
 function AppBar() {
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
@@ -26,12 +26,8 @@ function AppBar() {
       <h1 className="my-2 text-lg 2xl:text-4xl font-bold text-gray-text-color semi-and-dark:text-white-text-color block">{appTitle}</h1>
       <div className="flex gap-1 relative">
         <nav className="flex gap-1">
-          <NavLinkButton to={HOME} end>
-            <PushPin className="text-3xl block m-auto" weight="light" />
-          </NavLinkButton>
-          <NavLinkButton to={ARCHIVE}>
-            <Archive className="text-3xl block m-auto" weight="light" />
-          </NavLinkButton>
+          <NavLinkPushPin to={HOME} end />
+          <NavLinkArchive to={ARCHIVE} />
         </nav>
         <LocaleToggleButton />
         <ThemeMenuButton onClick={themeMenuToggler} />
