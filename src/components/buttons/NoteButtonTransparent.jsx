@@ -6,8 +6,8 @@ function NoteButtonTransparent({ onClick, text }) {
     <button
       type="button"
       onClick={onClick}
-      className="rounded-lg border border-button-border-color py-2 px-4  text-black-text-color dark:text-gray-200 2xl:text-xl transition-all
-      hocus:bg-button-hover-color active:bg-button-active-color"
+      className="rounded-lg py-2 px-4 shadow active:shadow-sm text-black-text-color dark:text-gray-200 2xl:text-xl transition-all bg-slate-50 bg-opacity-20
+      hocus:bg-opacity-40 active:!bg-opacity-60"
     >
       {text}
     </button>
