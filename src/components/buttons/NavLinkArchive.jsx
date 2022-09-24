@@ -2,10 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Archive } from 'phosphor-react';
-// TODO: tambah screen reader
-function NavLinkPushPin({ to, end }) {
+import LocaleContext from '../../contexts/LocaleContext';
+
+function NavLinkArchive({ to, end }) {
+  const { locale } = React.useContext(LocaleContext);
+  const srText = locale === 'id' ? 'halaman catatan-catatan yang diarsipkan' : 'archived notes page';
   return (
     <NavLink
+      aria-label={srText}
       end={end}
       to={to}
       className={({ isActive }) => [
@@ -18,13 +22,13 @@ function NavLinkPushPin({ to, end }) {
   );
 }
 
-NavLinkPushPin.propTypes = {
+NavLinkArchive.propTypes = {
   to: PropTypes.string.isRequired,
   end: PropTypes.bool,
 };
 
-NavLinkPushPin.defaultProps = {
+NavLinkArchive.defaultProps = {
   end: false,
 };
 
-export default NavLinkPushPin;
+export default NavLinkArchive;
