@@ -20,7 +20,7 @@ function NoteCard({
       ref={forwardedRef}
     >
       <h1 className="font-bold text-xl 2xl:text-2xl mb-1">
-        <Link className="underline" to={NOTES_DETAIL + id}>{title}</Link>
+        <Link className="underline underline-offset-4" to={NOTES_DETAIL + id}>{title}</Link>
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
       <div className="mb-4 mt-1 2xl:text-lg line-clamp-6">
