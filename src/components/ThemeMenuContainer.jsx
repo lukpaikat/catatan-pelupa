@@ -26,7 +26,7 @@ function ThemeMenuContainer({ isThemeMenuDisplayed, themeMenuToggler, menuOutsid
   }, [isThemeMenuDisplayed]);
 
   return (
-    <TransitionGroup>
+    <TransitionGroup className="absolute top-full right-0 mt-2">
       { isThemeMenuDisplayed && (
       <CSSTransition
         nodeRef={ref}
@@ -36,8 +36,8 @@ function ThemeMenuContainer({ isThemeMenuDisplayed, themeMenuToggler, menuOutsid
       >
         <ul
           ref={ref}
-          className="flex flex-col transition-all p-1 absolute top-full right-0 mt-2
-      bg-white-background-color semi-and-dark:bg-gray-700 shadow-md rounded-lg"
+          className="flex flex-col transition-all p-1
+        bg-white-background-color semi-and-dark:bg-gray-700 shadow-md rounded-lg"
         >
           <li>
             <ThemeItemButton currentTheme={theme} title="Light" setCurrentTheme={() => setCurrentTheme('light')} />
