@@ -2,10 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { PushPin } from 'phosphor-react';
-// TODO: tambah screen reader
+import LocaleContext from '../../contexts/LocaleContext';
+
 function NavLinkPushPin({ to, end }) {
+  const { locale } = React.useContext(LocaleContext);
+  const srText = locale === 'id' ? 'halaman catatan-catatan aktif' : 'active notes page';
+
   return (
     <NavLink
+      aria-label={srText}
       end={end}
       to={to}
       className={({ isActive }) => [
