@@ -11,10 +11,12 @@ import ActionButtonUnarchive from '../components/buttons/ActionButtonUnarchive';
 import ActionButtonDelete from '../components/buttons/ActionButtonDelete';
 import NotePaper from '../components/NotePaper';
 import { HOME, ARCHIVE, PAGE404 } from '../config/paths';
+import LocaleContext from '../contexts/LocaleContext';
 // TODO: translate tanggal
 function NoteDetailPage() {
   const { id } = useParams();
   const note = getNote(id) || 'noData';
+  const { locale } = React.useContext(LocaleContext);
   const navigate = useNavigate();
   const deleteNoteHandler = () => {
     deleteNote(note.id);
@@ -33,7 +35,7 @@ function NoteDetailPage() {
       <>
         <NotePaper noteTitle={note.title}>
           <h1 className="block placeholder-black placeholder-opacity-50 bg-transparent my-2 w-full rounded-lg  text-black-text-color dark:text-gray-200 text-2xl lg:text-4xl 2xl:text-6xl font-bold">{note.title}</h1>
-          <p className="lg:text-xl 2xl:text-2xl dark:text-gray-200 opacity-80">{getFormattedDate(note.createdAt)}</p>
+          <p className="lg:text-xl 2xl:text-2xl dark:text-gray-200 opacity-80">{getFormattedDate(note.createdAt, locale)}</p>
           <div className="new-note-body block w-full h-fit my-2 rounded-lg text-xl lg:text-3xl 2xl:text-4xl dark:text-gray-200">
             {parser(note.body)}
           </div>

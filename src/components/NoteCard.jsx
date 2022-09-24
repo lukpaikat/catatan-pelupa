@@ -16,7 +16,7 @@ function NoteCard({
   const archiveText = locale === 'id' ? 'Arsipkan' : 'Archive';
   const activeText = locale === 'id' ? 'Aktifkan' : 'Activate';
   const deleteText = locale === 'id' ? 'Hapus' : 'Delete';
-  const formattedDate = getFormattedDate(createdAt);
+  const formattedDate = getFormattedDate(createdAt, locale);
   const noteColorClassName = getNoteColorClassName(title);
   return (
     <article
