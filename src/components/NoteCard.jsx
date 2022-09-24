@@ -7,7 +7,7 @@ import getNoteColorClassName from '../utils/getNoteColorClassName';
 import { NOTES_DETAIL } from '../config/paths';
 import NoteButtonTransparent from './buttons/NoteButtonTransparent';
 import NoteButtonRed from './buttons/NoteButtonRed';
-// TODO: buat darkmodenya
+
 function NoteCard({
   title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
 }) {
