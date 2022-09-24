@@ -7,10 +7,15 @@ import getNoteColorClassName from '../utils/getNoteColorClassName';
 import { NOTES_DETAIL } from '../config/paths';
 import NoteButtonTransparent from './buttons/NoteButtonTransparent';
 import NoteButtonRed from './buttons/NoteButtonRed';
+import LocaleContext from '../contexts/LocaleContext';
 
 function NoteCard({
   title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
 }) {
+  const { locale } = React.useContext(LocaleContext);
+  const archiveText = locale === 'id' ? 'Arsipkan' : 'Archive';
+  const activeText = locale === 'id' ? 'Aktifkan' : 'Activate';
+  const deleteText = locale === 'id' ? 'Hapus' : 'Delete';
   const formattedDate = getFormattedDate(createdAt);
   const noteColorClassName = getNoteColorClassName(title);
   return (
@@ -27,8 +32,11 @@ function NoteCard({
         {parser(body)}
       </div>
       <div className="flex justify-between mt-auto">
-        <NoteButtonTransparent text={archived ? 'Aktifkan' : 'Arsipkan'} onClick={() => onMoveNote(id)} />
-        <NoteButtonRed text="hapus" onClick={() => onDeleteNote(id)} />
+        <NoteButtonTransparent
+          text={archived ? activeText : archiveText}
+          onClick={() => onMoveNote(id)}
+        />
+        <NoteButtonRed text={deleteText} onClick={() => onDeleteNote(id)} />
       </div>
     </article>
   );
