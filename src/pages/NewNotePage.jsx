@@ -60,13 +60,13 @@ class NewNotePage extends React.Component {
   render() {
     const { locale } = this.props;
     const { title, body } = this.state;
-    const notesSRTitle = locale === 'id' ? 'Judul Catatan' : 'Note Title';
-    const notesTitleInputPlaceholder = locale === 'id' ? 'Judul Catatan ...' : 'Note Title ...';
+    const noteSRTitle = locale === 'id' ? 'Judul Catatan' : 'Note Title';
+    const noteTitleInputPlaceholder = locale === 'id' ? 'Judul Catatan ...' : 'Note Title ...';
     const notesBodyInputPlaceholder = locale === 'id' ? 'tulis catatannya disini' : 'write notes here';
     return (
       <NotePaper noteTitle={title}>
         <label htmlFor="judulCatatan">
-          <span className="sr-only">{notesSRTitle}</span>
+          <span className="sr-only">{noteSRTitle}</span>
           <input
             className="block placeholder-black placeholder-opacity-50 bg-transparent
             my-2 w-full rounded-lg p-2 text-black-text-color dark:text-gray-200
@@ -76,7 +76,7 @@ class NewNotePage extends React.Component {
             value={title}
             maxLength="50"
             onChange={this.onTitleChange}
-            placeholder={notesTitleInputPlaceholder}
+            placeholder={noteTitleInputPlaceholder}
             required
           />
         </label>
