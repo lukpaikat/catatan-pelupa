@@ -17,7 +17,7 @@ function App() {
   const [locale, setLocale] = React.useState(localStorage.getItem('locale') || 'id');
   const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'semiDark');
 
-  const toggleLocale = () => {
+  const localeToggle = () => {
     setLocale((prevState) => {
       const newLocale = prevState === 'id' ? 'en' : 'id';
       localStorage.setItem('locale', newLocale);
@@ -36,7 +36,7 @@ function App() {
 
   const localeContextValue = React.useMemo(() => ({
     locale,
-    toggleLocale,
+    localeToggle,
   }), [locale]);
 
   const themeContextValue = React.useMemo(() => ({
