@@ -21,7 +21,7 @@
   }
 
   .menu-item-button {
-    @apply flex gap-2 p-2 rounded-lg w-full text-gray-text-color semi-and-dark:text-white-text-color;
+    @apply flex gap-2 p-2 rounded-lg w-full text-gray-text-color semi-and-dark:text-white-text-color items-center text-xl 2xl:text-2xl;
   }
 }
 
