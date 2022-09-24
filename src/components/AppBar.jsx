@@ -6,14 +6,14 @@ import ThemeMenuContainer from './ThemeMenuContainer';
 import NavLinkButton from './buttons/NavLinkButton';
 
 function AppBar() {
-  const [isThemeMenuHidden, setIsThemeMenuHidden] = React.useState(true);
+  const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
 
   const themeMenuToggler = () => {
-    setIsThemeMenuHidden((prevState) => !prevState);
+    setIsThemeMenuDisplayed((prevState) => !prevState);
   };
 
   const menuOutsideClick = () => {
-    setIsThemeMenuHidden(() => true);
+    setIsThemeMenuDisplayed(() => false);
   };
 
   return (
@@ -29,13 +29,11 @@ function AppBar() {
           </NavLinkButton>
         </nav>
         <ThemeMenuButton onClick={themeMenuToggler} />
-        { !isThemeMenuHidden && (
-          <ThemeMenuContainer
-            menuOutsideClick={() => menuOutsideClick()}
-            themeMenuToggler={themeMenuToggler}
-            isThemeMenuHidden={isThemeMenuHidden}
-          />
-        )}
+        <ThemeMenuContainer
+          menuOutsideClick={() => menuOutsideClick()}
+          themeMenuToggler={themeMenuToggler}
+          isThemeMenuDisplayed={isThemeMenuDisplayed}
+        />
       </div>
     </header>
   );

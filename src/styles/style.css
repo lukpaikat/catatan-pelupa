@@ -35,3 +35,25 @@ body {
   content: attr(data-placeholder);
   opacity: .5;
 }
+
+/* for CSSTransition */
+
+.fade-in-slide-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-in-slide-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-slide-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-slide-exit-active {
+  opacity: 0;
+  transform: translateY(10px);
+}
