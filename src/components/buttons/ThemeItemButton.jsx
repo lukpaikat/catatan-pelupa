@@ -2,9 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Moon, Sun, SunHorizon } from 'phosphor-react';
 import camelCaseStr from '../../utils/camelCaseStr';
+import LocaleContext from '../../contexts/LocaleContext';
 
 function ThemeMenuButton({ title, currentTheme, setCurrentTheme }) {
   const camelCasedTitle = camelCaseStr(title);
+  const { locale } = React.useContext(LocaleContext);
+
+  let titleToDisplay;
+
+  if (locale === 'id') {
+    const idTitle = {
+      Light: 'Terang',
+      'Semi Dark': 'Separuh Gelap',
+      Dark: 'Gelap',
+    };
+    titleToDisplay = idTitle[title];
+  } else {
+    titleToDisplay = title;
+  }
 
   const opacityClass = currentTheme === camelCasedTitle ? 'opacity-100' : 'opacity-25 hover:opacity-90 focus:opacity-90';
 
@@ -13,7 +28,7 @@ function ThemeMenuButton({ title, currentTheme, setCurrentTheme }) {
       {title === 'Dark' && <Moon className="text-3xl 2xl:text-5xl" />}
       {title === 'Light' && <Sun className="text-3xl 2xl:text-5xl" />}
       {title === 'Semi Dark' && <SunHorizon className="text-3xl 2xl:text-5xl" />}
-      <span>{title}</span>
+      <span>{titleToDisplay}</span>
     </button>
   );
 }
