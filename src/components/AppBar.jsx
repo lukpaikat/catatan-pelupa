@@ -21,7 +21,7 @@ function AppBar() {
     <header className="bg-white-background-color dark:bg-black-background-color semi-dark:bg-black-background-color px-3 py-1 w-full flex items-center justify-between min-h-[44px] sticky z-10 top-0">
       <h1 className="my-2 text-xl 2xl:text-4xl font-bold text-gray-text-color semi-and-dark:text-white-text-color block">Catatan Pelupa</h1>
       <div className="flex gap-1 relative">
-        <nav className="flex gap-3">
+        <nav className="flex gap-1">
           <NavLinkButton to={HOME} end>
             <PushPin className="text-3xl block m-auto" weight="light" />
           </NavLinkButton>
