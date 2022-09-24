@@ -7,9 +7,11 @@ import ActionButtonSave from '../components/buttons/ActionButtonSave';
 import FloatingContainer from '../components/FloatingContainer';
 import NotePaper from '../components/NotePaper';
 import { HOME } from '../config/paths';
+import LocaleContext from '../contexts/LocaleContext';
 
 function NewNotePageWrapper() {
   const navigate = useNavigate();
+  const { locale } = React.useContext(LocaleContext);
 
   const onAddNoteHandler = (note) => {
     addNote(note);
@@ -17,7 +19,7 @@ function NewNotePageWrapper() {
   };
 
   return (
-    <NewNotePage onAddNoteHandler={onAddNoteHandler} />
+    <NewNotePage locale={locale} onAddNoteHandler={onAddNoteHandler} />
   );
 }
 
@@ -56,11 +58,15 @@ class NewNotePage extends React.Component {
   }
 
   render() {
+    const { locale } = this.props;
     const { title, body } = this.state;
+    const notesSRTitle = locale === 'id' ? 'Judul Catatan' : 'Note Title';
+    const notesTitleInputPlaceholder = locale === 'id' ? 'Judul Catatan ...' : 'Note Title ...';
+    const notesBodyInputPlaceholder = locale === 'id' ? 'tulis catatannya disini' : 'write notes here';
     return (
       <NotePaper noteTitle={title}>
         <label htmlFor="judulCatatan">
-          <span className="sr-only">Judul Catatan</span>
+          <span className="sr-only">{notesSRTitle}</span>
           <input
             className="block placeholder-black placeholder-opacity-50 bg-transparent
             my-2 w-full rounded-lg p-2 text-black-text-color dark:text-gray-200
@@ -70,7 +76,7 @@ class NewNotePage extends React.Component {
             value={title}
             maxLength="50"
             onChange={this.onTitleChange}
-            placeholder="Judul Catatan ..."
+            placeholder={notesTitleInputPlaceholder}
             required
           />
         </label>
@@ -78,7 +84,7 @@ class NewNotePage extends React.Component {
           className="new-note-body block w-full min-h-[80vh] h-fit my-2 p-2 rounded-lg text-xl lg:text-3xl 2xl:text-4xl dark:text-gray-200"
           innerRef={this.contentEditable}
           html={body}
-          data-placeholder="tulis catatan disini"
+          placeholder={notesBodyInputPlaceholder}
           onChange={this.onBodyChange}
         />
         <FloatingContainer>
@@ -90,6 +96,7 @@ class NewNotePage extends React.Component {
 }
 
 NewNotePage.propTypes = {
+  locale: PropTypes.string.isRequired,
   onAddNoteHandler: PropTypes.func.isRequired,
 };
 
