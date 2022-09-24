@@ -6,8 +6,8 @@ function NoteButtonRed({ onClick, text }) {
     <button
       type="button"
       onClick={onClick}
-      className="rounded-lg border border-button-border-color py-2 px-4  text-black-text-color 2xl:text-xl transition-all
-      bg-button-red-bg-color hover:bg-button-red-hover-color focus:bg-button-red-hover-color active:bg-button-red-active-color"
+      className="rounded-lg border border-button-border-color py-2 px-4  text-black-text-color dark:text-gray-200 2xl:text-xl transition-all
+      bg-button-red-bg-color hocus:bg-button-red-hover-color active:bg-button-red-active-color"
     >
       {text}
     </button>
