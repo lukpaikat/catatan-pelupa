@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 function HamItemNavLink({
-  to, end, 'aria-label': ariaLabel, icon, title,
+  to, end, title, icon, displayTitle,
 }) {
   return (
     <NavLink
       to={to}
-      aria-label={ariaLabel}
       end={end}
       title={title}
       className={({ isActive }) => [
@@ -18,22 +17,21 @@ function HamItemNavLink({
     >
       {icon}
       <span>
-        {title}
+        {displayTitle}
       </span>
     </NavLink>
   );
 }
 
 HamItemNavLink.propTypes = {
-  'aria-label': PropTypes.string,
+  title: PropTypes.string.isRequired,
   end: PropTypes.bool,
   icon: PropTypes.element,
-  title: PropTypes.string.isRequired,
+  displayTitle: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
 };
 
 HamItemNavLink.defaultProps = {
-  'aria-label': 'navigation button',
   end: false,
   icon: null,
 };

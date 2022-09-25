@@ -51,18 +51,17 @@ function HamMenu({ isDisplayed, hamMenuHider }) {
             <li>
               <HamItemNavLink
                 to={HOME}
-                aria-label={dictionary[locale].activeNotes}
+                title={dictionary[locale].activeNotesPageSR}
                 end
-                title={dictionary[locale].activeNotes}
+                displayTitle={dictionary[locale].activeNotes}
                 icon={<PushPin />}
               />
             </li>
             <li>
               <HamItemNavLink
                 to={ARCHIVE}
-                aria-label={dictionary[locale].archiveNotes}
-                end
-                title={dictionary[locale].archiveNotes}
+                title={dictionary[locale].archiveSR}
+                displayTitle={dictionary[locale].archivedNotes}
                 icon={<Archive />}
               />
             </li>
