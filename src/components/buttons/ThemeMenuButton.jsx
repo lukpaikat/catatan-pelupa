@@ -2,12 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Moon, Sun, SunHorizon } from 'phosphor-react';
 import ThemeContext from '../../contexts/ThemeContext';
+import dictionary from '../../languages/dictionary';
+import LocaleContext from '../../contexts/LocaleContext';
 
 function ThemeItemButton({ onClick }) {
+  const { locale } = React.useContext(LocaleContext);
   const { theme } = React.useContext(ThemeContext);
+  const title = dictionary[locale].themeMenuTitle;
 
   return (
     <button
+      title={title}
       type="button"
       onClick={(event) => {
         event.stopPropagation();
