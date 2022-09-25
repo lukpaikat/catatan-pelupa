@@ -1,41 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Moon, Sun, SunHorizon } from 'phosphor-react';
-import camelCaseStr from '../../utils/camelCaseStr';
+import dictionary from '../../languages/dictionary';
 import LocaleContext from '../../contexts/LocaleContext';
-
 // TODO: pindah icon jadi props saja
-function ThemeMenuButton({ title, currentTheme, setCurrentTheme }) {
-  const camelCasedTitle = camelCaseStr(title);
-  const opacityClass = currentTheme === camelCasedTitle ? 'opacity-100' : 'opacity-25 hover:opacity-90 focus:opacity-90';
-  const { locale } = React.useContext(LocaleContext);
-  let titleToDisplay;
 
-  if (locale === 'id') {
-    const idTitle = {
-      Light: 'Terang',
-      'Semi Dark': 'Separuh Gelap',
-      Dark: 'Gelap',
-    };
-    titleToDisplay = idTitle[title];
-  } else {
-    titleToDisplay = title;
-  }
+function ThemeMenuButton({
+  camelTitle, icon, currentTheme, setCurrentTheme,
+}) {
+  const { locale } = React.useContext(LocaleContext);
+  const displayTitle = dictionary[locale][camelTitle];
+  const opacityClass = currentTheme === camelTitle ? 'opacity-100' : 'opacity-25 hover:opacity-90 focus:opacity-90';
 
   return (
     <button onClick={setCurrentTheme} type="button" className={`menu-item-button ${opacityClass}`}>
-      {title === 'Dark' && <Moon className="text-3xl 2xl:text-5xl" />}
-      {title === 'Light' && <Sun className="text-3xl 2xl:text-5xl" />}
-      {title === 'Semi Dark' && <SunHorizon className="text-3xl 2xl:text-5xl" />}
-      <span>{titleToDisplay}</span>
+      {icon}
+      <span>{displayTitle}</span>
     </button>
   );
 }
 
 ThemeMenuButton.propTypes = {
-  title: PropTypes.oneOf(['Dark', 'Light', 'Semi Dark']).isRequired,
-  setCurrentTheme: PropTypes.func.isRequired,
   currentTheme: PropTypes.string.isRequired,
+  icon: PropTypes.element.isRequired,
+  setCurrentTheme: PropTypes.func.isRequired,
+  camelTitle: PropTypes.oneOf(['dark', 'light', 'semiDark']).isRequired,
 };
 
 export default ThemeMenuButton;
