@@ -8,6 +8,7 @@ import FloatingContainer from '../components/FloatingContainer';
 import NotePaper from '../components/NotePaper';
 import { HOME } from '../config/paths';
 import LocaleContext from '../contexts/LocaleContext';
+import dictionary from '../languages/dictionary';
 
 function NewNotePageWrapper() {
   const navigate = useNavigate();
@@ -60,13 +61,16 @@ class NewNotePage extends React.Component {
   render() {
     const { locale } = this.props;
     const { title, body } = this.state;
-    const noteSRTitle = locale === 'id' ? 'Judul Catatan' : 'Note Title';
-    const noteTitleInputPlaceholder = locale === 'id' ? 'Judul Catatan ...' : 'Note Title ...';
-    const notesBodyInputPlaceholder = locale === 'id' ? 'tulis catatannya disini' : 'write notes here';
+    const {
+      noteTitleInputPlaceholder,
+      noteTitleInputLabel,
+      noteBodyInputPlaceholder,
+    } = dictionary[locale];
+
     return (
       <NotePaper noteTitle={title}>
         <label htmlFor="judulCatatan">
-          <span className="sr-only">{noteSRTitle}</span>
+          <span className="sr-only">{noteTitleInputLabel}</span>
           <input
             className="block placeholder-black placeholder-opacity-50 bg-transparent
             my-2 w-full rounded-lg p-2 text-black-text-color dark:text-gray-200
@@ -84,7 +88,7 @@ class NewNotePage extends React.Component {
           className="new-note-body block w-full min-h-[80vh] h-fit my-2 p-2 rounded-lg text-xl lg:text-3xl 2xl:text-4xl dark:text-gray-200"
           innerRef={this.contentEditable}
           html={body}
-          placeholder={notesBodyInputPlaceholder}
+          placeholder={noteBodyInputPlaceholder}
           onChange={this.onBodyChange}
         />
         <FloatingContainer>
