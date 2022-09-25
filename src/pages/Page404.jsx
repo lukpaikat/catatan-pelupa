@@ -15,6 +15,7 @@ function Page404() {
     <>
       <img className="w-[80%] max-w-sm md:max-w-md mx-auto mt-[10vh] animate__animated animate__fadeIn" src={pageNotFoundIllustration} alt="404" />
       <p className="text-gray-text-color semi-and-dark:text-white-text-color text-xl text-center mt-7 mb-[20vh]">{pageDescription}</p>
+      {/* TODO: tambah tombol untuk kembali ke halaman catatan aktif/utama */}
     </>
   );
 }
