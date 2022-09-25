@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Archive } from 'phosphor-react';
 import LocaleContext from '../../contexts/LocaleContext';
 
+// TODO: jadikan satu, ikuti format HamMenuButton
+
 function NavLinkArchive({ to, end }) {
   const { locale } = React.useContext(LocaleContext);
   const srText = locale === 'id' ? 'halaman catatan-catatan yang diarsipkan' : 'archived notes page';
