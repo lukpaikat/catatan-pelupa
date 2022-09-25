@@ -8,14 +8,15 @@ import { NOTES_DETAIL } from '../config/paths';
 import NoteButtonTransparent from './buttons/NoteButtonTransparent';
 import NoteButtonRed from './buttons/NoteButtonRed';
 import LocaleContext from '../contexts/LocaleContext';
+import dictionary from '../languages/dictionary';
 
 function NoteCard({
   title, body, createdAt, id, onMoveNote, archived, onDeleteNote, style, forwardedRef,
 }) {
   const { locale } = React.useContext(LocaleContext);
-  const archiveText = locale === 'id' ? 'Arsipkan' : 'Archive';
-  const activeText = locale === 'id' ? 'Aktifkan' : 'Activate';
-  const deleteText = locale === 'id' ? 'Hapus' : 'Delete';
+  const archiveText = dictionary[locale].archiveButton;
+  const activeText = dictionary[locale].activeButton;
+  const deleteText = dictionary[locale].deleteButton;
   const formattedDate = getFormattedDate(createdAt, locale);
   const noteColorClassName = getNoteColorClassName(title);
   return (
