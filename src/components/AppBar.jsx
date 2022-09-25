@@ -53,7 +53,7 @@ function AppBar() {
           themeMenuToggler={themeMenuToggler}
           isThemeMenuDisplayed={isThemeMenuDisplayed}
         />
-        <HamMenuButton onClick={hamMenuToggler} />
+        <HamMenuButton onClick={hamMenuToggler} isHamMenuDisplayed={isHamMenuDisplayed} />
         <HamMenu isDisplayed={isHamMenuDisplayed} hamMenuHider={hamMenuHider} />
       </div>
     </header>
