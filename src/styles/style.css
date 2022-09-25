@@ -57,3 +57,24 @@ body {
   opacity: 0;
   transform: translateY(10px);
 }
+
+.fade-enter{
+   opacity: 0;
+   transform: rotate(90deg);
+}
+.fade-exit{
+   opacity: 1;
+   transform: rotate(0deg)
+}
+.fade-enter-active{
+   opacity: 1;
+   transform: rotate(0deg)
+}
+.fade-exit-active{
+   opacity: 0;
+   transform: rotate(90deg)
+}
+.fade-enter-active,
+.fade-exit-active{
+   transition: opacity 150ms, transform 150ms;
+}
