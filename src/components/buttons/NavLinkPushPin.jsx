@@ -3,14 +3,15 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { PushPin } from 'phosphor-react';
 import LocaleContext from '../../contexts/LocaleContext';
+import dictionary from '../../languages/dictionary';
 
 function NavLinkPushPin({ to, end }) {
   const { locale } = React.useContext(LocaleContext);
-  const srText = locale === 'id' ? 'halaman catatan-catatan aktif' : 'active notes page';
+  const srText = dictionary[locale].activeNotesPageSR;
 
   return (
     <NavLink
-      aria-label={srText}
+      title={srText}
       end={end}
       to={to}
       className={({ isActive }) => [
