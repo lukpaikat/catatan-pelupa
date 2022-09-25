@@ -47,6 +47,7 @@ function HamMenu({ isDisplayed, hamMenuHider }) {
             User name
           </h1>
           <ul className="flex gap-1 flex-col transition-all p-1">
+            <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
             <li>
               <HamItemNavLink
                 to={HOME}
@@ -65,7 +66,7 @@ function HamMenu({ isDisplayed, hamMenuHider }) {
                 icon={<Archive />}
               />
             </li>
-            <div className="h-px bg-gray-text-color opacity-20 mx-4" />
+            <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
             <li>
               <HamItemButton
                 icon={<Translate />}
@@ -73,7 +74,7 @@ function HamMenu({ isDisplayed, hamMenuHider }) {
                 onClick={localeToggle}
               />
             </li>
-            <div className="h-px bg-gray-text-color opacity-20 mx-4" />
+            <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
             <li>
               <HamItemButton
                 icon={<SignOut />}
