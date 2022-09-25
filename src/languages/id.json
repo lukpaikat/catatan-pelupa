@@ -1,0 +1,17 @@
+{
+  "activeButton": "Aktifkan",
+  "activeNotes": "Catatan Aktif",
+  "appTitle": "Catatan Pelupa",
+  "archiveButton": "Arsipkan",
+  "archiveNotes": "Catatan Arsip",
+  "deleteButton": "Hapus",
+  "message404": "Eeeeits! Halaman yang kamu cari tidak ditemukan.",
+  "noDataDescription": "Tidak ada catatan",
+  "noteBodyInputPlaceholder": "Tulis catatannya disini ...",
+  "noteTitleInputPlaceholder": "Judul Catatan ...",
+  "notesOf": "Catatan",
+  "searchPlaceholder": "cari",
+  "themeMenuTitle": "Menu tema",
+  "toggleLanguage": "Ubah Bahasa",
+  "logOut": "Keluar"
+}

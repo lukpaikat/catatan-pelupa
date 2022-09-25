@@ -1,0 +1,17 @@
+{
+  "activeButton": "Activate",
+  "activeNotes": "Active Notes",
+  "appTitle": "Forgetful Notes",
+  "archiveButton": "Archive",
+  "archiveNotes": "Archived Notes",
+  "deleteButton": "Delete",
+  "message404": "Oops! We couldn't find The page that you are looking for.",
+  "noDataDescription": "No notes found",
+  "noteBodyInputPlaceholder": "Write your notes here ...",
+  "noteTitleInputPlaceholder": "Note Title ...",
+  "notesOf": "Notes of",
+  "searchPlaceholder": "Search",
+  "themeMenuTitle": "Theme Menu",
+  "toggleLanguage": "Change Language",
+  "logOut": "Log Out"
+}
