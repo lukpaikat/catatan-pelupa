@@ -3,15 +3,16 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Archive } from 'phosphor-react';
 import LocaleContext from '../../contexts/LocaleContext';
+import dictionary from '../../languages/dictionary';
 
 // TODO: jadikan satu, ikuti format HamMenuButton
 
 function NavLinkArchive({ to, end }) {
   const { locale } = React.useContext(LocaleContext);
-  const srText = locale === 'id' ? 'halaman catatan-catatan yang diarsipkan' : 'archived notes page';
+  const srText = dictionary[locale].archiveSR;
   return (
     <NavLink
-      aria-label={srText}
+      title={srText}
       end={end}
       to={to}
       className={({ isActive }) => [
