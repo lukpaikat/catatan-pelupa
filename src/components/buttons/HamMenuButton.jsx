@@ -26,7 +26,7 @@ function HamMenuButton({ onClick, isHamMenuDisplayed }) {
           addEndListener={(done) => {
             nodeRef.current.addEventListener('transitionend', done, false);
           }}
-          classNames="fade"
+          classNames="fade-scale"
         >
           <div ref={nodeRef}>
             {isHamMenuDisplayed
