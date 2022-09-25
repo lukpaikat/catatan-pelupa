@@ -4,6 +4,7 @@ import { Moon, Sun, SunHorizon } from 'phosphor-react';
 import camelCaseStr from '../../utils/camelCaseStr';
 import LocaleContext from '../../contexts/LocaleContext';
 
+// TODO: pindah icon jadi props saja
 function ThemeMenuButton({ title, currentTheme, setCurrentTheme }) {
   const camelCasedTitle = camelCaseStr(title);
   const opacityClass = currentTheme === camelCasedTitle ? 'opacity-100' : 'opacity-25 hover:opacity-90 focus:opacity-90';
