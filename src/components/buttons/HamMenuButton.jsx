@@ -5,6 +5,7 @@ import { List } from 'phosphor-react';
 function HamMenuButton({ onClick }) {
   return (
     <button
+      title="Menu"
       type="button"
       className="app-bar-button-simplified"
       onClick={(event) => {
