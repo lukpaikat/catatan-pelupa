@@ -9,6 +9,7 @@ import NavLinkPushPin from './buttons/NavLinkPushPin';
 
 function AppBar() {
   // TODO: tambahkan drawer menu untuk mobile sampai 1024px
+  // TODO: tambah pemisah antara tombol navigasi dan tombol konfigurasi
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
   const { locale } = React.useContext(LocaleContext);
 
@@ -30,6 +31,7 @@ function AppBar() {
           <NavLinkPushPin to={HOME} end />
           <NavLinkArchive to={ARCHIVE} />
         </nav>
+        <div className="w-px rounded-md bg-gray-text-color semi-and-dark:bg-white-text-color my-1 opacity-30" />
         <LocaleToggleButton />
         <ThemeMenuButton onClick={themeMenuToggler} />
         <ThemeMenuContainer
