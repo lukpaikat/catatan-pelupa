@@ -9,7 +9,6 @@ import NavLinkPushPin from './buttons/NavLinkPushPin';
 
 function AppBar() {
   // TODO: tambahkan drawer menu untuk mobile sampai 1024px
-  // TODO: tambah pemisah antara tombol navigasi dan tombol konfigurasi
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
   const { locale } = React.useContext(LocaleContext);
 
