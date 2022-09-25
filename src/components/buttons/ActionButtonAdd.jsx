@@ -5,6 +5,9 @@ import { Plus } from 'phosphor-react';
 function ActionButtonAdd({ onClick }) {
   // TODO: ganti bahasa title
   // TODO: pakai title untuk nama tombol
+  // TODO: coba bikin versi yang mirip HamItemNavLink
+  // jadi ada satu komponen yang bisa di isi icon dan teks tertentu
+  // untuk warna pisah komponen saja atau gabung?
   return (
     <button
       title="create new note"
