@@ -47,7 +47,10 @@ function AppBar() {
         </nav>
         <div className="w-px rounded-md bg-gray-text-color semi-and-dark:bg-white-text-color my-1 opacity-30" />
         <LocaleToggleButton />
-        <ThemeMenuButton onClick={themeMenuToggler} />
+        <ThemeMenuButton
+          onClick={themeMenuToggler}
+          isThemeMenuDisplayed={isThemeMenuDisplayed}
+        />
         <ThemeMenu
           themeMenuHider={() => themeMenuHider()}
           themeMenuToggler={themeMenuToggler}

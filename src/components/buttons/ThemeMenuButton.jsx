@@ -6,7 +6,7 @@ import ThemeContext from '../../contexts/ThemeContext';
 import dictionary from '../../languages/dictionary';
 import LocaleContext from '../../contexts/LocaleContext';
 
-function ThemeItemButton({ onClick }) {
+function ThemeMenuButton({ onClick, isThemeMenuDisplayed }) {
   const { locale } = React.useContext(LocaleContext);
   const { theme } = React.useContext(ThemeContext);
   const title = dictionary[locale].themeMenuTitle;
@@ -28,6 +28,7 @@ function ThemeItemButton({ onClick }) {
 
   return (
     <button
+      aria-expanded={isThemeMenuDisplayed}
       title={title}
       type="button"
       onClick={(event) => {
@@ -56,13 +57,14 @@ function ThemeItemButton({ onClick }) {
   );
 }
 
-ThemeItemButton.propTypes = {
+ThemeMenuButton.propTypes = {
+  isThemeMenuDisplayed: PropTypes.bool.isRequired,
   onClick: PropTypes.func,
 };
 
-ThemeItemButton.defaultProps = {
+ThemeMenuButton.defaultProps = {
   // eslint-disable-next-line no-console
   onClick: () => console.log('Theme button clicked'),
 };
 
-export default ThemeItemButton;
+export default ThemeMenuButton;

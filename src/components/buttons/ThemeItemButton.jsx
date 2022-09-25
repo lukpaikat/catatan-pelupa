@@ -4,7 +4,7 @@ import dictionary from '../../languages/dictionary';
 import LocaleContext from '../../contexts/LocaleContext';
 // TODO: pindah icon jadi props saja
 
-function ThemeMenuButton({
+function ThemeItemButton({
   camelTitle, icon, currentTheme, setCurrentTheme,
 }) {
   const { locale } = React.useContext(LocaleContext);
@@ -19,11 +19,11 @@ function ThemeMenuButton({
   );
 }
 
-ThemeMenuButton.propTypes = {
+ThemeItemButton.propTypes = {
   currentTheme: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,
   setCurrentTheme: PropTypes.func.isRequired,
   camelTitle: PropTypes.oneOf(['dark', 'light', 'semiDark']).isRequired,
 };
 
-export default ThemeMenuButton;
+export default ThemeItemButton;
