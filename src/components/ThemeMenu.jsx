@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Moon, Sun, SunHorizon } from 'phosphor-react';
 import ThemeItemButton from './buttons/ThemeItemButton';
 import ThemeContext from '../contexts/ThemeContext';
 // TODO: buat supaya ngetrap fokus keyboard
@@ -41,13 +42,28 @@ function ThemeMenu({ isThemeMenuDisplayed, themeMenuToggler, themeMenuHider }) {
         bg-white-background-color semi-and-dark:bg-gray-700 shadow-md rounded-lg"
         >
           <li>
-            <ThemeItemButton currentTheme={theme} title="Light" setCurrentTheme={() => setCurrentTheme('light')} />
+            <ThemeItemButton
+              currentTheme={theme}
+              icon={<Sun className="text-3xl 2xl:text-5xl" />}
+              camelTitle="light"
+              setCurrentTheme={() => setCurrentTheme('light')}
+            />
           </li>
           <li>
-            <ThemeItemButton currentTheme={theme} title="Semi Dark" setCurrentTheme={() => setCurrentTheme('semiDark')} />
+            <ThemeItemButton
+              currentTheme={theme}
+              icon={<SunHorizon className="text-3xl 2xl:text-5xl" />}
+              camelTitle="semiDark"
+              setCurrentTheme={() => setCurrentTheme('semiDark')}
+            />
           </li>
           <li>
-            <ThemeItemButton currentTheme={theme} title="Dark" setCurrentTheme={() => setCurrentTheme('dark')} />
+            <ThemeItemButton
+              currentTheme={theme}
+              icon={<Moon className="text-3xl 2xl:text-5xl" />}
+              camelTitle="dark"
+              setCurrentTheme={() => setCurrentTheme('dark')}
+            />
           </li>
         </ul>
       </CSSTransition>
