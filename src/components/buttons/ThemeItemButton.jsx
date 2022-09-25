@@ -6,8 +6,8 @@ import LocaleContext from '../../contexts/LocaleContext';
 
 function ThemeMenuButton({ title, currentTheme, setCurrentTheme }) {
   const camelCasedTitle = camelCaseStr(title);
+  const opacityClass = currentTheme === camelCasedTitle ? 'opacity-100' : 'opacity-25 hover:opacity-90 focus:opacity-90';
   const { locale } = React.useContext(LocaleContext);
-
   let titleToDisplay;
 
   if (locale === 'id') {
@@ -20,8 +20,6 @@ function ThemeMenuButton({ title, currentTheme, setCurrentTheme }) {
   } else {
     titleToDisplay = title;
   }
-
-  const opacityClass = currentTheme === camelCasedTitle ? 'opacity-100' : 'opacity-25 hover:opacity-90 focus:opacity-90';
 
   return (
     <button onClick={setCurrentTheme} type="button" className={`menu-item-button ${opacityClass}`}>
