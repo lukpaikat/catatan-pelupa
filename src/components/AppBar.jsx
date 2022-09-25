@@ -1,7 +1,7 @@
 import React from 'react';
 import { HOME, ARCHIVE } from '../config/paths';
 import ThemeMenuButton from './buttons/ThemeMenuButton';
-import ThemeMenuContainer from './ThemeMenuContainer';
+import ThemeMenu from './ThemeMenu';
 import NavLinkArchive from './buttons/NavLinkArchive';
 import LocaleToggleButton from './buttons/LocaleToggleButton';
 import LocaleContext from '../contexts/LocaleContext';
@@ -48,7 +48,7 @@ function AppBar() {
         <div className="w-px rounded-md bg-gray-text-color semi-and-dark:bg-white-text-color my-1 opacity-30" />
         <LocaleToggleButton />
         <ThemeMenuButton onClick={themeMenuToggler} />
-        <ThemeMenuContainer
+        <ThemeMenu
           themeMenuHider={() => themeMenuHider()}
           themeMenuToggler={themeMenuToggler}
           isThemeMenuDisplayed={isThemeMenuDisplayed}

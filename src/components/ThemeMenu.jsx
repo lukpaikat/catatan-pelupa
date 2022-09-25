@@ -5,7 +5,7 @@ import ThemeItemButton from './buttons/ThemeItemButton';
 import ThemeContext from '../contexts/ThemeContext';
 // TODO: buat supaya ngetrap fokus keyboard
 
-function ThemeMenuContainer({ isThemeMenuDisplayed, themeMenuToggler, themeMenuHider }) {
+function ThemeMenu({ isThemeMenuDisplayed, themeMenuToggler, themeMenuHider }) {
   const { theme, changeTheme } = React.useContext(ThemeContext);
   const ref = React.useRef(null);
 
@@ -56,10 +56,10 @@ function ThemeMenuContainer({ isThemeMenuDisplayed, themeMenuToggler, themeMenuH
   );
 }
 
-ThemeMenuContainer.propTypes = {
+ThemeMenu.propTypes = {
   themeMenuToggler: PropTypes.func.isRequired,
   isThemeMenuDisplayed: PropTypes.bool.isRequired,
   themeMenuHider: PropTypes.func.isRequired,
 };
 
-export default ThemeMenuContainer;
+export default ThemeMenu;
