@@ -12,6 +12,7 @@ import HamMenuButton from './buttons/HamMenuButton';
 
 function AppBar() {
   // TODO: tambahkan drawer menu untuk mobile sampai 1024px
+  // TODO: sembunyikan navigasi dan locale di atas 1024px
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
   const [isHamMenuDisplayed, setIsHamMenuDisplayed] = React.useState(false);
 
@@ -34,8 +35,6 @@ function AppBar() {
     setIsHamMenuDisplayed((prevState) => !prevState);
     themeMenuHider();
   };
-
-  // TODO: buat tombol hamburger
 
   return (
     <header className="bg-white-background-color dark:bg-black-background-color semi-dark:bg-black-background-color px-3 py-1 w-full flex items-center justify-between min-h-[44px] sticky z-10 top-0">
