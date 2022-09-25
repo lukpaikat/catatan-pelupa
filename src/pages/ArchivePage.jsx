@@ -6,6 +6,7 @@ import { getArchivedNotes, unarchiveNote, deleteNote } from '../utils/local-data
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
 import LocaleContext from '../contexts/LocaleContext';
+import dictionary from '../languages/dictionary';
 
 function ArchivePageWrapper() {
   const { locale } = React.useContext(LocaleContext);
@@ -84,7 +85,9 @@ class ArchivePage extends React.Component {
 
     return (
       <>
-        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semi-and-dark:text-white-text-color my-6">{locale === 'id' ? 'Catatan Arsip' : 'Archived Notes'}</h2>
+        <h2 className="text-lg 2xl:text-3xl font-bold text-gray-text-color semi-and-dark:text-white-text-color my-6">
+          {dictionary[locale].archivedNotes}
+        </h2>
         <SearchBox
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}
