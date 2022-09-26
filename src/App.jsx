@@ -95,7 +95,7 @@ function App() {
   return (
     <LocaleProvider value={localeContextValue}>
       <ThemeProvider value={themeContextValue}>
-        <AppBar authedUser={authedUser} />
+        <AppBar authedUserName={authedUser.name} />
         <main className="px-2">
           <Routes>
             <Route path={HOME} element={<HomePage />} />
