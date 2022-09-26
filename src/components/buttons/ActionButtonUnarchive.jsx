@@ -6,7 +6,7 @@ import dictionary from '../../languages/dictionary';
 
 function ActionButtonUnarchive({ onClick }) {
   const { locale } = React.useContext(LocaleContext);
-  const title = dictionary[locale].deleteButton;
+  const title = dictionary[locale].activeButton;
 
   return (
     <button
