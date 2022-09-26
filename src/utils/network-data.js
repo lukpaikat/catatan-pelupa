@@ -18,6 +18,7 @@ async function fetchWithToken(url, options = {}) {
   });
 }
 
+// get user access token
 async function login({ email, password }) {
   const response = await fetch(`${BASE_URL}/login`, {
     method: 'POST',
@@ -30,6 +31,8 @@ async function login({ email, password }) {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
+    // TODO: add custom alert?
+    // eslint-disable-next-line no-alert
     alert(responseJson.message);
     return { error: true, data: null };
   }
@@ -49,6 +52,8 @@ async function register({ name, email, password }) {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
+    // TODO: add custom alert?
+    // eslint-disable-next-line no-alert
     alert(responseJson.message);
     return { error: true };
   }
@@ -59,7 +64,6 @@ async function register({ name, email, password }) {
 async function getUserLogged() {
   const response = await fetchWithToken(`${BASE_URL}/users/me`);
   const responseJson = await response.json();
-
   if (responseJson.status !== 'success') {
     return { error: true, data: null };
   }
