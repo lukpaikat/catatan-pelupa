@@ -14,7 +14,7 @@ function ThemeItemButton({
   return (
     <button onClick={setCurrentTheme} type="button" className={`menu-item-button ${opacityClass}`}>
       {icon}
-      <span>{displayTitle}</span>
+      <span className="whitespace-nowrap">{displayTitle}</span>
     </button>
   );
 }
