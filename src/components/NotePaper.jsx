@@ -7,7 +7,7 @@ function NotePaper({ children, noteTitle }) {
     <section
       className={`py-2 px-6 w-full max-w-[700px] lg:max-w-[1000px] 2xl:max-w-[1300px]
       ${getNoteColorClassName(noteTitle) || 'bg-orange-note-color dark:bg-orange-dark-note-color'} 
-      mx-auto my-4 rounded-lg transition-all duration-150 min-h-[92vh] h-fit`}
+      mx-auto my-4 rounded-lg transition-all duration-150 min-h-[88vh] h-fit`}
     >
       {children}
     </section>
