@@ -5,6 +5,8 @@ import {
 import {
   HOME, ARCHIVE, NOTES_NEW, NOTES_DETAIL, REGISTER,
 } from './config/paths';
+// API
+import { getUserLogged, putAccessToken } from './utils/network-data';
 // Pages
 import LoginPage from './pages/LoginPage';
 import AppBar from './components/AppBar';
@@ -13,12 +15,12 @@ import ArchivePage from './pages/ArchivePage';
 import Page404 from './pages/Page404';
 import NewNotePage from './pages/NewNotePage';
 import NoteDetailPage from './pages/NoteDetailPage';
+import RegisterPage from './pages/RegistrationPage';
 // Contexts
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LocaleProvider } from './contexts/LocaleContext';
 // css
 import 'animate.css';
-import { getUserLogged, putAccessToken } from './utils/network-data';
 
 function App() {
   const [initializing, setInitializing] = React.useState(true);
@@ -89,7 +91,7 @@ function App() {
                 path="*"
                 element={<LoginPage onloginSuccess={onLoginSuccess} />}
               />
-              <Route path={REGISTER} element={<p>Halaman register</p>} />
+              <Route path={REGISTER} element={<RegisterPage />} />
             </Routes>
           </main>
         </ThemeProvider>
