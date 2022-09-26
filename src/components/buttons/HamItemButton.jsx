@@ -12,7 +12,7 @@ function HamItemButton({
       className="menu-item-button opacity-70 hocus:opacity-100"
     >
       {icon}
-      <span>
+      <span className="text-left">
         {title}
       </span>
     </button>
