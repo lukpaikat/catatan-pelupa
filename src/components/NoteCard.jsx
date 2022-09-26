@@ -32,7 +32,7 @@ function NoteCard({
       <div className="mb-4 mt-1 2xl:text-lg line-clamp-6 break-words">
         {parser(body)}
       </div>
-      <div className="flex justify-between mt-auto">
+      <div className="flex justify-between mt-auto flex-wrap gap-2">
         <NoteButtonTransparent
           text={archived ? activeText : archiveText}
           onClick={() => onMoveNote(id)}
