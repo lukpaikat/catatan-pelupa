@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import parser from 'html-react-parser';
 import {
   getNote, deleteNote, archiveNote, unarchiveNote,
@@ -10,8 +10,9 @@ import ActionButtonArchive from '../components/buttons/ActionButtonArchive';
 import ActionButtonUnarchive from '../components/buttons/ActionButtonUnarchive';
 import ActionButtonDelete from '../components/buttons/ActionButtonDelete';
 import NotePaper from '../components/NotePaper';
-import { HOME, ARCHIVE, PAGE404 } from '../config/paths';
+import { HOME, ARCHIVE } from '../config/paths';
 import LocaleContext from '../contexts/LocaleContext';
+import Page404 from './Page404';
 
 function NoteDetailPage() {
   const { id } = useParams();
@@ -49,7 +50,7 @@ function NoteDetailPage() {
       </>
     );
   }
-  return <Navigate to={PAGE404} replace />;
+  return <Page404 />;
 }
 
 export default NoteDetailPage;
