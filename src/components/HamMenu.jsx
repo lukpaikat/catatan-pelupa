@@ -11,7 +11,7 @@ import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
 function HamMenu({
-  isDisplayed, hamMenuHider, authedUserName,
+  isDisplayed, hamMenuHider, authedUserName, onLogOut,
 }) {
   const { locale, localeToggle } = React.useContext(LocaleContext);
   const ref = React.useRef(null);
@@ -89,7 +89,7 @@ function HamMenu({
                     icon={<SignOut />}
                     title={dictionary[locale].logOut}
                     onClick={() => {
-                      console.log('test');
+                      onLogOut();
                       hamMenuHider();
                     }}
                   />
@@ -128,10 +128,12 @@ HamMenu.propTypes = {
   authedUserName: PropTypes.string,
   isDisplayed: PropTypes.bool.isRequired,
   hamMenuHider: PropTypes.func.isRequired,
+  onLogOut: PropTypes.func,
 };
 
 HamMenu.defaultProps = {
   authedUserName: null,
+  onLogOut: null,
 };
 
 export default HamMenu;

@@ -11,7 +11,7 @@ import HamMenu from './HamMenu';
 import dictionary from '../languages/dictionary';
 import HamMenuButton from './buttons/HamMenuButton';
 
-function AppBar({ authedUserName, authedUserEmail }) {
+function AppBar({ authedUserName, onLogOut }) {
   // TODO: sembunyikan navigasi dan locale di atas 1024px
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
   const [isHamMenuDisplayed, setIsHamMenuDisplayed] = React.useState(false);
@@ -62,8 +62,8 @@ function AppBar({ authedUserName, authedUserEmail }) {
         <HamMenu
           isDisplayed={isHamMenuDisplayed}
           hamMenuHider={hamMenuHider}
-          authedUserEmail={authedUserEmail}
           authedUserName={authedUserName}
+          onLogOut={onLogOut}
         />
       </div>
     </header>
@@ -72,12 +72,12 @@ function AppBar({ authedUserName, authedUserEmail }) {
 
 AppBar.propTypes = {
   authedUserName: PropTypes.string,
-  authedUserEmail: PropTypes.string,
+  onLogOut: PropTypes.func,
 };
 
 AppBar.defaultProps = {
   authedUserName: null,
-  authedUserEmail: null,
+  onLogOut: null,
 };
 
 export default AppBar;

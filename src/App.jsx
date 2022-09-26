@@ -69,6 +69,11 @@ function App() {
     setAuthedUser(() => data);
   };
 
+  const onLogOut = () => {
+    setAuthedUser(() => null);
+    putAccessToken(() => '');
+  };
+
   if (initializing) {
     return null;
   }
@@ -95,7 +100,7 @@ function App() {
   return (
     <LocaleProvider value={localeContextValue}>
       <ThemeProvider value={themeContextValue}>
-        <AppBar authedUserName={authedUser.name} />
+        <AppBar authedUserName={authedUser.name} onLogOut={onLogOut} />
         <main className="px-2">
           <Routes>
             <Route path={HOME} element={<HomePage />} />
