@@ -15,7 +15,6 @@ function HamMenu({
 }) {
   const { locale, localeToggle } = React.useContext(LocaleContext);
   const ref = React.useRef(null);
-  console.log(authedUserName);
 
   React.useEffect(() => {
     const menuOutsideClickHandler = (event) => {
@@ -45,7 +44,7 @@ function HamMenu({
         shadow-md rounded-lg lg:hidden transition-all"
         >
           {authedUserName && (
-          <h1 className="p-2 text-gray-text-color text-center semi-and-dark:text-white-text-color">
+          <h1 className="p-2 text-gray-text-color text-center semi-and-dark:text-white-text-color break-words">
             Catatan
             <br />
             {authedUserName}
