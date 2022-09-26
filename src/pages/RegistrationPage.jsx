@@ -10,6 +10,10 @@ function RegistrationPage() {
     const { error } = await register(user);
     if (!error) {
       navigate('/');
+      // TODO: add custom alert
+      // TODO: add translations
+      // eslint-disable-next-line no-alert
+      alert('Registration success, please try to login');
     }
   };
 
