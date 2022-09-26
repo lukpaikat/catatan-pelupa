@@ -92,6 +92,7 @@ class NewNotePage extends React.Component {
           onChange={this.onBodyChange}
         />
         <FloatingContainer>
+          {/* TODO: tambah tombol kembali disini */}
           <ActionButtonSave onClick={this.onSubmit} />
         </FloatingContainer>
       </NotePaper>
