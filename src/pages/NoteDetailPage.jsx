@@ -35,9 +35,9 @@ function NoteDetailPage() {
     return (
       <>
         <NotePaper noteTitle={note.title}>
-          <h1 className="block placeholder-black placeholder-opacity-50 bg-transparent my-2 w-full rounded-lg  text-black-text-color dark:text-gray-200 text-2xl lg:text-4xl 2xl:text-6xl font-bold">{note.title}</h1>
+          <h1 className="block placeholder-black placeholder-opacity-50 bg-transparent my-2 w-full rounded-lg  text-black-text-color dark:text-gray-200 text-2xl lg:text-4xl 2xl:text-6xl font-bold break-words">{note.title}</h1>
           <p className="lg:text-xl 2xl:text-2xl dark:text-gray-200 opacity-80">{getFormattedDate(note.createdAt, locale)}</p>
-          <div className="new-note-body block w-full h-fit my-2 rounded-lg text-xl lg:text-3xl 2xl:text-4xl dark:text-gray-200">
+          <div className="new-note-body block w-full h-fit my-2 rounded-lg text-xl lg:text-3xl 2xl:text-4xl dark:text-gray-200 break-words">
             {parser(note.body)}
           </div>
         </NotePaper>

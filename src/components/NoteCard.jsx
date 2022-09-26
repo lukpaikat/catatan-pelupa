@@ -25,11 +25,11 @@ function NoteCard({
       style={style}
       ref={forwardedRef}
     >
-      <h1 className="font-bold text-xl 2xl:text-2xl mb-1">
+      <h1 className="font-bold text-xl 2xl:text-2xl mb-1 break-words">
         <Link className="underline underline-offset-4" to={NOTES_DETAIL + id}>{title}</Link>
       </h1>
       <small className="2xl:text-lg">{formattedDate}</small>
-      <div className="mb-4 mt-1 2xl:text-lg line-clamp-6">
+      <div className="mb-4 mt-1 2xl:text-lg line-clamp-6 break-words">
         {parser(body)}
       </div>
       <div className="flex justify-between mt-auto">
