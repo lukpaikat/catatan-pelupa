@@ -13,8 +13,13 @@ function RegistrationForm({ handleRegister }) {
 
     if (password === passwordRepeat) {
       handleRegister({ name, email, password });
+      // TODO: add alert success register
     } else {
       // TODO: tambah custom alert?
+      // bisa pakai
+      // https://www.npmjs.com/package/react-alert
+      // https://github.com/gusrb3164/react-custom-alert
+      // https://rc-toastr.vercel.app/
       // eslint-disable-next-line no-alert
       alert('Your password does not match');
     }

@@ -22,7 +22,7 @@ import { LocaleProvider } from './contexts/LocaleContext';
 // css
 import 'animate.css';
 
-// TODO: add get data from API feature
+// TODO(priority): add get data from API feature
 
 function App() {
   const [initializing, setInitializing] = React.useState(true);
