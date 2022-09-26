@@ -9,7 +9,7 @@ function HamItemButton({
       type="button"
       title={title}
       onClick={onClick}
-      className="menu-item-button opacity-50 hocus:opacity-100"
+      className="menu-item-button opacity-70 hocus:opacity-100"
     >
       {icon}
       <span>
