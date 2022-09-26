@@ -10,7 +10,9 @@ import HamItemButton from './buttons/HamItemButton';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
-function HamMenu({ isDisplayed, hamMenuHider }) {
+function HamMenu({
+  isDisplayed, hamMenuHider, authedUserEmail, authedUserName,
+}) {
   const { locale, localeToggle } = React.useContext(LocaleContext);
   const ref = React.useRef(null);
 
@@ -39,33 +41,41 @@ function HamMenu({ isDisplayed, hamMenuHider }) {
         <div
           ref={ref}
           className="bg-white-background-color semi-and-dark:bg-gray-700
-        shadow-md rounded-lg lg:hidden transition-all"
+        shadow-md rounded-lg lg:hidden transition-all w-[90vw] max-w-[220px]"
         >
+          {authedUserName && (
           <h1 className="p-2 text-gray-text-color text-center semi-and-dark:text-white-text-color">
             Catatan
             <br />
-            User name
+            {authedUserName}
+            <br />
+            {authedUserEmail}
           </h1>
-          <ul className="flex gap-1 flex-col transition-all p-1">
-            <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
-            <li>
-              <HamItemNavLink
-                to={HOME}
-                title={dictionary[locale].activeNotesPageSR}
-                end
-                displayTitle={dictionary[locale].activeNotes}
-                icon={<PushPin />}
-              />
-            </li>
-            <li>
-              <HamItemNavLink
-                to={ARCHIVE}
-                title={dictionary[locale].archiveSR}
-                displayTitle={dictionary[locale].archivedNotes}
-                icon={<Archive />}
-              />
-            </li>
-            <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
+          )}
+          <ul className="flex gap-1 flex-col transition-all p-1 w-full">
+            {authedUserName && (
+              <>
+                <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
+                <li>
+                  <HamItemNavLink
+                    to={HOME}
+                    title={dictionary[locale].activeNotesPageSR}
+                    end
+                    displayTitle={dictionary[locale].activeNotes}
+                    icon={<PushPin />}
+                  />
+                </li>
+                <li>
+                  <HamItemNavLink
+                    to={ARCHIVE}
+                    title={dictionary[locale].archiveSR}
+                    displayTitle={dictionary[locale].archivedNotes}
+                    icon={<Archive />}
+                  />
+                </li>
+                <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
+              </>
+            )}
             <li>
               <HamItemButton
                 icon={<Translate />}
@@ -93,8 +103,15 @@ function HamMenu({ isDisplayed, hamMenuHider }) {
 }
 
 HamMenu.propTypes = {
+  authedUserEmail: PropTypes.string,
+  authedUserName: PropTypes.string,
   isDisplayed: PropTypes.bool.isRequired,
   hamMenuHider: PropTypes.func.isRequired,
+};
+
+HamMenu.defaultProps = {
+  authedUserEmail: null,
+  authedUserName: null,
 };
 
 export default HamMenu;
