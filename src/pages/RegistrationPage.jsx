@@ -4,7 +4,7 @@ import BlueContainer from '../components/BlueContainer';
 import RegistrationForm from '../components/RegistrationForm';
 import { register } from '../utils/network-data';
 
-function RegisterPage() {
+function RegistrationPage() {
   const navigate = useNavigate();
   const handleRegister = async (user) => {
     const { error } = await register(user);
@@ -20,4 +20,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default RegistrationPage;
