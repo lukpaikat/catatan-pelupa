@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TrashSimple } from 'phosphor-react';
+import LocaleContext from '../../contexts/LocaleContext';
+import dictionary from '../../languages/dictionary';
 
 function ActionButtonDelete({ onClick }) {
+  const { locale } = React.useContext(LocaleContext);
+  const title = dictionary[locale].deleteButton;
+
   return (
     <button
-      aria-label="save note"
+      title={title}
       type="button"
       onClick={onClick}
       className="h-[44px] w-[44px] drop-shadow-lg rounded-lg active:translate-y-1 active:drop-shadow-md transition-colors duration-300 bg-red-600 hover:bg-red-400 focus:bg-red-400 active:bg-red-500"
