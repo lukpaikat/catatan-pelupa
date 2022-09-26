@@ -13,7 +13,7 @@ function HamMenuButton({ onClick, isHamMenuDisplayed }) {
       aria-expanded={isHamMenuDisplayed}
       title="Menu"
       type="button"
-      className="app-bar-button-simplified"
+      className="app-bar-button-simplified lg:hidden"
       onClick={(event) => {
         event.stopPropagation();
         onClick();
