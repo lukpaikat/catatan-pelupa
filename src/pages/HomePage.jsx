@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import NoteList from '../components/NoteList';
-import { getActiveNotes, archiveNote, deleteNote } from '../utils/local-data';
+import { archiveNote, deleteNote } from '../utils/local-data';
+import { getActiveNotes } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
 import FloatingContainer from '../components/FloatingContainer';
@@ -39,13 +40,19 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      notes: getActiveNotes(),
+      notes: [],
       keyword: props.defaultKeyword || '',
     };
     this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
     this.archiveNoteHandler = this.archiveNoteHandler.bind(this);
     this.keywordChangeHandler = this.keywordChangeHandler.bind(this);
     this.clearKeywordHandler = this.clearKeywordHandler.bind(this);
+  }
+
+  async componentDidMount() {
+    const { data } = await getActiveNotes();
+
+    this.setState(() => ({ notes: data }));
   }
 
   archiveNoteHandler(id) {
