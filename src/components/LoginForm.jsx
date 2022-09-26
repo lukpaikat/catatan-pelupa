@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
 
-function LoginForm() {
+function LoginForm({ handleLogin }) {
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
 
-    console.log(`email: ${email}\npassword:${password}`);
+    handleLogin({ email, password });
   };
 
   return (
@@ -20,5 +21,9 @@ function LoginForm() {
     </form>
   );
 }
+
+LoginForm.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+};
 
 export default LoginForm;
