@@ -9,7 +9,7 @@ function ThemeItemButton({
 }) {
   const { locale } = React.useContext(LocaleContext);
   const displayTitle = dictionary[locale][camelTitle];
-  const opacityClass = currentTheme === camelTitle ? 'opacity-100' : 'opacity-25 hover:opacity-90 focus:opacity-90';
+  const opacityClass = currentTheme === camelTitle ? 'opacity-100' : 'opacity-50 hover:opacity-90 focus:opacity-90';
 
   return (
     <button onClick={setCurrentTheme} type="button" className={`menu-item-button ${opacityClass}`}>
