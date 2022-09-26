@@ -3,7 +3,7 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import LocaleContext from '../../contexts/LocaleContext';
 import dictionary from '../../languages/dictionary';
 
-// TODO: cek nanti, rada bingung labelnya pakai bahasa inggris atau indo
+// TODO: cek lagi, bug yang tidak repeatable, Teks hilang
 function LocaleToggleButton() {
   const { locale, localeToggle } = React.useContext(LocaleContext);
   const idRef = React.useRef(null);
@@ -23,7 +23,7 @@ function LocaleToggleButton() {
           }}
           classNames="fade-scale"
         >
-          <span ref={nodeRef} className="block mx-auto">
+          <span ref={nodeRef} className="block">
             {localeUpperCase}
           </span>
         </CSSTransition>
