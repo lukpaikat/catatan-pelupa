@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
 
+// TODO: fix width responsiveness
+// THE BUG: it stays the same size when resizing
+
 function LoginForm({ handleLogin }) {
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
