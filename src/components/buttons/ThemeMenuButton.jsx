@@ -35,7 +35,7 @@ function ThemeMenuButton({ onClick, isThemeMenuDisplayed }) {
         event.stopPropagation();
         onClick();
       }}
-      className="app-bar-button-simplified"
+      className="app-bar-button-simplified overflow-hidden"
     >
       <SwitchTransition>
         <CSSTransition
@@ -44,7 +44,7 @@ function ThemeMenuButton({ onClick, isThemeMenuDisplayed }) {
           addEndListener={(done) => {
             nodeRef.current.addEventListener('transitionend', done, false);
           }}
-          classNames="fade-scale"
+          classNames="fade-rotate"
         >
           <div ref={nodeRef}>
             { theme === 'dark' && <Moon className="text-3xl 2xl:text-5xl text-white-text-color m-auto" weight="light" />}
