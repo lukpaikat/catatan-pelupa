@@ -16,11 +16,13 @@ function LoginForm({ handleLogin }) {
   };
 
   return (
-    <form className="flex flex-col gap-4 bg-sky-500 p-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" onSubmit={handleOnSubmit}>
+    <form onSubmit={handleOnSubmit} className="flex flex-col gap-4">
       <h1 className="semi-and-dark:text-white-text-color">Halaman Login</h1>
+      {/* TODO: add placeholder ? */}
       <input title="email" type="email" value={email} onChange={setEmail} />
+      {/* TODO: translate password jd kata kunci */}
       <input title="password" type="password" value={password} onChange={setPassword} />
-      <button className="px-4 py-2 bg-orange-300" type="submit">Masuk</button>
+      <button title="Log in" className="px-4 py-2 bg-orange-300" type="submit">Masuk</button>
     </form>
   );
 }
