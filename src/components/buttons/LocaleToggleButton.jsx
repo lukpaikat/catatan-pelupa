@@ -13,7 +13,7 @@ function LocaleToggleButton() {
   const label = dictionary[locale].toggleLanguage;
 
   return (
-    <button title={label} className="app-bar-button-simplified" type="button" onClick={localeToggle}>
+    <button title={label} className="app-bar-button-simplified hidden lg:flex" type="button" onClick={localeToggle}>
       <SwitchTransition>
         <CSSTransition
           key={locale}
@@ -23,7 +23,7 @@ function LocaleToggleButton() {
           }}
           classNames="fade-scale"
         >
-          <span ref={nodeRef}>
+          <span ref={nodeRef} className="block mx-auto">
             {localeUpperCase}
           </span>
         </CSSTransition>
