@@ -11,7 +11,6 @@ import dictionary from '../languages/dictionary';
 import HamMenuButton from './buttons/HamMenuButton';
 
 function AppBar() {
-  // TODO: tambahkan drawer menu untuk mobile sampai 1024px
   // TODO: sembunyikan navigasi dan locale di atas 1024px
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
   const [isHamMenuDisplayed, setIsHamMenuDisplayed] = React.useState(false);
@@ -40,11 +39,11 @@ function AppBar() {
     <header className="bg-white-background-color dark:bg-black-background-color semi-dark:bg-black-background-color px-3 py-1 w-full flex items-center justify-between min-h-[44px] sticky z-10 top-0">
       <h1 className="my-2 text-lg 2xl:text-4xl font-bold text-gray-text-color semi-and-dark:text-white-text-color block">{dictionary[locale].appTitle}</h1>
       <div className="flex gap-1 relative">
-        <nav className="flex gap-1">
+        <nav className="gap-1 hidden lg:flex">
           <NavLinkPushPin to={HOME} end />
           <NavLinkArchive to={ARCHIVE} />
+          <div className="w-px rounded-md bg-gray-text-color semi-and-dark:bg-white-text-color my-1 opacity-30" />
         </nav>
-        <div className="w-px rounded-md bg-gray-text-color semi-and-dark:bg-white-text-color my-1 opacity-30" />
         <LocaleToggleButton />
         <ThemeMenuButton
           onClick={themeMenuToggler}
