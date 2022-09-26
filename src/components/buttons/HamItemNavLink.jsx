@@ -11,7 +11,7 @@ function HamItemNavLink({
       end={end}
       title={title}
       className={({ isActive }) => [
-        'menu-item-button w-screen max-w-[200px] opacity-70 hocus:opacity-100',
+        'menu-item-button opacity-70 hocus:opacity-100',
         isActive ? '!text-blue-700 semi-and-dark:!text-blue-note-color !opacity-100' : null,
       ].filter(Boolean).join(' ')}
     >
