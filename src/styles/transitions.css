@@ -1,0 +1,73 @@
+
+/* for CSSTransition */
+/* TODO: tambah animasi memutar aksis bawah, biar mirip matahari terbit dan terbenam */
+
+.fade-in-slide-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-in-slide-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-slide-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-slide-exit-active {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+
+
+.fade-scale-enter{
+   opacity: 0;
+   transform: scale(0.5);
+}
+.fade-scale-exit{
+   opacity: 1;
+   transform: scale(1);
+}
+.fade-scale-enter-active{
+   opacity: 1;
+   transform: scale(1);
+}
+.fade-scale-exit-active{
+   opacity: 0;
+   transform: scale(1.5);
+}
+.fade-scale-enter-active,
+.fade-scale-exit-active{
+   transition: opacity 150ms, transform 150ms;
+}
+
+
+.fade-rotate-enter {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+.fade-rotate-exit {
+  opacity: 1;
+  transform: rotate(0);
+}
+
+.fade-rotate-enter-active {
+  opacity: 1;
+  transform: rotate(0);
+}
+
+.fade-rotate-exit-active {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.fade-rotate-enter-active,
+.fade-rotate-exit-active{
+   transition: opacity 150ms, transform 150ms;
+   transform-origin: 50% 200%;
+}
