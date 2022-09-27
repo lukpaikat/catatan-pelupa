@@ -14,6 +14,7 @@ import { HOME, ARCHIVE } from '../config/paths';
 import LocaleContext from '../contexts/LocaleContext';
 import Page404 from './Page404';
 import NotePaperSkeleton from '../components/NotePaperSkeleton';
+import dictionary from '../languages/dictionary';
 
 function NoteDetailPage() {
   const { id } = useParams();
@@ -103,7 +104,7 @@ function NoteDetailPage() {
   }
   // BUG: muncul 404 page pas loading
   // TODO: add note initialization page
-  return <Page404 />;
+  return <Page404 message={dictionary[locale].notes404} />;
 }
 
 export default NoteDetailPage;
