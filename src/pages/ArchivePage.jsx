@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 import NoteList from '../components/NoteList';
-import { getArchivedNotes, unarchiveNote, deleteNote } from '../utils/local-data';
+import { getArchivedNotes, unarchiveNote, deleteNote } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
 import LocaleContext from '../contexts/LocaleContext';
@@ -30,31 +30,50 @@ class ArchivePage extends React.Component {
     super(props);
 
     this.state = {
-      notes: getArchivedNotes(),
+      notes: [],
       keyword: props.defaultKeyword || '',
     };
+    this.handleGetArchivedNotes = this.handleGetArchivedNotes.bind(this);
     this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
-    this.archiveNoteHandler = this.archiveNoteHandler.bind(this);
+    this.unarchiveNoteHandler = this.unarchiveNoteHandler.bind(this);
     this.keywordChangeHandler = this.keywordChangeHandler.bind(this);
     this.clearKeywordHandler = this.clearKeywordHandler.bind(this);
   }
 
-  archiveNoteHandler(id) {
-    unarchiveNote(id);
-    this.setState(() => (
-      {
-        notes: getArchivedNotes(),
-      }
-    ));
+  async componentDidMount() {
+    this.handleGetArchivedNotes();
   }
 
-  deleteNoteHandler(id) {
-    deleteNote(id);
-    this.setState(() => (
-      {
-        notes: getArchivedNotes(),
-      }
-    ));
+  async handleGetArchivedNotes() {
+    const { error, data } = await getArchivedNotes();
+    if (error) {
+      // eslint-disable-next-line no-alert
+      // TODO: translate alert
+      // TODO: use custom alert from library
+      alert('failed to retrieve notes');
+    } else {
+      this.setState(() => ({ notes: data }));
+    }
+  }
+
+  async unarchiveNoteHandler(id) {
+    const { error } = await unarchiveNote(id);
+    if (error) {
+      // eslint-disable-next-line no-alert
+      alert('failed to activate note');
+      return;
+    }
+    this.handleGetArchivedNotes();
+  }
+
+  async deleteNoteHandler(id) {
+    const { error } = await deleteNote(id);
+    if (error) {
+      // eslint-disable-next-line no-alert
+      alert('failed to delete note');
+      return;
+    }
+    this.handleGetArchivedNotes();
   }
 
   keywordChangeHandler(keyword) {
@@ -95,7 +114,7 @@ class ArchivePage extends React.Component {
         />
         <NoteList
           notes={filteredNotes}
-          onMoveNote={this.archiveNoteHandler}
+          onMoveNote={this.unarchiveNoteHandler}
           onDeleteNote={this.deleteNoteHandler}
         />
       </>
