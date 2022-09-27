@@ -18,10 +18,12 @@ function LoginForm({ handleLogin }) {
   return (
     <form onSubmit={handleOnSubmit} className="flex flex-col gap-4">
       <h2 className="text-gray-text-color text-center text-2xl semi-and-dark:text-white-text-color">Halaman Login</h2>
-      {/* TODO: add placeholder ? */}
-      <input title="email" type="email" value={email} onChange={setEmail} />
+      {/* TODO: translateable placeholder ? */}
+      {/* TODO: style input box */}
+      <input title="email" placeholder="email" type="email" value={email} onChange={setEmail} />
       {/* TODO: translate password jd kata kunci */}
-      <input title="password" type="password" value={password} onChange={setPassword} />
+      <input title="password" placeholder="password" type="password" value={password} onChange={setPassword} />
+      {/* TODO: style button */}
       <button title="Log in" className="px-4 py-2 bg-orange-300" type="submit">Masuk</button>
     </form>
   );

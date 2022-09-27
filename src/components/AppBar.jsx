@@ -11,6 +11,8 @@ import HamMenu from './HamMenu';
 import dictionary from '../languages/dictionary';
 import HamMenuButton from './buttons/HamMenuButton';
 
+// TODO: add logout button for desktop
+
 function AppBar({ authedUserName, onLogOut }) {
   // TODO: sembunyikan navigasi dan locale di atas 1024px
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
