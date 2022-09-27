@@ -32,6 +32,7 @@ class ArchivePage extends React.Component {
     this.state = {
       notes: [],
       keyword: props.defaultKeyword || '',
+      isInitializing: true,
     };
     this.handleGetArchivedNotes = this.handleGetArchivedNotes.bind(this);
     this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
@@ -41,7 +42,10 @@ class ArchivePage extends React.Component {
   }
 
   async componentDidMount() {
-    this.handleGetArchivedNotes();
+    await this.handleGetArchivedNotes();
+    this.setState(() => ({
+      isInitializing: false,
+    }));
   }
 
   async handleGetArchivedNotes() {
@@ -99,7 +103,7 @@ class ArchivePage extends React.Component {
 
   render() {
     const { locale } = this.props;
-    const { notes, keyword } = this.state;
+    const { notes, keyword, isInitializing } = this.state;
     const filteredNotes = filterNotes(notes, keyword);
 
     return (
@@ -108,6 +112,7 @@ class ArchivePage extends React.Component {
           {dictionary[locale].archivedNotes}
         </h2>
         <SearchBox
+          disabled={isInitializing}
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}
           keywordChange={this.keywordChangeHandler}
@@ -116,6 +121,7 @@ class ArchivePage extends React.Component {
           notes={filteredNotes}
           onMoveNote={this.unarchiveNoteHandler}
           onDeleteNote={this.deleteNoteHandler}
+          isInitializing={isInitializing}
         />
       </>
     );
