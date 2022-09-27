@@ -47,9 +47,9 @@ class ArchivePage extends React.Component {
   async handleGetArchivedNotes() {
     const { error, data } = await getArchivedNotes();
     if (error) {
-      // eslint-disable-next-line no-alert
       // TODO: translate alert
       // TODO: use custom alert from library
+      // eslint-disable-next-line no-alert
       alert('failed to retrieve notes');
     } else {
       this.setState(() => ({ notes: data }));
