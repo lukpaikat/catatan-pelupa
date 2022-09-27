@@ -10,8 +10,6 @@ import HamItemButton from './buttons/HamItemButton';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
-// FIXME: close menu when any button clicked
-
 function HamMenu({
   isDisplayed, hamMenuHider, authedUserName, onLogOut,
 }) {
