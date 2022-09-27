@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import parser from 'html-react-parser';
 import {
   getNote, deleteNote, archiveNote, unarchiveNote,
-} from '../utils/local-data';
+} from '../utils/network-data';
 import getFormattedDate from '../utils/getFormattedDate';
 import FloatingContainer from '../components/FloatingContainer';
 import ActionButtonArchive from '../components/buttons/ActionButtonArchive';
@@ -16,22 +16,60 @@ import Page404 from './Page404';
 
 function NoteDetailPage() {
   const { id } = useParams();
-  const note = getNote(id) || 'noData';
+  const [note, setNote] = React.useState(null);
+  // const note = getNote(id) || 'noData';
   const { locale } = React.useContext(LocaleContext);
   const navigate = useNavigate();
-  const deleteNoteHandler = () => {
-    deleteNote(note.id);
+
+  const getNoteData = async () => {
+    const { error, data } = await getNote(id);
+    if (error) {
+      // FIXME: use custom alert
+      // eslint-disable-next-line no-alert
+      alert('failed to retrieve note data');
+      return;
+    }
+    setNote(() => data);
+  };
+
+  React.useEffect(() => {
+    getNoteData();
+  }, []);
+
+  const deleteNoteHandler = async () => {
+    const { error } = await deleteNote(note.id);
+    if (error) {
+      // eslint-disable-next-line no-alert
+      alert('failed to delete note');
+      return;
+    }
+    if (note.archived) {
+      navigate(ARCHIVE);
+      return;
+    }
     navigate(HOME);
   };
-  const archiveNoteHandler = () => {
-    archiveNote(note.id);
+  const archiveNoteHandler = async () => {
+    const { error } = await archiveNote(note.id);
+    if (error) {
+      // FIXME: pakai custom alert
+      // eslint-disable-next-line no-alert
+      alert('failed to archive note');
+      return;
+    }
     navigate(ARCHIVE);
   };
-  const unarchiveNoteHandler = () => {
-    unarchiveNote(note.id);
+  const unarchiveNoteHandler = async () => {
+    const { error } = await unarchiveNote(note.id);
+    if (error) {
+      // FIXME: pakai custom alert
+      // eslint-disable-next-line no-alert
+      alert('failed to activate note');
+      return;
+    }
     navigate(HOME);
   };
-  if (note !== 'noData') {
+  if (note !== null) {
     return (
       <>
         {/* TODO: tambah tombol kembali disini */}
@@ -43,7 +81,7 @@ function NoteDetailPage() {
           </div>
         </NotePaper>
         <FloatingContainer>
-          {/* Atau tambah tombol kembali disini */}
+          {/* TODO: Atau tambah tombol kembali disini */}
           {note.archived
             ? <ActionButtonUnarchive onClick={unarchiveNoteHandler} />
             : <ActionButtonArchive onClick={archiveNoteHandler} />}
@@ -52,6 +90,8 @@ function NoteDetailPage() {
       </>
     );
   }
+  // BUG: muncul 404 page pas loading
+  // TODO: add note initialization page
   return <Page404 />;
 }
 
