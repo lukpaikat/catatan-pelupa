@@ -1,11 +1,13 @@
 import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { TransitionGroup, Transition } from 'react-transition-group';
-import NoteCard from './NoteCard';
 import NoDataInfo from './NoDataInfo';
+// components
+import NoteCard from './NoteCard';
+import NoteCardSkeleton from './NoteCardSkeleton';
 
 function NoteList({
-  notes, onMoveNote, onDeleteNote,
+  notes, onMoveNote, onDeleteNote, isInitializing,
 }) {
   const duration = 300;
   const defaultStyle = {
@@ -20,12 +22,15 @@ function NoteList({
     exited: { opacity: 0 },
   };
 
-  // pilihan lain: mungkin disini tambah conditional rendering yang menerima state loading
-  // bila loading di return komponen daftar catatan skeleton
-
-  // pilihan lain: dibuat data-data catatan yang berisi komponen-komponen skeleton
-  // dalam data itu ada key isSkeleton
-  // jadi selagi data sedang dipanggil, data pada state di inisiasi dengan data skeleton dulu
+  if (isInitializing) {
+    return (
+      <section className="min-h-[200px] mb-12 md:grid md:gap-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <NoteCardSkeleton />
+        <NoteCardSkeleton />
+        <NoteCardSkeleton />
+      </section>
+    );
+  }
 
   return (
     <section className="min-h-[200px] mb-12">
@@ -79,6 +84,7 @@ NoteList.propTypes = {
     createdAt: PropTypes.string,
     archived: PropTypes.bool,
   })).isRequired,
+  isInitializing: PropTypes.bool.isRequired,
   onMoveNote: PropTypes.func.isRequired,
   onDeleteNote: PropTypes.func.isRequired,
 };
