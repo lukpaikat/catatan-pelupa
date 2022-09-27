@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import NoteList from '../components/NoteList';
 import { getActiveNotes, deleteNote, archiveNote } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
+// components
+import NoteList from '../components/NoteList';
 import SearchBox from '../components/SearchBox';
 import FloatingContainer from '../components/FloatingContainer';
 import ActionButtonAdd from '../components/buttons/ActionButtonAdd';
+// contexts
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
-// TODO: selagi effect dijalankan, data yang dikirim ke daftar adalah data skeleton?
-// TODO: ada bug menampilkan catatan tidak ada saat loading data
-// solusi pakai todo yang pertama
 // TODO: translate alerts
 
 function HomePageWrapper() {
@@ -44,7 +43,9 @@ class HomePage extends React.Component {
     this.state = {
       notes: [],
       keyword: props.defaultKeyword || '',
+      isInitializing: true,
     };
+    this.handleGetActiveNotes = this.handleGetActiveNotes.bind(this);
     this.deleteNoteHandler = this.deleteNoteHandler.bind(this);
     this.archiveNoteHandler = this.archiveNoteHandler.bind(this);
     this.keywordChangeHandler = this.keywordChangeHandler.bind(this);
@@ -52,9 +53,25 @@ class HomePage extends React.Component {
   }
 
   async componentDidMount() {
-    const { data } = await getActiveNotes();
+    await this.handleGetActiveNotes();
+    this.setState(() => ({
+      isInitializing: false,
+    }));
+  }
 
-    this.setState(() => ({ notes: data }));
+  async handleGetActiveNotes() {
+    const { data, error } = await getActiveNotes();
+
+    if (error) {
+      // FIXME: change to custom alert
+      // eslint-disable-next-line no-alert
+      alert('faile to retrieve data');
+      return;
+    }
+
+    this.setState(() => ({
+      notes: data,
+    }));
   }
 
   async archiveNoteHandler(id) {
@@ -64,12 +81,7 @@ class HomePage extends React.Component {
       alert('failed to archive note');
       return;
     }
-    const { data } = await getActiveNotes();
-    this.setState(() => (
-      {
-        notes: data,
-      }
-    ));
+    this.handleGetActiveNotes();
   }
 
   async deleteNoteHandler(id) {
@@ -79,12 +91,7 @@ class HomePage extends React.Component {
       alert('failed to remove note');
       return;
     }
-    const { data } = await getActiveNotes();
-    this.setState(() => (
-      {
-        notes: data,
-      }
-    ));
+    this.handleGetActiveNotes();
   }
 
   keywordChangeHandler(keyword) {
@@ -109,7 +116,7 @@ class HomePage extends React.Component {
 
   render() {
     const { toAddNotePage, locale } = this.props;
-    const { notes, keyword } = this.state;
+    const { notes, keyword, isInitializing } = this.state;
     const filteredNotes = filterNotes(notes, keyword);
 
     return (
@@ -118,6 +125,7 @@ class HomePage extends React.Component {
           {dictionary[locale].activeNotes}
         </h2>
         <SearchBox
+          disabled={isInitializing}
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}
           keywordChange={this.keywordChangeHandler}
@@ -126,6 +134,7 @@ class HomePage extends React.Component {
           notes={filteredNotes}
           onMoveNote={this.archiveNoteHandler}
           onDeleteNote={this.deleteNoteHandler}
+          isInitializing={isInitializing}
         />
         <FloatingContainer>
           <ActionButtonAdd onClick={toAddNotePage} />
