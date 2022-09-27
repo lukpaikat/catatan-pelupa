@@ -13,11 +13,12 @@ import NotePaper from '../components/NotePaper';
 import { HOME, ARCHIVE } from '../config/paths';
 import LocaleContext from '../contexts/LocaleContext';
 import Page404 from './Page404';
+import NotePaperSkeleton from '../components/NotePaperSkeleton';
 
 function NoteDetailPage() {
   const { id } = useParams();
   const [note, setNote] = React.useState(null);
-  // const note = getNote(id) || 'noData';
+  const [isInitializing, setIsInitializing] = React.useState(true);
   const { locale } = React.useContext(LocaleContext);
   const navigate = useNavigate();
 
@@ -32,8 +33,13 @@ function NoteDetailPage() {
     setNote(() => data);
   };
 
+  const handleInitiation = async () => {
+    await getNoteData();
+    setIsInitializing(false);
+  };
+
   React.useEffect(() => {
-    getNoteData();
+    handleInitiation();
   }, []);
 
   const deleteNoteHandler = async () => {
@@ -69,6 +75,11 @@ function NoteDetailPage() {
     }
     navigate(HOME);
   };
+
+  if (isInitializing) {
+    return <NotePaperSkeleton />;
+  }
+
   if (note !== null) {
     return (
       <>
