@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 function HamItemNavLink({
-  to, end, title, icon, displayTitle,
+  to, end, title, icon, displayTitle, onClick,
 }) {
   return (
     <NavLink
+      onClick={onClick}
       to={to}
       end={end}
       title={title}
@@ -25,6 +26,7 @@ function HamItemNavLink({
 
 HamItemNavLink.propTypes = {
   title: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   end: PropTypes.bool,
   icon: PropTypes.element,
   displayTitle: PropTypes.string.isRequired,
@@ -34,6 +36,7 @@ HamItemNavLink.propTypes = {
 HamItemNavLink.defaultProps = {
   end: false,
   icon: null,
+  onClick: null,
 };
 
 export default HamItemNavLink;

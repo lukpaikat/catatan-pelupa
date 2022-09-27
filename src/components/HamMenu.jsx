@@ -10,6 +10,8 @@ import HamItemButton from './buttons/HamItemButton';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
+// FIXME: close menu when any button clicked
+
 function HamMenu({
   isDisplayed, hamMenuHider, authedUserName, onLogOut,
 }) {
@@ -56,6 +58,7 @@ function HamMenu({
                 <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
                 <li>
                   <HamItemNavLink
+                    onClick={hamMenuHider}
                     to={HOME}
                     title={dictionary[locale].activeNotesPageSR}
                     end
@@ -65,6 +68,7 @@ function HamMenu({
                 </li>
                 <li>
                   <HamItemNavLink
+                    onClick={hamMenuHider}
                     to={ARCHIVE}
                     title={dictionary[locale].archiveSR}
                     displayTitle={dictionary[locale].archivedNotes}
@@ -78,7 +82,10 @@ function HamMenu({
               <HamItemButton
                 icon={<Translate />}
                 title={dictionary[locale].toggleLanguage}
-                onClick={localeToggle}
+                onClick={() => {
+                  hamMenuHider();
+                  localeToggle();
+                }}
               />
             </li>
             <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
@@ -99,6 +106,7 @@ function HamMenu({
                 <>
                   <li>
                     <HamItemNavLink
+                      onClick={hamMenuHider}
                       to={HOME}
                       title="Log In"
                       displayTitle="Log In"
@@ -108,6 +116,7 @@ function HamMenu({
                   </li>
                   <li>
                     <HamItemNavLink
+                      onClick={hamMenuHider}
                       to={REGISTER}
                       title="Register"
                       displayTitle="Register"
