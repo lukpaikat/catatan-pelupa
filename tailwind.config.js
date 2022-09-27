@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable global-require */
 const plugin = require('tailwindcss/plugin');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -25,6 +26,9 @@ module.exports = {
         'blue-dark-note-color': '#184A62',
         'purple-dark-note-color': '#621856',
         'button-red-bg-color': '#FF4D4D',
+      },
+      fontFamily: {
+        lato: ['Lato', ...defaultTheme.fontFamily.sans],
       },
     },
   },
