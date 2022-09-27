@@ -5,16 +5,15 @@ import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
 function SearchBox({
-  keyword, keywordChange, clearKeyword, disabled,
+  keyword, keywordChange, clearKeyword,
 }) {
   const { locale } = React.useContext(LocaleContext);
-
+  // TODO: cek apakah boleh di disable atau tidak
   return (
     <div className="flex items-center w-full justify-end mb-6">
       <label htmlFor="searchBox" className="w-full">
         <span className="sr-only">{dictionary[locale].searchBoxSR}</span>
         <input
-          disabled={disabled}
           type="text"
           id="searchBox"
           placeholder={dictionary[locale].searchPlaceholder}
@@ -23,13 +22,12 @@ function SearchBox({
           className="text-gray-text-color semi-and-dark:text-white-text-color 2xl:text-lg block w-full bg-gray-200 semi-and-dark:bg-gray-700 min-h-[44px] pl-2 rounded-l-lg semi-and-dark:bg-opacity-80"
         />
       </label>
-      <ClearSearchButton onClick={clearKeyword} disabled={disabled} />
+      <ClearSearchButton onClick={clearKeyword} />
     </div>
   );
 }
 
 SearchBox.propTypes = {
-  disabled: PropTypes.bool.isRequired,
   keyword: PropTypes.string.isRequired,
   keywordChange: PropTypes.func.isRequired,
   clearKeyword: PropTypes.func.isRequired,

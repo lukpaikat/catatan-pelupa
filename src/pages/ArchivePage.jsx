@@ -112,7 +112,6 @@ class ArchivePage extends React.Component {
           {dictionary[locale].archivedNotes}
         </h2>
         <SearchBox
-          disabled={isInitializing}
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}
           keywordChange={this.keywordChangeHandler}

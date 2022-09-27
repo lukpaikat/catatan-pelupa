@@ -125,7 +125,6 @@ class HomePage extends React.Component {
           {dictionary[locale].activeNotes}
         </h2>
         <SearchBox
-          disabled={isInitializing}
           keyword={keyword}
           clearKeyword={this.clearKeywordHandler}
           keywordChange={this.keywordChangeHandler}

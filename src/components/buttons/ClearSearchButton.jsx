@@ -4,13 +4,12 @@ import PropTypes from 'prop-types';
 import LocaleContext from '../../contexts/LocaleContext';
 import dictionary from '../../languages/dictionary';
 
-function ClearSearchButton({ onClick, disabled }) {
+function ClearSearchButton({ onClick }) {
   const { locale } = React.useContext(LocaleContext);
   const title = dictionary[locale].clearSearchButton;
 
   return (
     <button
-      disabled={disabled}
       title={title}
       type="button"
       onClick={onClick}
@@ -22,7 +21,6 @@ function ClearSearchButton({ onClick, disabled }) {
 }
 
 ClearSearchButton.propTypes = {
-  disabled: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
