@@ -44,17 +44,19 @@ function HamMenu({
         shadow-md rounded-lg transition-all"
         >
           {authedUserName && (
-          <h1 className="p-2 text-gray-text-color text-center semi-and-dark:text-white-text-color break-words">
-            {/* TODO: translate this */}
-            Catatan
-            <br />
-            {authedUserName}
-          </h1>
+            <>
+              <h1 className="p-2 text-gray-text-color text-center semi-and-dark:text-white-text-color break-words">
+                {/* TODO: translate this */}
+                Catatan
+                <br />
+                {authedUserName}
+              </h1>
+              <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
+            </>
           )}
           <ul className="flex gap-1 flex-col transition-all p-1 w-full">
             {authedUserName && (
               <>
-                <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4 lg:hidden" />
                 <li className="lg:hidden">
                   <HamItemNavLink
                     onClick={hamMenuHider}
@@ -90,19 +92,16 @@ function HamMenu({
             <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4 lg:hidden" />
             { authedUserName
               ? (
-                <>
-                  <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4 hidden lg:block" />
-                  <li>
-                    <HamItemButton
-                      icon={<SignOut />}
-                      title={dictionary[locale].logOut}
-                      onClick={() => {
-                        onLogOut();
-                        hamMenuHider();
-                      }}
-                    />
-                  </li>
-                </>
+                <li>
+                  <HamItemButton
+                    icon={<SignOut />}
+                    title={dictionary[locale].logOut}
+                    onClick={() => {
+                      onLogOut();
+                      hamMenuHider();
+                    }}
+                  />
+                </li>
               )
               : (
                 <>
