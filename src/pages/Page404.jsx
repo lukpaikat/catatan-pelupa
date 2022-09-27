@@ -28,13 +28,12 @@ function Page404({ message }) {
       <Link
         to={HOME}
         className="text-gray-text-color block semi-and-dark:text-green-note-color text-xl text-center mt-7
-        lg:text-xl 2xl:text-2xl"
+        lg:text-xl 2xl:text-2xl mb-[10vh]"
       >
         {dictionary[locale].backToHomePage}
         <br />
         (^-^*)
       </Link>
-      {/* TODO: tambah tombol untuk kembali ke halaman catatan aktif/utama */}
     </>
   );
 }
