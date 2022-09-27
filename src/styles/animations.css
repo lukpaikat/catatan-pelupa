@@ -1,0 +1,28 @@
+@keyframes upAndDown {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-cat #catRight,
+.animate-cat #ballGRight {
+  animation-name: upAndDown;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+}
+
+.animate-cat #catLeft,
+.animate-cat #ballGLeft {
+  animation-name: upAndDown;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+  animation-delay: 800ms;
+}
