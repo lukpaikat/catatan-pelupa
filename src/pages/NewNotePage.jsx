@@ -17,6 +17,7 @@ function NewNotePageWrapper() {
   const onAddNoteHandler = async (note) => {
     const { error } = await addNote(note);
     if (error) {
+      // eslint-disable-next-line no-alert
       alert('failed to save note');
     }
     navigate(HOME);
