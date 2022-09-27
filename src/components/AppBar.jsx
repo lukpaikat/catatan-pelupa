@@ -12,6 +12,7 @@ import dictionary from '../languages/dictionary';
 import HamMenuButton from './buttons/HamMenuButton';
 
 // TODO: add logout button for desktop
+// TODO: atur judul aplikasi, supaya translateable
 
 function AppBar({ authedUserName, onLogOut }) {
   // TODO: sembunyikan navigasi dan locale di atas 1024px
