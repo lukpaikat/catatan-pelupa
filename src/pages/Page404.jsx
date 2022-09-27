@@ -1,23 +1,50 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import pageNotFoundIllustratioGreen from '../assets/undraw_page_not_found_green.svg';
 import pageNotFoundIllustrationBlack from '../assets/undraw_page_not_found_black.svg';
 import ThemeContext from '../contexts/ThemeContext';
 import LocaleContext from '../contexts/LocaleContext';
+import dictionary from '../languages/dictionary';
+import { HOME } from '../config/paths';
 
-function Page404() {
+function Page404({ message }) {
   const { theme } = React.useContext(ThemeContext);
   const { locale } = React.useContext(LocaleContext);
 
-  const pageDescription = locale === 'id' ? 'Eeeeits! Halaman yang kamu cari tidak ditemukan.' : 'Oops! We couldn\'t find The page that you are looking for.';
+  const pageDescription = message || dictionary[locale].message404;
   const pageNotFoundIllustration = theme === 'light' ? pageNotFoundIllustrationBlack : pageNotFoundIllustratioGreen;
 
   return (
     <>
       <img className="w-[80%] max-w-sm md:max-w-md mx-auto mt-[10vh] animate__animated animate__fadeIn" src={pageNotFoundIllustration} alt="404" />
-      <p className="text-gray-text-color semi-and-dark:text-white-text-color text-xl text-center mt-7 mb-[20vh]">{pageDescription}</p>
+      <p
+        className="text-gray-text-color semi-and-dark:text-white-text-color text-xl text-center mt-7
+        lg:text-xl 2xl:text-2xl"
+      >
+        {pageDescription}
+
+      </p>
+      <Link
+        to={HOME}
+        className="text-gray-text-color block semi-and-dark:text-green-note-color text-xl text-center mt-7
+        lg:text-xl 2xl:text-2xl"
+      >
+        {dictionary[locale].backToHomePage}
+        <br />
+        (^-^*)
+      </Link>
       {/* TODO: tambah tombol untuk kembali ke halaman catatan aktif/utama */}
     </>
   );
 }
+
+Page404.propTypes = {
+  message: PropTypes.string,
+};
+
+Page404.defaultProps = {
+  message: null,
+};
 
 export default Page404;
