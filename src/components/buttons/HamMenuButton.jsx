@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { List, X } from 'phosphor-react';
 
+// TODO: hapus jika benar-benar tidak terpakai lagi
+// komponen tidak bisa hidden
+
 function HamMenuButton({ onClick, isHamMenuDisplayed }) {
   const xIconRef = React.useRef(null);
   const listIconRef = React.useRef(null);
@@ -13,7 +16,7 @@ function HamMenuButton({ onClick, isHamMenuDisplayed }) {
       aria-expanded={isHamMenuDisplayed}
       title="Menu"
       type="button"
-      className="app-bar-button-simplified lg:hidden"
+      className="app-bar-button-simplified lg:invisible lg:absolute lg:-top-96"
       onClick={(event) => {
         event.stopPropagation();
         onClick();
