@@ -1,9 +1,10 @@
 import React from 'react';
 import {
+  Navigate,
   Route, Routes,
 } from 'react-router-dom';
 import {
-  HOME, ARCHIVE, NOTES_NEW, NOTES_DETAIL, REGISTER,
+  HOME, ARCHIVE, NOTES_NEW, NOTES_DETAIL, REGISTER, LOGIN,
 } from './config/paths';
 // API
 import { getUserLogged, putAccessToken } from './utils/network-data';
@@ -87,7 +88,7 @@ function App() {
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
           <AppBar />
-          <main className="flex flex-col h-full">
+          <main>
             <Routes>
               <Route
                 path="*"
@@ -111,6 +112,8 @@ function App() {
             <Route path={ARCHIVE} element={<ArchivePage />} />
             <Route path={NOTES_NEW} element={<NewNotePage />} />
             <Route path={`${NOTES_DETAIL}:id`} element={<NoteDetailPage />} />
+            <Route path={LOGIN} element={<Navigate to={HOME} />} />
+            <Route path={REGISTER} element={<Navigate to={HOME} />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
         </main>
