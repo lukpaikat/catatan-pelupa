@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import NoteList from '../components/NoteList';
-import { archiveNote, deleteNote } from '../utils/local-data';
-import { getActiveNotes } from '../utils/network-data';
+import { getActiveNotes, deleteNote, archiveNote } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
 import FloatingContainer from '../components/FloatingContainer';
@@ -12,6 +11,9 @@ import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
 // TODO: selagi effect dijalankan, data yang dikirim ke daftar adalah data skeleton?
+// TODO: ada bug menampilkan catatan tidak ada saat loading data
+// solusi pakai todo yang pertama
+// TODO: translate alerts
 
 function HomePageWrapper() {
   const navigate = useNavigate();
@@ -55,20 +57,32 @@ class HomePage extends React.Component {
     this.setState(() => ({ notes: data }));
   }
 
-  archiveNoteHandler(id) {
-    archiveNote(id);
+  async archiveNoteHandler(id) {
+    const { error } = await archiveNote(id);
+    if (error) {
+      // eslint-disable-next-line no-alert
+      alert('failed to archive note');
+      return;
+    }
+    const { data } = await getActiveNotes();
     this.setState(() => (
       {
-        notes: getActiveNotes(),
+        notes: data,
       }
     ));
   }
 
-  deleteNoteHandler(id) {
-    deleteNote(id);
+  async deleteNoteHandler(id) {
+    const { error } = await deleteNote(id);
+    if (error) {
+      // eslint-disable-next-line no-alert
+      alert('failed to remove note');
+      return;
+    }
+    const { data } = await getActiveNotes();
     this.setState(() => (
       {
-        notes: getActiveNotes(),
+        notes: data,
       }
     ));
   }
