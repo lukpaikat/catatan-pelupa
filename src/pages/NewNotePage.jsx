@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import ContentEditable from 'react-contenteditable';
-import { addNote } from '../utils/local-data';
+import { addNote } from '../utils/network-data';
 import ActionButtonSave from '../components/buttons/ActionButtonSave';
 import FloatingContainer from '../components/FloatingContainer';
 import NotePaper from '../components/NotePaper';
@@ -14,8 +14,11 @@ function NewNotePageWrapper() {
   const navigate = useNavigate();
   const { locale } = React.useContext(LocaleContext);
 
-  const onAddNoteHandler = (note) => {
-    addNote(note);
+  const onAddNoteHandler = async (note) => {
+    const { error } = await addNote(note);
+    if (error) {
+      alert('failed to save note');
+    }
     navigate(HOME);
   };
 
