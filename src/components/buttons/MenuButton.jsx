@@ -6,6 +6,9 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { X } from 'phosphor-react';
 
 // This buttons shows x icon when its menu opened
+// komponen ini tidak bisa pakai class hidden
+// terjadi bug icon hilang saat transisi
+
 function MenuButton({
   onClick, isMenuDisplayed, icon, title, className,
 }) {
@@ -26,6 +29,7 @@ function MenuButton({
     >
       <SwitchTransition>
         <CSSTransition
+         // BUG: prop key tidak terupdate saat hidden
           key={isMenuDisplayed}
           nodeRef={nodeRef}
           addEndListener={(done) => {
@@ -38,10 +42,11 @@ function MenuButton({
               ? (
                 <X
                   weight="light"
-                  className="text-3xl 2xl:text-5xl text-gray-text-color hover:text-black-text-color semi-and-dark:text-white-text-color m-auto"
+                  className="text-3xl 2xl:text-5xl text-gray-text-color
+                  hover:text-black-text-color semi-and-dark:text-white-text-color m-auto"
                 />
               ) : (
-                { icon }
+                icon
               )}
           </div>
         </CSSTransition>

@@ -3,7 +3,8 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import LocaleContext from '../../contexts/LocaleContext';
 import dictionary from '../../languages/dictionary';
 
-// TODO: cek lagi, bug yang tidak repeatable, Teks hilang
+// komponen ini tidak bisa pakai class hidden
+// terjadi bug icon hilang saat transisi
 function LocaleToggleButton() {
   const { locale, localeToggle } = React.useContext(LocaleContext);
   const idRef = React.useRef(null);
@@ -13,7 +14,7 @@ function LocaleToggleButton() {
   const label = dictionary[locale].toggleLanguage;
 
   return (
-    <button title={label} className="app-bar-button-simplified hidden lg:flex" type="button" onClick={localeToggle}>
+    <button title={label} className="app-bar-button-simplified invisible absolute -top-96 lg:visible lg:static" type="button" onClick={localeToggle}>
       <SwitchTransition>
         <CSSTransition
           key={locale}

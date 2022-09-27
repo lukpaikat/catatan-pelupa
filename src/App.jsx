@@ -8,9 +8,10 @@ import {
 } from './config/paths';
 // API
 import { getUserLogged, putAccessToken } from './utils/network-data';
-// Pages
 import LoginPage from './pages/LoginPage';
+// components
 import AppBar from './components/AppBar';
+// Pages
 import HomePage from './pages/HomePage';
 import ArchivePage from './pages/ArchivePage';
 import Page404 from './pages/Page404';

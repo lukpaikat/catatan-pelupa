@@ -41,10 +41,11 @@ function HamMenu({
         <div
           ref={ref}
           className="bg-white-background-color semi-and-dark:bg-gray-700
-        shadow-md rounded-lg lg:hidden transition-all"
+        shadow-md rounded-lg transition-all"
         >
           {authedUserName && (
           <h1 className="p-2 text-gray-text-color text-center semi-and-dark:text-white-text-color break-words">
+            {/* TODO: translate this */}
             Catatan
             <br />
             {authedUserName}
@@ -53,8 +54,8 @@ function HamMenu({
           <ul className="flex gap-1 flex-col transition-all p-1 w-full">
             {authedUserName && (
               <>
-                <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
-                <li>
+                <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4 lg:hidden" />
+                <li className="lg:hidden">
                   <HamItemNavLink
                     onClick={hamMenuHider}
                     to={HOME}
@@ -64,7 +65,7 @@ function HamMenu({
                     icon={<PushPin />}
                   />
                 </li>
-                <li>
+                <li className="lg:hidden">
                   <HamItemNavLink
                     onClick={hamMenuHider}
                     to={ARCHIVE}
@@ -73,10 +74,10 @@ function HamMenu({
                     icon={<Archive />}
                   />
                 </li>
-                <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
+                <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4 lg:hidden" />
               </>
             )}
-            <li>
+            <li className="lg:hidden">
               <HamItemButton
                 icon={<Translate />}
                 title={dictionary[locale].toggleLanguage}
@@ -86,19 +87,22 @@ function HamMenu({
                 }}
               />
             </li>
-            <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4" />
+            <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4 lg:hidden" />
             { authedUserName
               ? (
-                <li>
-                  <HamItemButton
-                    icon={<SignOut />}
-                    title={dictionary[locale].logOut}
-                    onClick={() => {
-                      onLogOut();
-                      hamMenuHider();
-                    }}
-                  />
-                </li>
+                <>
+                  <div className="h-px bg-gray-text-color semi-and-dark:bg-white-text-color opacity-20 mx-4 hidden lg:block" />
+                  <li>
+                    <HamItemButton
+                      icon={<SignOut />}
+                      title={dictionary[locale].logOut}
+                      onClick={() => {
+                        onLogOut();
+                        hamMenuHider();
+                      }}
+                    />
+                  </li>
+                </>
               )
               : (
                 <>
@@ -106,6 +110,7 @@ function HamMenu({
                     <HamItemNavLink
                       onClick={hamMenuHider}
                       to={HOME}
+                      // TODO: translate this
                       title="Log In"
                       displayTitle="Log In"
                       end
@@ -116,6 +121,7 @@ function HamMenu({
                     <HamItemNavLink
                       onClick={hamMenuHider}
                       to={REGISTER}
+                      // TODO: translate this
                       title="Register"
                       displayTitle="Register"
                       icon={<UserCirclePlus />}
