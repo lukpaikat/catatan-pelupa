@@ -76,7 +76,7 @@ function App() {
 
   const onLogOut = () => {
     setAuthedUser(() => null);
-    putAccessToken(() => '');
+    putAccessToken('');
   };
 
   if (initializing) {
