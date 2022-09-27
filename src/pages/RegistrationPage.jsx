@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import BlueContainer from '../components/BlueContainer';
 import RegistrationForm from '../components/RegistrationForm';
 import { register } from '../utils/network-data';
 
@@ -18,9 +17,11 @@ function RegistrationPage() {
   };
 
   return (
-    <BlueContainer>
+    <div className="flex flex-col gap-4 bg-sky-200 semi-dark:bg-blue-note-color dark:bg-gray-700
+    p-10 m-auto rounded-lg w-[90vw] max-w-3xl shadow-md"
+    >
       <RegistrationForm handleRegister={handleRegister} />
-    </BlueContainer>
+    </div>
   );
 }
 
