@@ -31,10 +31,9 @@ async function login({ email, password }) {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    // TODO: add custom alert?
     // eslint-disable-next-line no-alert
-    alert(responseJson.message);
-    return { error: true, data: null };
+    // alert(responseJson.message);
+    return { error: true, data: null, message: responseJson.message };
   }
 
   return { error: false, data: responseJson.data };
@@ -53,9 +52,8 @@ async function register({ name, email, password }) {
 
   if (responseJson.status !== 'success') {
     // TODO: add custom alert?
-    // eslint-disable-next-line no-alert
-    alert(responseJson.message);
-    return { error: true };
+    // alert(responseJson.message);
+    return { error: true, message: responseJson.message };
   }
 
   return { error: false };

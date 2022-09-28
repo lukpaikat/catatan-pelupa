@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import RegistrationForm from '../components/RegistrationForm';
 import { register } from '../utils/network-data';
 import ThemeContext from '../contexts/ThemeContext';
@@ -13,19 +14,20 @@ function RegistrationPage() {
   const [isRegistering, setIsRegistering] = React.useState(false);
   const { locale } = React.useContext(LocaleContext);
   const { theme } = React.useContext(ThemeContext);
-  const { welcome, haveAccount, logInHere } = dictionary[locale];
+  const {
+    welcome, haveAccount, logInHere, registrationFailed, registrationSuccess,
+  } = dictionary[locale];
   const navigate = useNavigate();
   const handleRegister = async (user) => {
     setIsRegistering(() => true);
-    const { error } = await register(user);
+    const { error, message } = await register(user);
     if (!error) {
+      toast.success(`${registrationSuccess}`);
       navigate('/');
-      // TODO: add custom alert
-      // TODO: add translations
-      // eslint-disable-next-line no-alert
-      alert('Registration success, please try to login');
+    } else {
+      toast.error(`${registrationFailed}: ${message}`);
+      setIsRegistering(() => false);
     }
-    setIsRegistering(() => false);
   };
 
   return (
