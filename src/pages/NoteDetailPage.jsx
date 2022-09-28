@@ -102,8 +102,6 @@ function NoteDetailPage() {
       </>
     );
   }
-  // BUG: muncul 404 page pas loading
-  // TODO: add note initialization page
   return <Page404 message={dictionary[locale].notes404} />;
 }
 
