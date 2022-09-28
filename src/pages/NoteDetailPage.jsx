@@ -66,11 +66,9 @@ function NoteDetailPage() {
   };
 
   const unarchiveNoteHandler = async () => {
-    const { error } = await unarchiveNote(note.id);
+    const { error, message } = await unarchiveNote(note.id);
     if (error) {
-      // FIXME: pakai custom alert
-      // eslint-disable-next-line no-alert
-      alert('failed to activate note');
+      toast.error(`${dictionary[locale].activatingFailed}: ${message}`);
       return;
     }
     navigate(HOME);
