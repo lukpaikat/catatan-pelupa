@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import ContentEditable from 'react-contenteditable';
+import { toast } from 'react-toastify';
 import { addNote } from '../utils/network-data';
 import ActionButtonSave from '../components/buttons/ActionButtonSave';
 import FloatingContainer from '../components/FloatingContainer';
@@ -15,10 +16,10 @@ function NewNotePageWrapper() {
   const { locale } = React.useContext(LocaleContext);
 
   const onAddNoteHandler = async (note) => {
-    const { error } = await addNote(note);
+    const { error, message } = await addNote(note);
     if (error) {
-      // eslint-disable-next-line no-alert
-      alert('failed to save note');
+      toast.error(`${dictionary[locale].savingFailed}: ${message}`);
+      return;
     }
     navigate(HOME);
   };
