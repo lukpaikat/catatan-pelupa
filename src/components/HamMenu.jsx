@@ -46,8 +46,7 @@ function HamMenu({
           {authedUserName && (
             <>
               <h1 className="p-2 text-gray-text-color text-center semi-and-dark:text-white-text-color break-words">
-                {/* TODO: translate this */}
-                Catatan
+                {dictionary[locale].notesOf}
                 <br />
                 {authedUserName}
               </h1>
@@ -109,9 +108,8 @@ function HamMenu({
                     <HamItemNavLink
                       onClick={hamMenuHider}
                       to={HOME}
-                      // TODO: translate this
-                      title="Log In"
-                      displayTitle="Log In"
+                      title={dictionary[locale].logIn}
+                      displayTitle={dictionary[locale].logIn}
                       end
                       icon={<SignIn />}
                     />
@@ -120,9 +118,8 @@ function HamMenu({
                     <HamItemNavLink
                       onClick={hamMenuHider}
                       to={REGISTER}
-                      // TODO: translate this
-                      title="Register"
-                      displayTitle="Register"
+                      title={dictionary[locale].register}
+                      displayTitle={dictionary[locale].register}
                       icon={<UserCirclePlus />}
                     />
                   </li>
