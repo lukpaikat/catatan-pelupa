@@ -14,7 +14,7 @@ function LoginPage({ onloginSuccess }) {
   const [isLoggingIn, setIsLoggingIn] = React.useState(false);
   const { theme } = React.useContext(ThemeContext);
   const { locale } = React.useContext(LocaleContext);
-  const { welcome } = dictionary[locale];
+  const { welcome, registerHere } = dictionary[locale];
   const handleLogin = async (user) => {
     setIsLoggingIn(() => true);
     const { error, data } = await login(user);
@@ -44,7 +44,7 @@ function LoginPage({ onloginSuccess }) {
           <p className="text-gray-text-color dark:text-white-text-color text-center my-4">
             {dictionary[locale].dontHaveAccount}
             {' '}
-            <Link to={REGISTER}>{dictionary[locale].registerHere}</Link>
+            <Link className="text-orange-600 dark:text-orange-400 underline" to={REGISTER}>{registerHere}</Link>
           </p>
         </div>
       </div>
