@@ -9,8 +9,6 @@ import SearchBox from '../components/SearchBox';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
-// TODO: mau coba pakai toast promise?
-
 function ArchivePageWrapper() {
   const { locale } = React.useContext(LocaleContext);
   const [searchParams, setSearchParams] = useSearchParams();
