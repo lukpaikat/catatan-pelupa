@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import { login } from '../utils/network-data';
 import ThemeContext from '../contexts/ThemeContext';
 import { ReactComponent as CatsDark } from '../assets/happy_cat_dark.svg';
 import { ReactComponent as CatsLight } from '../assets/happy_cat_light.svg';
+import { REGISTER } from '../config/paths';
+import dictionary from '../languages/dictionary';
+import LocaleContext from '../contexts/LocaleContext';
 
 function LoginPage({ onloginSuccess }) {
   const [isLoggingIn, setIsLoggingIn] = React.useState(false);
   const { theme } = React.useContext(ThemeContext);
+  const { locale } = React.useContext(LocaleContext);
+  const { welcome } = dictionary[locale];
   const handleLogin = async (user) => {
     setIsLoggingIn(() => true);
     const { error, data } = await login(user);
@@ -19,11 +25,28 @@ function LoginPage({ onloginSuccess }) {
     setIsLoggingIn(() => false);
   };
   return (
-    <div className="min-h-[80vh] flex flex-col">
-      <div className={`center-blue-container ${isLoggingIn && 'animate-cat'}`}>
-        { theme === 'dark' ? <CatsLight className="w-full px-5 h-fit overflow-visible" /> : <CatsDark className="w-full px-5 h-fit overflow-visible" />}
-        <h1 className="uppercase font-lato text-3xl drop-shadow-md text-center text-gray-text-color dark:text-white-text-color">Welcome</h1>
-        <LoginForm handleLogin={handleLogin} />
+    <div className="h-[80vh] min-h-fit flex flex-col pt-8">
+      <div
+        className={`flex flex-col gap-4 bg-sky-200 semi-dark:bg-blue-note-color dark:bg-gray-700
+        m-auto rounded-lg w-[90vw] max-w-3xl shadow-md pause animate-cat ${isLoggingIn && 'play'}`}
+      >
+        <div className="p-4 mx-auto my-16">
+          { theme === 'dark'
+            ? <CatsLight className="w-[80%] mx-auto px-5 h-fit overflow-visible" />
+            : <CatsDark className="w-[80%] mx-auto px-5 h-fit overflow-visible" />}
+          <h1
+            className="uppercase font-lato text-3xl sm:text-6xl drop-shadow-md mt-4
+          text-center text-gray-text-color dark:text-white-text-color"
+          >
+            {welcome}
+          </h1>
+          <LoginForm handleLogin={handleLogin} isLoggingIn={isLoggingIn} />
+          <p className="text-gray-text-color dark:text-white-text-color text-center my-4">
+            {dictionary[locale].dontHaveAccount}
+            {' '}
+            <Link to={REGISTER}>{dictionary[locale].registerHere}</Link>
+          </p>
+        </div>
       </div>
     </div>
   );
