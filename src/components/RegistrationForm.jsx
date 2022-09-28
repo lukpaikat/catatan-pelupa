@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
+import LocaleContext from '../contexts/LocaleContext';
+import dictionary from '../languages/dictionary';
 
-function RegistrationForm({ handleRegister }) {
+function RegistrationForm({ handleRegister, isRegistering }) {
+  const { locale } = React.useContext(LocaleContext);
   const [name, setName] = useInput('');
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
   const [passwordRepeat, setPasswordRepeat] = useInput('');
+  const {
+    registerHere, registering, yourNameHere, name: nameTitle,
+    email: emailTitle, emailPlaceholder, passwordTitle,
+    passwordPlaceholder, passwordRepeatPlaceholder, register,
+  } = dictionary[locale];
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -27,45 +35,51 @@ function RegistrationForm({ handleRegister }) {
 
   return (
     <form onSubmit={handleOnSubmit} className="flex flex-col gap-4">
-      <h1 className="semi-and-dark:text-white-text-color">Halaman Registrasi</h1>
+      <h2 className={`text-gray-text-color text-center dark:text-white-text-color ${isRegistering && 'animate-pulse'}`}>
+        {isRegistering ? registering : registerHere}
+      </h2>
       {/* TODO: translate this title */}
       <input
-        title="name"
+        title={nameTitle}
         type="text"
-        placeholder="your name here"
+        placeholder={yourNameHere}
         value={name}
         onChange={setName}
+        className="lowercase"
       />
       <input
-        title="email"
+        title={emailTitle}
         type="email"
-        placeholder="your@email.com"
+        placeholder={emailPlaceholder}
         value={email}
         onChange={setEmail}
       />
       <input
         minLength={6}
-        title="password min. 6 characters"
+        title={passwordTitle}
         type="password"
-        placeholder="min. 6 characters"
+        placeholder={passwordPlaceholder}
         value={password}
         onChange={setPassword}
+        className="lowercase"
       />
       <input
         minLength={6}
-        title="repeat your pasword"
+        title={passwordRepeatPlaceholder}
         type="password"
-        placeholder="repeat your password"
+        placeholder={passwordRepeatPlaceholder}
         value={passwordRepeat}
         onChange={setPasswordRepeat}
+        className="lowercase"
       />
       {/* TODO: translate this */}
-      <button title="Register" className="px-4 py-2 bg-orange-300" type="submit">Register</button>
+      <button title="Register" className="px-4 py-2 bg-orange-300" type="submit">{register}</button>
     </form>
   );
 }
 
 RegistrationForm.propTypes = {
+  isRegistering: PropTypes.bool.isRequired,
   handleRegister: PropTypes.func.isRequired,
 };
 
