@@ -16,6 +16,7 @@ function LoginPage({ onloginSuccess }) {
   const { theme } = React.useContext(ThemeContext);
   const { locale } = React.useContext(LocaleContext);
   const { welcome, registerHere, logInFailed } = dictionary[locale];
+
   const handleLogin = async (user) => {
     setIsLoggingIn(() => true);
     const { error, data, message } = await login(user);
