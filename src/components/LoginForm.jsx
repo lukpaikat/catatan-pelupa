@@ -40,6 +40,7 @@ function LoginForm({ handleLogin, isLoggingIn }) {
       <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
         <Key className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
         <input
+          autoComplete="on"
           title={passwordTitle}
           placeholder={passwordTitle}
           type="password"
