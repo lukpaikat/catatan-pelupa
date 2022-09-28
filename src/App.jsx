@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  Navigate,
-  Route, Routes,
-} from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import {
   HOME, ARCHIVE, NOTES_NEW, NOTES_DETAIL, REGISTER, LOGIN,
 } from './config/paths';
@@ -91,6 +89,7 @@ function App() {
     return (
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
+          <ToastContainer />
           <AppBar />
           <main>
             <Routes>
