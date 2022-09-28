@@ -64,6 +64,7 @@ class HomePage extends React.Component {
 
     if (error) {
       // FIXME: change to custom alert
+      // TODO: translate this
       // eslint-disable-next-line no-alert
       alert('faile to retrieve data');
       return;
