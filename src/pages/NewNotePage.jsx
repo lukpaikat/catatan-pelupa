@@ -9,10 +9,12 @@ import FloatingContainer from '../components/FloatingContainer';
 import NotePaper from '../components/NotePaper';
 import { HOME } from '../config/paths';
 import LocaleContext from '../contexts/LocaleContext';
+import InputFocusContext from '../contexts/InputFocusContext';
 import dictionary from '../languages/dictionary';
 
 function NewNotePageWrapper() {
   const navigate = useNavigate();
+  const { inputFocusActivate, inputFocusDeactivate } = React.useContext(InputFocusContext);
   const { locale } = React.useContext(LocaleContext);
 
   const onAddNoteHandler = async (note) => {
@@ -25,7 +27,12 @@ function NewNotePageWrapper() {
   };
 
   return (
-    <NewNotePage locale={locale} onAddNoteHandler={onAddNoteHandler} />
+    <NewNotePage
+      locale={locale}
+      onAddNoteHandler={onAddNoteHandler}
+      inputFocusActivate={inputFocusActivate}
+      inputFocusDeactivate={inputFocusDeactivate}
+    />
   );
 }
 
@@ -64,7 +71,7 @@ class NewNotePage extends React.Component {
   }
 
   render() {
-    const { locale } = this.props;
+    const { locale, inputFocusActivate, inputFocusDeactivate } = this.props;
     const { title, body } = this.state;
     const {
       noteTitleInputPlaceholder,
@@ -85,6 +92,8 @@ class NewNotePage extends React.Component {
             value={title}
             maxLength="50"
             onChange={this.onTitleChange}
+            onFocus={inputFocusActivate}
+            onBlur={inputFocusDeactivate}
             placeholder={noteTitleInputPlaceholder}
             required
           />
@@ -96,6 +105,8 @@ class NewNotePage extends React.Component {
           html={body}
           placeholder={noteBodyInputPlaceholder}
           onChange={this.onBodyChange}
+          onFocus={inputFocusActivate}
+          onBlur={inputFocusDeactivate}
         />
         <FloatingContainer>
           {/* TODO: tambah tombol kembali disini */}
@@ -109,6 +120,8 @@ class NewNotePage extends React.Component {
 NewNotePage.propTypes = {
   locale: PropTypes.string.isRequired,
   onAddNoteHandler: PropTypes.func.isRequired,
+  inputFocusActivate: PropTypes.func.isRequired,
+  inputFocusDeactivate: PropTypes.func.isRequired,
 };
 
 export default NewNotePageWrapper;
