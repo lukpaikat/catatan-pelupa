@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { User } from 'phosphor-react';
+import { toast } from 'react-toastify';
 import useInput from '../hooks/useInput';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
@@ -14,7 +15,7 @@ function RegistrationForm({ handleRegister, isRegistering }) {
   const {
     registerHere, registering, yourNameHere, name: nameTitle,
     email: emailTitle, emailPlaceholder, passwordTitle,
-    passwordPlaceholder, passwordRepeatPlaceholder, register,
+    passwordPlaceholder, passwordRepeatPlaceholder, register, passwordDontMatch,
   } = dictionary[locale];
 
   const handleOnSubmit = (event) => {
@@ -22,15 +23,8 @@ function RegistrationForm({ handleRegister, isRegistering }) {
 
     if (password === passwordRepeat) {
       handleRegister({ name, email, password });
-      // TODO: add alert success register
     } else {
-      // TODO: tambah custom alert?
-      // bisa pakai
-      // https://www.npmjs.com/package/react-alert
-      // https://github.com/gusrb3164/react-custom-alert
-      // https://rc-toastr.vercel.app/
-      // eslint-disable-next-line no-alert
-      alert('Your password does not match');
+      toast.error(`${passwordDontMatch}`);
     }
   };
 
@@ -85,7 +79,6 @@ function RegistrationForm({ handleRegister, isRegistering }) {
           className="grow py-3 px-2 bg-transparent text-gray-text-color dark:text-white-text-color lowercase"
         />
       </div>
-      {/* TODO: translate this */}
       <button className="p-3 bg-orange-note-color dark:bg-orange-dark-note-color text-gray-text-color dark:text-white-text-color rounded-lg font-bold shadow active:shadow-sm active:translate-y-[1px]" type="submit">{register}</button>
     </form>
   );
