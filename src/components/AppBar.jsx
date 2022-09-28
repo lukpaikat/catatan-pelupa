@@ -13,9 +13,6 @@ import NavLinkArchive from './buttons/NavLinkArchive';
 import LocaleContext from '../contexts/LocaleContext';
 import LocaleToggleButton from './buttons/LocaleToggleButton';
 import NavLinkPushPin from './buttons/NavLinkPushPin';
-// import HamMenuButton from './buttons/HamMenuButton';
-
-// TODO: add logout button for desktop
 
 function AppBar({ authedUserName, onLogOut }) {
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
@@ -97,7 +94,6 @@ function AppBar({ authedUserName, onLogOut }) {
           )}
           isMenuDisplayed={isHamMenuDisplayed}
         />
-        {/* <HamMenuButton onClick={hamMenuToggler} isHamMenuDisplayed={isHamMenuDisplayed} /> */}
         <HamMenu
           isDisplayed={isHamMenuDisplayed}
           hamMenuHider={hamMenuHider}
