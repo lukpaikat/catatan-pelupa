@@ -35,7 +35,7 @@ function RegistrationForm({ handleRegister, isRegistering }) {
   };
 
   return (
-    <form onSubmit={handleOnSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleOnSubmit} className="flex flex-col my-4 gap-4">
       <h2 className={`text-gray-text-color text-center dark:text-white-text-color ${isRegistering && 'animate-pulse'}`}>
         {isRegistering ? registering : registerHere}
       </h2>
