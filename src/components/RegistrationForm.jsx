@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { User } from 'phosphor-react';
 import useInput from '../hooks/useInput';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
@@ -38,42 +39,54 @@ function RegistrationForm({ handleRegister, isRegistering }) {
       <h2 className={`text-gray-text-color text-center dark:text-white-text-color ${isRegistering && 'animate-pulse'}`}>
         {isRegistering ? registering : registerHere}
       </h2>
-      {/* TODO: translate this title */}
-      <input
-        title={nameTitle}
-        type="text"
-        placeholder={yourNameHere}
-        value={name}
-        onChange={setName}
-        className="lowercase"
-      />
-      <input
-        title={emailTitle}
-        type="email"
-        placeholder={emailPlaceholder}
-        value={email}
-        onChange={setEmail}
-      />
-      <input
-        minLength={6}
-        title={passwordTitle}
-        type="password"
-        placeholder={passwordPlaceholder}
-        value={password}
-        onChange={setPassword}
-        className="lowercase"
-      />
-      <input
-        minLength={6}
-        title={passwordRepeatPlaceholder}
-        type="password"
-        placeholder={passwordRepeatPlaceholder}
-        value={passwordRepeat}
-        onChange={setPasswordRepeat}
-        className="lowercase"
-      />
+      <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
+        <User className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
+        <input
+          title={nameTitle}
+          type="text"
+          placeholder={yourNameHere}
+          value={name}
+          onChange={setName}
+          className="grow py-3 px-2 bg-transparent text-gray-text-color dark:text-white-text-color lowercase"
+        />
+      </div>
+      <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
+        <User className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
+        <input
+          title={emailTitle}
+          type="email"
+          placeholder={emailPlaceholder}
+          value={email}
+          onChange={setEmail}
+          className="grow py-3 px-2 bg-transparent text-gray-text-color dark:text-white-text-color"
+        />
+      </div>
+      <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
+        <User className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
+        <input
+          minLength={6}
+          title={passwordTitle}
+          type="password"
+          placeholder={passwordPlaceholder}
+          value={password}
+          onChange={setPassword}
+          className="grow py-3 px-2 bg-transparent text-gray-text-color dark:text-white-text-color lowercase"
+        />
+      </div>
+      <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
+        <User className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
+        <input
+          minLength={6}
+          title={passwordRepeatPlaceholder}
+          type="password"
+          placeholder={passwordRepeatPlaceholder}
+          value={passwordRepeat}
+          onChange={setPasswordRepeat}
+          className="grow py-3 px-2 bg-transparent text-gray-text-color dark:text-white-text-color lowercase"
+        />
+      </div>
       {/* TODO: translate this */}
-      <button title="Register" className="px-4 py-2 bg-orange-300" type="submit">{register}</button>
+      <button className="p-3 bg-orange-note-color dark:bg-orange-dark-note-color text-gray-text-color dark:text-white-text-color rounded-lg font-bold shadow active:shadow-sm active:translate-y-[1px]" type="submit">{register}</button>
     </form>
   );
 }
