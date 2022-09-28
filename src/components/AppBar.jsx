@@ -72,7 +72,9 @@ function AppBar({ authedUserName, onLogOut }) {
         />
         <MenuButton
           // elemen ini tidak bisa pakai class hidden
-          className="absolute invisible -top-96 lg:static lg:visible"
+          title={dictionary[locale].userMenu}
+          onClick={hamMenuToggler}
+          className="fixed invisible -top-[200%] lg:static lg:visible"
           icon={(
             <UserList
               weight="light"
@@ -81,11 +83,11 @@ function AppBar({ authedUserName, onLogOut }) {
             />
           )}
           isMenuDisplayed={isHamMenuDisplayed}
-          onClick={hamMenuToggler}
-          title={dictionary[locale].userMenu}
         />
         <MenuButton
-          className="lg:absolute lg:invisible lg:-top-96"
+          title={dictionary[locale].menu}
+          onClick={hamMenuToggler}
+          className="lg:fixed lg:invisible lg:-top-[200%]"
           icon={(
             <List
               weight="light"
@@ -94,8 +96,6 @@ function AppBar({ authedUserName, onLogOut }) {
             />
           )}
           isMenuDisplayed={isHamMenuDisplayed}
-          onClick={hamMenuToggler}
-          title={dictionary[locale].menu}
         />
         {/* <HamMenuButton onClick={hamMenuToggler} isHamMenuDisplayed={isHamMenuDisplayed} /> */}
         <HamMenu
