@@ -44,10 +44,9 @@ function NoteDetailPage() {
   }, []);
 
   const deleteNoteHandler = async () => {
-    const { error } = await deleteNote(note.id);
+    const { error, message } = await deleteNote(note.id);
     if (error) {
-      // eslint-disable-next-line no-alert
-      alert('failed to delete note');
+      toast.error(`${dictionary[locale].deletingFailed}: ${message}`);
       return;
     }
     if (note.archived) {
