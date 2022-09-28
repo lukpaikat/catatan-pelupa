@@ -55,6 +55,7 @@ function NoteDetailPage() {
     }
     navigate(HOME);
   };
+
   const archiveNoteHandler = async () => {
     const { error } = await archiveNote(note.id);
     if (error) {
@@ -65,6 +66,7 @@ function NoteDetailPage() {
     }
     navigate(ARCHIVE);
   };
+
   const unarchiveNoteHandler = async () => {
     const { error } = await unarchiveNote(note.id);
     if (error) {
