@@ -90,7 +90,10 @@ function App() {
     return (
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
-          <ToastContainer theme={theme === 'dark' ? 'dark' : 'colored'} />
+          <ToastContainer
+            theme={theme === 'dark' ? 'dark' : 'colored'}
+            position="bottom-left"
+          />
           <AppBar />
           <main>
             <Routes>
@@ -109,7 +112,10 @@ function App() {
   return (
     <LocaleProvider value={localeContextValue}>
       <ThemeProvider value={themeContextValue}>
-        <ToastContainer />
+        <ToastContainer
+          theme={theme === 'dark' ? 'dark' : 'colored'}
+          position="bottom-left"
+        />
         <AppBar authedUserName={authedUser.name} onLogOut={onLogOut} />
         <main className="px-2">
           <Routes>
