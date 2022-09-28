@@ -25,10 +25,11 @@ function Page404({ message }) {
         {pageDescription}
 
       </p>
+      {/* TODO: ganti warna oren */}
       <Link
         to={HOME}
-        className="text-gray-text-color block semi-and-dark:text-green-note-color text-xl text-center mt-7
-        lg:text-xl 2xl:text-2xl mb-[10vh]"
+        className="text-orange-600 semi-and-dark:text-orange-400 text-xl text-center mt-7
+        lg:text-xl 2xl:text-2xl mb-[10vh] block mx-auto"
       >
         {dictionary[locale].backToHomePage}
         <br />
