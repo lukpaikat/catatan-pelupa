@@ -24,6 +24,7 @@
   "faieldToArchiveNote": "Failed to archive note",
   "failedToRetrieveNotes": "Failed to retrieve notes",
   "failedToDeleteNote": "Failed to delete note",
+  "gettingNoteDetailsFailed": "Failed to retrieve note details",
   "haveAccount": "Aleready have an account?",
   "light": "Light",
   "logIn": "Log In",

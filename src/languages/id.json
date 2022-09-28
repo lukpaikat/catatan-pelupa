@@ -24,6 +24,7 @@
   "faieldToArchiveNote": "Gagal mengarsipkan catatan",
   "failedToRetrieveNotes": "Gagal mengambil catatan",
   "failedToDeleteNote": "Gagal menghapus catatan",
+  "gettingNoteDetailsFailed": "Gagal mengambil detail catatan",
   "haveAccount": "Sudah punya akun?",
   "light": "Terang",
   "logIn": "Masuk",
