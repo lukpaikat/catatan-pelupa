@@ -31,7 +31,6 @@ async function login({ email, password }) {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    // eslint-disable-next-line no-alert
     // alert(responseJson.message);
     return { error: true, data: null, message: responseJson.message };
   }
@@ -51,7 +50,6 @@ async function register({ name, email, password }) {
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
-    // TODO: add custom alert?
     // alert(responseJson.message);
     return { error: true, message: responseJson.message };
   }
