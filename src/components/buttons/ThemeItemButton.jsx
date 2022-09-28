@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import dictionary from '../../languages/dictionary';
 import LocaleContext from '../../contexts/LocaleContext';
-// TODO: pindah icon jadi props saja
 
 function ThemeItemButton({
   camelTitle, icon, currentTheme, setCurrentTheme,
