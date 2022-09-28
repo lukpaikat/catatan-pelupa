@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { successToastConfig, failedToastConfig } from '../config/toastConfig';
 import { getActiveNotes, deleteNote, archiveNote } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
 import { NOTES_NEW } from '../config/paths';
@@ -74,21 +75,39 @@ class HomePage extends React.Component {
 
   async archiveNoteHandler(id) {
     const { locale } = this.props;
-    const { error } = await archiveNote(id);
+    const { archiving, archivingSuccess, archivingFailed } = dictionary[locale];
+    const progress = toast.loading(`${archiving}`);
+    const { error, message } = await archiveNote(id);
     if (error) {
-      toast.error(`${dictionary[locale].faieldToArchiveNote}`);
+      toast.update(progress, {
+        render: `${archivingFailed}: ${message}`,
+        ...failedToastConfig,
+      });
       return;
     }
+    toast.update(progress, {
+      render: `${archivingSuccess}`,
+      ...successToastConfig,
+    });
     this.handleGetActiveNotes();
   }
 
   async deleteNoteHandler(id) {
     const { locale } = this.props;
-    const { error } = await deleteNote(id);
+    const { deleting, deletingSuccess, deletingFailed } = dictionary[locale];
+    const progress = toast.loading(`${deleting}`);
+    const { error, message } = await deleteNote(id);
     if (error) {
-      toast.error(`${dictionary[locale].failedToDeleteNote}`);
+      toast.update(progress, {
+        render: `${deletingFailed}: ${message}`,
+        ...failedToastConfig,
+      });
       return;
     }
+    toast.update(progress, {
+      render: `${deletingSuccess}`,
+      ...successToastConfig,
+    });
     this.handleGetActiveNotes();
   }
 
