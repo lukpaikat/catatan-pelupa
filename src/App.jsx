@@ -6,6 +6,7 @@ import {
 import {
   HOME, ARCHIVE, NOTES_NEW, NOTES_DETAIL, REGISTER, LOGIN,
 } from './config/paths';
+import dictionary from './languages/dictionary';
 // API
 import { getUserLogged, putAccessToken } from './utils/network-data';
 import LoginPage from './pages/LoginPage';
@@ -24,8 +25,6 @@ import { LocaleProvider } from './contexts/LocaleContext';
 // css
 import 'animate.css';
 
-// TODO(priority): add get data from API feature
-
 function App() {
   const [initializing, setInitializing] = React.useState(true);
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -40,6 +39,10 @@ function App() {
     };
     initiateUser();
   }, []);
+
+  React.useEffect(() => {
+    document.title = dictionary[locale].appTitle;
+  }, [locale]);
 
   const localeToggle = () => {
     setLocale((prevState) => {
