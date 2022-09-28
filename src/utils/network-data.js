@@ -152,12 +152,13 @@ async function deleteNote(id) {
   });
 
   const responseJson = await response.json();
+  const { message, data } = responseJson;
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null };
+    return { error: true, data: null, message };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data, message };
 }
 
 export {
