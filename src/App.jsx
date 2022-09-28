@@ -108,6 +108,7 @@ function App() {
   return (
     <LocaleProvider value={localeContextValue}>
       <ThemeProvider value={themeContextValue}>
+        <ToastContainer />
         <AppBar authedUserName={authedUser.name} onLogOut={onLogOut} />
         <main className="px-2">
           <Routes>
