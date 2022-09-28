@@ -36,6 +36,23 @@
   }
 }
 
+/* toastify colors override */
+:root {
+--toastify-color-light: #f5f5f5;
+--toastify-color-dark: #1f2937;
+--toastify-color-info: #38bdf8;
+--toastify-color-success: #84cc16;
+--toastify-color-warning: #facc15;
+--toastify-color-error: #dc2626;
+
+--toastify-text-color-light: #505050;
+--toastify-text-color-dark: #f5f5f5;
+
+--toastify-text-color-info: #f5f5f5;
+--toastify-text-color-success: #f5f5f5;
+--toastify-text-color-warning: #f5f5f5;
+--toastify-text-color-error: #f5f5f5;
+}
 body {
   font-family: 'Comic Neue', cursive;
   -webkit-font-smoothing: antialiased;
