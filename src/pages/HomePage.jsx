@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { getActiveNotes, deleteNote, archiveNote } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
 // components
@@ -11,8 +12,6 @@ import ActionButtonAdd from '../components/buttons/ActionButtonAdd';
 // contexts
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
-
-// TODO: translate alerts
 
 function HomePageWrapper() {
   const navigate = useNavigate();
@@ -60,36 +59,33 @@ class HomePage extends React.Component {
   }
 
   async handleGetActiveNotes() {
+    const { locale } = this.props;
     const { data, error } = await getActiveNotes();
 
     if (error) {
-      // FIXME: change to custom alert
-      // TODO: translate this
-      // eslint-disable-next-line no-alert
-      alert('faile to retrieve data');
+      toast.error(`${dictionary[locale].failedToRetrieveNotes}`);
       return;
     }
-
     this.setState(() => ({
       notes: data,
     }));
   }
 
   async archiveNoteHandler(id) {
+    const { locale } = this.props;
     const { error } = await archiveNote(id);
     if (error) {
-      // eslint-disable-next-line no-alert
-      alert('failed to archive note');
+      toast.error(`${dictionary[locale].faieldToArchiveNote}`);
       return;
     }
     this.handleGetActiveNotes();
   }
 
   async deleteNoteHandler(id) {
+    const { locale } = this.props;
     const { error } = await deleteNote(id);
     if (error) {
-      // eslint-disable-next-line no-alert
-      alert('failed to remove note');
+      toast.error(`${dictionary[locale].failedToDeleteNote}`);
       return;
     }
     this.handleGetActiveNotes();
