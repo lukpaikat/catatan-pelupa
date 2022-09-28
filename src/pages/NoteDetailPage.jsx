@@ -57,11 +57,9 @@ function NoteDetailPage() {
   };
 
   const archiveNoteHandler = async () => {
-    const { error } = await archiveNote(note.id);
+    const { error, message } = await archiveNote(note.id);
     if (error) {
-      // FIXME: pakai custom alert
-      // eslint-disable-next-line no-alert
-      alert('failed to archive note');
+      toast.error(`${dictionary[locale].archivingFailed}: ${message}`);
       return;
     }
     navigate(ARCHIVE);
