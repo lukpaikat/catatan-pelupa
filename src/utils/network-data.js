@@ -102,23 +102,25 @@ async function getActiveNotes() {
 async function getArchivedNotes() {
   const response = await fetchWithToken(`${BASE_URL}/notes/archived`);
   const responseJson = await response.json();
+  const { data, message } = responseJson;
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null };
+    return { error: true, data: null, message };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data, message };
 }
 
 async function getNote(id) {
   const response = await fetchWithToken(`${BASE_URL}/notes/${id}`);
   const responseJson = await response.json();
+  const { data, message } = responseJson;
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null, message: responseJson.message };
+    return { error: true, data: null, message };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data, message };
 }
 
 async function archiveNote(id) {
@@ -127,12 +129,13 @@ async function archiveNote(id) {
   });
 
   const responseJson = await response.json();
+  const { data, message } = responseJson;
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null };
+    return { error: true, data: null, message };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data, message };
 }
 
 async function unarchiveNote(id) {
@@ -141,12 +144,13 @@ async function unarchiveNote(id) {
   });
 
   const responseJson = await response.json();
+  const { data, message } = responseJson;
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null };
+    return { error: true, data: null, message };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data, message };
 }
 
 async function deleteNote(id) {
