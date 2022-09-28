@@ -25,9 +25,9 @@ function LoginPage({ onloginSuccess }) {
     setIsLoggingIn(() => false);
   };
   return (
-    <div className="h-[80vh] min-h-fit flex flex-col pt-8">
+    <div className="h-[80vh] min-h-fit flex flex-col my-8">
       <div
-        className={`flex flex-col gap-4 bg-sky-200 semi-dark:bg-blue-note-color dark:bg-gray-700
+        className={`flex flex-col gap-4 bg-sky-200 dark:bg-gray-700
         m-auto rounded-lg w-[90vw] max-w-3xl shadow-md pause animate-cat ${isLoggingIn && 'play'}`}
       >
         <div className="p-4 mx-auto my-16">
