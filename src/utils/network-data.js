@@ -52,7 +52,6 @@ async function register({ name, email, password }) {
   const { message } = responseJson;
 
   if (responseJson.status !== 'success') {
-    // alert(responseJson.message);
     return { error: true, message };
   }
 
@@ -79,12 +78,13 @@ async function addNote({ title, body }) {
   });
 
   const responseJson = await response.json();
+  const { data, message } = responseJson;
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null, message: responseJson.message };
+    return { error: true, data: null, message };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data, message };
 }
 
 async function getActiveNotes() {
