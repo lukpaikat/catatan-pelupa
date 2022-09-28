@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import LoginForm from '../components/LoginForm';
 import { login } from '../utils/network-data';
 import ThemeContext from '../contexts/ThemeContext';
@@ -14,15 +15,17 @@ function LoginPage({ onloginSuccess }) {
   const [isLoggingIn, setIsLoggingIn] = React.useState(false);
   const { theme } = React.useContext(ThemeContext);
   const { locale } = React.useContext(LocaleContext);
-  const { welcome, registerHere } = dictionary[locale];
+  const { welcome, registerHere, logInFailed } = dictionary[locale];
   const handleLogin = async (user) => {
     setIsLoggingIn(() => true);
-    const { error, data } = await login(user);
+    const { error, data, message } = await login(user);
 
     if (!error) {
       onloginSuccess(data.accessToken);
+    } else {
+      toast.error(`${logInFailed}: ${message}`);
+      setIsLoggingIn(() => false);
     }
-    setIsLoggingIn(() => false);
   };
   return (
     <div className="h-[80vh] min-h-fit flex flex-col my-8">
