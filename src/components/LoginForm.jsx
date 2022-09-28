@@ -5,15 +5,12 @@ import useInput from '../hooks/useInput';
 import dictionary from '../languages/dictionary';
 import LocaleContext from '../contexts/LocaleContext';
 
-// TODO: fix width responsiveness
-// THE BUG: it stays the same size when resizing
-
 function LoginForm({ handleLogin, isLoggingIn }) {
   const { locale } = React.useContext(LocaleContext);
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
   const {
-    logInHere, logIn, loggingIn, password: passwordTitle,
+    logInHere, logIn, loggingIn, password: passwordTitle, email: emailTitle,
   } = dictionary[locale];
 
   const handleOnSubmit = (event) => {
@@ -24,26 +21,22 @@ function LoginForm({ handleLogin, isLoggingIn }) {
 
   return (
     <form onSubmit={handleOnSubmit} className="flex flex-col my-4 gap-4">
-      {/* ubah teks ini aja yang jadi logging in */}
       <h2
         className={`text-gray-text-color text-center dark:text-white-text-color ${isLoggingIn && 'animate-pulse'}`}
       >
         {isLoggingIn ? loggingIn : logInHere}
       </h2>
-      {/* TODO: translateable placeholder ? */}
-      {/* TODO: style input box */}
       <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
         <Envelope className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
         <input
-          title="Email"
-          placeholder="Email"
+          title={emailTitle}
+          placeholder={emailTitle}
           type="email"
           value={email}
           onChange={setEmail}
           className="grow py-3 px-2 bg-transparent text-gray-text-color dark:text-white-text-color lowercase"
         />
       </div>
-      {/* TODO: translate password jd kata kunci */}
       <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
         <Key className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
         <input
@@ -55,7 +48,6 @@ function LoginForm({ handleLogin, isLoggingIn }) {
           className="grow py-3 px-2 bg-transparent text-gray-text-color dark:text-white-text-color lowercase"
         />
       </div>
-      {/* TODO: style button */}
       <button className="p-3 bg-orange-note-color dark:bg-orange-dark-note-color text-gray-text-color dark:text-white-text-color rounded-lg font-bold shadow active:shadow-sm active:translate-y-[1px]" type="submit">{logIn}</button>
     </form>
   );
