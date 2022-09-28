@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getActiveNotes, deleteNote, archiveNote } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
+import { NOTES_NEW } from '../config/paths';
 // components
 import NoteList from '../components/NoteList';
 import SearchBox from '../components/SearchBox';
@@ -22,7 +23,7 @@ function HomePageWrapper() {
     setSearchParams({ keyword });
   };
   const toAddNotePage = () => {
-    navigate('/notes/new');
+    navigate(NOTES_NEW);
   };
 
   return (
@@ -60,10 +61,10 @@ class HomePage extends React.Component {
 
   async handleGetActiveNotes() {
     const { locale } = this.props;
-    const { data, error } = await getActiveNotes();
+    const { data, error, message } = await getActiveNotes();
 
     if (error) {
-      toast.error(`${dictionary[locale].failedToRetrieveNotes}`);
+      toast.error(`${dictionary[locale].failedToRetrieveNotes}: ${message}`);
       return;
     }
     this.setState(() => ({
