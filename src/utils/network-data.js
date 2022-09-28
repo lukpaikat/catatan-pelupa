@@ -90,12 +90,13 @@ async function addNote({ title, body }) {
 async function getActiveNotes() {
   const response = await fetchWithToken(`${BASE_URL}/notes`);
   const responseJson = await response.json();
+  const { data, message } = responseJson;
 
   if (responseJson.status !== 'success') {
-    return { error: true, data: null, message: responseJson.message };
+    return { error: true, data: null, message };
   }
 
-  return { error: false, data: responseJson.data };
+  return { error: false, data, message };
 }
 
 async function getArchivedNotes() {
