@@ -1,6 +1,7 @@
 {
   "activeButton": "Aktifkan",
   "activeNotes": "Catatan Aktif",
+  "activatingFailed": "Gagal mengaktifkan catatan",
   "activeNotesPageSR": "Halaman catatan aktif",
   "appTitle": "Catatan Pelupa",
   "archiving": "Mengarsipkan catatan",

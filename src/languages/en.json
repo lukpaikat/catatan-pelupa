@@ -1,6 +1,7 @@
 {
   "activeButton": "Activate",
   "activeNotes": "Active Notes",
+  "activatingFailed": "Failed to activate note",
   "activeNotesPageSR": "Active notes page",
   "appTitle": "Forgetful Notes",
   "archiving": "Archiving note",
