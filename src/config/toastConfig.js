@@ -1,4 +1,4 @@
-const promiseSuccess = {
+const successToastConfig = {
   type: 'success',
   isLoading: false,
   autoClose: 5000,
@@ -8,7 +8,7 @@ const promiseSuccess = {
   closeOnClick: true,
 };
 
-const promiseFailed = {
+const failedToastConfig = {
   type: 'error',
   isLoading: false,
   autoClose: 5000,
@@ -17,4 +17,4 @@ const promiseFailed = {
   draggablePercent: 30,
 };
 
-export { promiseSuccess, promiseFailed };
+export { successToastConfig, failedToastConfig };
