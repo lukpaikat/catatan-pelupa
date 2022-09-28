@@ -21,6 +21,7 @@ import RegisterPage from './pages/RegistrationPage';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LocaleProvider } from './contexts/LocaleContext';
 // css
+import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
 
 function App() {
@@ -89,7 +90,7 @@ function App() {
     return (
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
-          <ToastContainer />
+          <ToastContainer theme={theme === 'dark' ? 'dark' : 'colored'} />
           <AppBar />
           <main>
             <Routes>
