@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { successToastConfig, failedToastConfig } from '../config/toastConfig';
 import NoteList from '../components/NoteList';
 import { getArchivedNotes, unarchiveNote, deleteNote } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
+
+// FIXME: ada notifikasi eror yang tidak ada pesan
 
 function ArchivePageWrapper() {
   const { locale } = React.useContext(LocaleContext);
@@ -50,10 +53,10 @@ class ArchivePage extends React.Component {
   }
 
   async handleGetArchivedNotes() {
-    const { error, data } = await getArchivedNotes();
+    const { error, data, message } = await getArchivedNotes();
     const { locale } = this.props;
     if (error) {
-      toast.error(`${dictionary[locale].failedToRetrieveNotes}`);
+      toast.error(`${dictionary[locale].failedToRetrieveNotes}: ${message}`);
     } else {
       this.setState(() => ({ notes: data }));
     }
@@ -61,22 +64,40 @@ class ArchivePage extends React.Component {
 
   async unarchiveNoteHandler(id) {
     const { locale } = this.props;
-    const { error } = await unarchiveNote(id);
+    const { activating, activatingSuccess, activatingFailed } = dictionary[locale];
+    const progress = toast.loading(`${activating}`);
+    const { error, message } = await unarchiveNote(id);
     if (error) {
-      toast.error(`${dictionary[locale].failedToActivateNote}`);
-      return;
+      toast.update(progress, {
+        render: `${activatingFailed}: ${message}`,
+        ...failedToastConfig,
+      });
+    } else {
+      toast.update(progress, {
+        render: `${activatingSuccess}`,
+        ...successToastConfig,
+      });
+      this.handleGetArchivedNotes();
     }
-    this.handleGetArchivedNotes();
   }
 
   async deleteNoteHandler(id) {
     const { locale } = this.props;
-    const { error } = await deleteNote(id);
+    const { deleting, deletingSuccess, deletingFailed } = dictionary[locale];
+    const progress = toast.loading(`${deleting}`);
+    const { error, message } = await deleteNote(id);
     if (error) {
-      toast.error(`${dictionary[locale].failedToDeleteNote}`);
-      return;
+      toast.update(progress, {
+        render: `${deletingFailed}: ${message}`,
+        ...failedToastConfig,
+      });
+    } else {
+      toast.update(progress, {
+        render: `${deletingSuccess}`,
+        ...successToastConfig,
+      });
+      this.handleGetArchivedNotes();
     }
-    this.handleGetArchivedNotes();
   }
 
   keywordChangeHandler(keyword) {
