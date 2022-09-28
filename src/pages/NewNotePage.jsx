@@ -78,7 +78,6 @@ class NewNotePage extends React.Component {
       noteTitleInputLabel,
       noteBodyInputPlaceholder,
     } = dictionary[locale];
-    // BUG: app bar menutupi input saat landscape di hp
     return (
       <NotePaper noteTitle={title}>
         <label htmlFor="judulCatatan">
@@ -98,7 +97,6 @@ class NewNotePage extends React.Component {
             required
           />
         </label>
-        { /* TODO: cek lagi stylingnya ini */}
         <ContentEditable
           className="new-note-body block w-full min-h-[30vh] md:min-h-[50vh] h-fit mt-2 mb-4 p-2 rounded-lg text-xl lg:text-3xl 2xl:text-4xl dark:text-gray-200"
           innerRef={this.contentEditable}
