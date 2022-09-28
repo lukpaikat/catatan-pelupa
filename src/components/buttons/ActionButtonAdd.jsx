@@ -7,9 +7,7 @@ import dictionary from '../../languages/dictionary';
 function ActionButtonAdd({ onClick }) {
   const { locale } = React.useContext(LocaleContext);
   const title = dictionary[locale].createNewNote;
-  // TODO: coba bikin versi yang mirip HamItemNavLink
-  // jadi ada satu komponen yang bisa di isi icon dan teks tertentu
-  // untuk warna pisah komponen saja atau gabung?
+
   return (
     <button
       title={title}
