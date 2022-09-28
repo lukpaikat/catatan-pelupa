@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import parser from 'html-react-parser';
+import { toast } from 'react-toastify';
 import {
   getNote, deleteNote, archiveNote, unarchiveNote,
 } from '../utils/network-data';
@@ -24,11 +25,10 @@ function NoteDetailPage() {
   const navigate = useNavigate();
 
   const getNoteData = async () => {
-    const { error, data } = await getNote(id);
+    const { error, data, message } = await getNote(id);
     if (error) {
-      // FIXME: use custom alert
-      // eslint-disable-next-line no-alert
-      alert('failed to retrieve note data');
+      toast.error(`${dictionary[locale].gettingNoteDetailsFailed}
+      ${message}`);
       return;
     }
     setNote(() => data);
