@@ -25,7 +25,6 @@ function Page404({ message }) {
         {pageDescription}
 
       </p>
-      {/* TODO: ganti warna oren */}
       <Link
         to={HOME}
         className="text-orange-600 semi-and-dark:text-orange-400 text-xl text-center mt-7
