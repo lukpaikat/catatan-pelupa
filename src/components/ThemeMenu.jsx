@@ -4,8 +4,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Moon, Sun, SunHorizon } from 'phosphor-react';
 import ThemeItemButton from './buttons/ThemeItemButton';
 import ThemeContext from '../contexts/ThemeContext';
-// TODO: buat supaya ngetrap fokus keyboard
-// bisa pakai https://www.npmjs.com/package/focus-trap-react
 
 function ThemeMenu({ isThemeMenuDisplayed, themeMenuToggler, themeMenuHider }) {
   const { theme, changeTheme } = React.useContext(ThemeContext);
