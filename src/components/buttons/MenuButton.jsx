@@ -1,5 +1,3 @@
-// TODO: make it works like ham menu but using different
-// icons and aria descriptions
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
@@ -29,7 +27,6 @@ function MenuButton({
     >
       <SwitchTransition>
         <CSSTransition
-         // BUG: prop key tidak terupdate saat hidden
           key={isMenuDisplayed}
           nodeRef={nodeRef}
           addEndListener={(done) => {
