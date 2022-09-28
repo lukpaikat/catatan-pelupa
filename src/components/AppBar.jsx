@@ -10,15 +10,18 @@ import HamMenu from './HamMenu';
 import ThemeMenuButton from './buttons/ThemeMenuButton';
 import MenuButton from './buttons/MenuButton';
 import NavLinkArchive from './buttons/NavLinkArchive';
-import LocaleContext from '../contexts/LocaleContext';
 import LocaleToggleButton from './buttons/LocaleToggleButton';
 import NavLinkPushPin from './buttons/NavLinkPushPin';
+// contexts
+import LocaleContext from '../contexts/LocaleContext';
+import InputFocusContext from '../contexts/InputFocusContext';
 
 function AppBar({ authedUserName, onLogOut }) {
   const [isThemeMenuDisplayed, setIsThemeMenuDisplayed] = React.useState(false);
   const [isHamMenuDisplayed, setIsHamMenuDisplayed] = React.useState(false);
 
   const { locale } = React.useContext(LocaleContext);
+  const { inputFocus } = React.useContext(InputFocusContext);
 
   const themeMenuHider = () => {
     setIsThemeMenuDisplayed(() => false);
@@ -39,9 +42,10 @@ function AppBar({ authedUserName, onLogOut }) {
   };
 
   return (
-    <header className="bg-white-background-color dark:bg-black-background-color
+    <header className={`bg-white-background-color dark:bg-black-background-color
     semi-dark:bg-black-background-color px-3 py-1 w-full flex
-    items-center justify-between min-h-[44px] sticky z-10 top-0"
+    items-center justify-between min-h-[44px] sticky z-10 top-0
+    ${inputFocus && '!static'}`}
     >
       <h1 className="my-2 text-lg 2xl:text-4xl font-bold text-gray-text-color
        semi-and-dark:text-white-text-color block"
