@@ -56,7 +56,7 @@ function LoginForm({ handleLogin, isLoggingIn }) {
         />
       </div>
       {/* TODO: style button */}
-      <button title="Log in" className="p-3 bg-orange-note-color dark:bg-orange-dark-note-color text-gray-text-color dark:text-white-text-color rounded-lg font-bold" type="submit">{logIn}</button>
+      <button className="p-3 bg-orange-note-color dark:bg-orange-dark-note-color text-gray-text-color dark:text-white-text-color rounded-lg font-bold shadow active:shadow-sm active:translate-y-[1px]" type="submit">{logIn}</button>
     </form>
   );
 }
