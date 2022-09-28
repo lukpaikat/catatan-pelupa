@@ -8,7 +8,7 @@
   body {
     @apply bg-white-background-color
     semi-and-dark:bg-black-background-color
-    m-0 overflow-hidden;
+    m-0 xl:text-xl 2xl:text-2xl;
   }
 
   #root {
@@ -32,7 +32,7 @@
 
   .center-blue-container {
     @apply flex flex-col gap-4 bg-sky-200 semi-dark:bg-blue-note-color dark:bg-gray-700
-    p-10 m-auto rounded-lg w-[90vw] max-w-3xl shadow-md;
+    m-auto rounded-lg w-[90vw] max-w-3xl shadow-md;
   }
 }
 
