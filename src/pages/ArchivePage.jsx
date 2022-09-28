@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import NoteList from '../components/NoteList';
 import { getArchivedNotes, unarchiveNote, deleteNote } from '../utils/network-data';
 import filterNotes from '../utils/filterNotes';
 import SearchBox from '../components/SearchBox';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
+
+// TODO: mau coba pakai toast promise?
 
 function ArchivePageWrapper() {
   const { locale } = React.useContext(LocaleContext);
@@ -50,31 +53,29 @@ class ArchivePage extends React.Component {
 
   async handleGetArchivedNotes() {
     const { error, data } = await getArchivedNotes();
+    const { locale } = this.props;
     if (error) {
-      // TODO: translate alert
-      // TODO: use custom alert from library
-      // eslint-disable-next-line no-alert
-      alert('failed to retrieve notes');
+      toast.error(`${dictionary[locale].failedToRetrieveNotes}`);
     } else {
       this.setState(() => ({ notes: data }));
     }
   }
 
   async unarchiveNoteHandler(id) {
+    const { locale } = this.props;
     const { error } = await unarchiveNote(id);
     if (error) {
-      // eslint-disable-next-line no-alert
-      alert('failed to activate note');
+      toast.error(`${dictionary[locale].failedToActivateNote}`);
       return;
     }
     this.handleGetArchivedNotes();
   }
 
   async deleteNoteHandler(id) {
+    const { locale } = this.props;
     const { error } = await deleteNote(id);
     if (error) {
-      // eslint-disable-next-line no-alert
-      alert('failed to delete note');
+      toast.error(`${dictionary[locale].failedToDeleteNote}`);
       return;
     }
     this.handleGetArchivedNotes();
