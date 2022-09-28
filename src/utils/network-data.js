@@ -49,13 +49,14 @@ async function register({ name, email, password }) {
   });
 
   const responseJson = await response.json();
+  const { message } = responseJson;
 
   if (responseJson.status !== 'success') {
     // alert(responseJson.message);
-    return { error: true, message: responseJson.message };
+    return { error: true, message };
   }
 
-  return { error: false };
+  return { error: false, message };
 }
 
 async function getUserLogged() {
