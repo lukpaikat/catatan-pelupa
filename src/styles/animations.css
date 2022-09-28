@@ -8,6 +8,16 @@
   }
 }
 
+@keyframes downAndUp {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(10px);
+  }
+}
+
 .animate-cat #catRight,
 .animate-cat #ballGRight {
   animation-name: upAndDown;
@@ -15,14 +25,29 @@
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-out;
+  animation-play-state: inherit;
 }
 
 .animate-cat #catLeft,
 .animate-cat #ballGLeft {
-  animation-name: upAndDown;
+  animation-name: downAndUp;
   animation-duration: 800ms;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-out;
-  animation-delay: 800ms;
+  animation-play-state: inherit;
+}
+
+.pause #catLeft,
+.pause #ballGLeft,
+.pause #catRight,
+.pause #ballGRight {
+  animation-play-state: paused;
+}
+
+.play #catLeft,
+.play #ballGLeft,
+.play #catRight,
+.play #ballGRight {
+  animation-play-state: running;
 }
