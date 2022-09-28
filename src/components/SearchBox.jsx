@@ -8,7 +8,6 @@ function SearchBox({
   keyword, keywordChange, clearKeyword,
 }) {
   const { locale } = React.useContext(LocaleContext);
-  // TODO: cek apakah boleh di disable atau tidak
   return (
     <div className="flex items-center w-full justify-end mb-6">
       <label htmlFor="searchBox" className="w-full">
