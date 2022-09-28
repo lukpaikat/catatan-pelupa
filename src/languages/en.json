@@ -52,6 +52,7 @@
   "registrationFailed": "Registration failed",
   "registrationSuccess": "Registration success, please try to log in",
   "save": "Save",
+  "savingFailed": "Saving note failed",
   "searchBoxSR": "Search box",
   "searchPlaceholder": "Search",
   "semiDark": "Semi Dark",
