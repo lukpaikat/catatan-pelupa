@@ -20,6 +20,7 @@ import RegisterPage from './pages/RegistrationPage';
 // Contexts
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LocaleProvider } from './contexts/LocaleContext';
+import { InputFocusProvider } from './contexts/InputFocusContext';
 // css
 import 'react-toastify/dist/ReactToastify.css';
 import 'animate.css';
@@ -29,6 +30,7 @@ function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
   const [locale, setLocale] = React.useState(localStorage.getItem('locale') || 'id');
   const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'semiDark');
+  const [inputFocus, setInputFocus] = React.useState(false);
 
   React.useEffect(() => {
     const initiateUser = async () => {
@@ -57,6 +59,14 @@ function App() {
     localStorage.setItem('theme', newTheme);
   };
 
+  const inputFocusActivate = () => {
+    setInputFocus(() => true);
+  };
+
+  const inputFocusDeactivate = () => {
+    setInputFocus(() => false);
+  };
+
   React.useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
@@ -70,6 +80,12 @@ function App() {
     theme,
     changeTheme,
   }), [theme]);
+
+  const inputFocusValue = React.useMemo(() => ({
+    inputFocus,
+    inputFocusActivate,
+    inputFocusDeactivate,
+  }));
 
   const onLoginSuccess = async (accessToken) => {
     putAccessToken(accessToken);
@@ -90,20 +106,22 @@ function App() {
     return (
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
-          <ToastContainer
-            theme={theme === 'dark' ? 'dark' : 'colored'}
-            position="bottom-left"
-          />
-          <AppBar />
-          <main>
-            <Routes>
-              <Route
-                path="*"
-                element={<LoginPage onloginSuccess={onLoginSuccess} />}
-              />
-              <Route path={REGISTER} element={<RegisterPage />} />
-            </Routes>
-          </main>
+          <InputFocusProvider value={inputFocusValue}>
+            <ToastContainer
+              theme={theme === 'dark' ? 'dark' : 'colored'}
+              position="bottom-left"
+            />
+            <AppBar />
+            <main>
+              <Routes>
+                <Route
+                  path="*"
+                  element={<LoginPage onloginSuccess={onLoginSuccess} />}
+                />
+                <Route path={REGISTER} element={<RegisterPage />} />
+              </Routes>
+            </main>
+          </InputFocusProvider>
         </ThemeProvider>
       </LocaleProvider>
     );
@@ -112,22 +130,24 @@ function App() {
   return (
     <LocaleProvider value={localeContextValue}>
       <ThemeProvider value={themeContextValue}>
-        <ToastContainer
-          theme={theme === 'dark' ? 'dark' : 'colored'}
-          position="bottom-left"
-        />
-        <AppBar authedUserName={authedUser.name} onLogOut={onLogOut} />
-        <main className="px-2">
-          <Routes>
-            <Route path={HOME} element={<HomePage />} />
-            <Route path={ARCHIVE} element={<ArchivePage />} />
-            <Route path={NOTES_NEW} element={<NewNotePage />} />
-            <Route path={`${NOTES_DETAIL}:id`} element={<NoteDetailPage />} />
-            <Route path={LOGIN} element={<Navigate to={HOME} />} />
-            <Route path={REGISTER} element={<Navigate to={HOME} />} />
-            <Route path="*" element={<Page404 />} />
-          </Routes>
-        </main>
+        <InputFocusProvider value={inputFocusValue}>
+          <ToastContainer
+            theme={theme === 'dark' ? 'dark' : 'colored'}
+            position="bottom-left"
+          />
+          <AppBar authedUserName={authedUser.name} onLogOut={onLogOut} />
+          <main className="px-2">
+            <Routes>
+              <Route path={HOME} element={<HomePage />} />
+              <Route path={ARCHIVE} element={<ArchivePage />} />
+              <Route path={NOTES_NEW} element={<NewNotePage />} />
+              <Route path={`${NOTES_DETAIL}:id`} element={<NoteDetailPage />} />
+              <Route path={LOGIN} element={<Navigate to={HOME} />} />
+              <Route path={REGISTER} element={<Navigate to={HOME} />} />
+              <Route path="*" element={<Page404 />} />
+            </Routes>
+          </main>
+        </InputFocusProvider>
       </ThemeProvider>
     </LocaleProvider>
   );
