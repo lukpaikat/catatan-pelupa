@@ -10,8 +10,6 @@ import SearchBox from '../components/SearchBox';
 import LocaleContext from '../contexts/LocaleContext';
 import dictionary from '../languages/dictionary';
 
-// FIXME: ada notifikasi eror yang tidak ada pesan
-
 function ArchivePageWrapper() {
   const { locale } = React.useContext(LocaleContext);
   const [searchParams, setSearchParams] = useSearchParams();
