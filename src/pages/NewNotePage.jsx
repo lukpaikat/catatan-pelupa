@@ -12,6 +12,7 @@ import { HOME } from '../config/paths';
 import LocaleContext from '../contexts/LocaleContext';
 import InputFocusContext from '../contexts/InputFocusContext';
 import dictionary from '../languages/dictionary';
+import { successToastConfig, failedToastConfig } from '../config/toastConfig';
 
 function NewNotePageWrapper() {
   const navigate = useNavigate();
@@ -19,12 +20,21 @@ function NewNotePageWrapper() {
   const { locale } = React.useContext(LocaleContext);
 
   const onAddNoteHandler = async (note) => {
+    const { saving, savingFailed, savingSuccess } = dictionary[locale];
+    const progress = toast.loading(`${saving}`);
     const { error, message } = await addNote(note);
     if (error) {
-      toast.error(`${dictionary[locale].savingFailed}: ${message}`);
-      return;
+      toast.update(progress, {
+        render: `${savingFailed}: ${message}`,
+        ...failedToastConfig,
+      });
+    } else {
+      toast.update(progress, {
+        render: `${savingSuccess}`,
+        ...successToastConfig,
+      });
+      navigate(HOME);
     }
-    navigate(HOME);
   };
 
   return (
