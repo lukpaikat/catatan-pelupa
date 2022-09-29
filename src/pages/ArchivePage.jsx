@@ -71,11 +71,11 @@ class ArchivePage extends React.Component {
         ...failedToastConfig,
       });
     } else {
+      this.handleGetArchivedNotes();
       toast.update(progress, {
         render: `${activatingSuccess}`,
         ...successToastConfig,
       });
-      this.handleGetArchivedNotes();
     }
   }
 
@@ -90,11 +90,11 @@ class ArchivePage extends React.Component {
         ...failedToastConfig,
       });
     } else {
+      this.handleGetArchivedNotes();
       toast.update(progress, {
         render: `${deletingSuccess}`,
         ...successToastConfig,
       });
-      this.handleGetArchivedNotes();
     }
   }
 

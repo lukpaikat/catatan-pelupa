@@ -85,11 +85,11 @@ class HomePage extends React.Component {
       });
       return;
     }
+    this.handleGetActiveNotes();
     toast.update(progress, {
       render: `${archivingSuccess}`,
       ...successToastConfig,
     });
-    this.handleGetActiveNotes();
   }
 
   async deleteNoteHandler(id) {
@@ -104,11 +104,11 @@ class HomePage extends React.Component {
       });
       return;
     }
+    this.handleGetActiveNotes();
     toast.update(progress, {
       render: `${deletingSuccess}`,
       ...successToastConfig,
     });
-    this.handleGetActiveNotes();
   }
 
   keywordChangeHandler(keyword) {
