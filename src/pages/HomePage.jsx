@@ -85,7 +85,7 @@ class HomePage extends React.Component {
       });
       return;
     }
-    this.handleGetActiveNotes();
+    await this.handleGetActiveNotes();
     toast.update(progress, {
       render: `${archivingSuccess}`,
       ...successToastConfig,
@@ -104,7 +104,7 @@ class HomePage extends React.Component {
       });
       return;
     }
-    this.handleGetActiveNotes();
+    await this.handleGetActiveNotes();
     toast.update(progress, {
       render: `${deletingSuccess}`,
       ...successToastConfig,
