@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UserList, List } from 'phosphor-react';
+import { User, List } from 'phosphor-react';
 import { HOME, ARCHIVE } from '../config/paths';
 import dictionary from '../languages/dictionary';
 // components
@@ -77,7 +77,7 @@ function AppBar({ authedUserName, onLogOut }) {
           onClick={hamMenuToggler}
           className="fixed invisible -top-[200%] lg:static lg:visible"
           icon={(
-            <UserList
+            <User
               weight="light"
               className="text-3xl 2xl:text-5xl text-gray-text-color
           hover:text-black-text-color semi-and-dark:text-white-text-color m-auto"
