@@ -5,6 +5,7 @@ import ContentEditable from 'react-contenteditable';
 import { toast } from 'react-toastify';
 import { addNote } from '../utils/network-data';
 import ActionButtonSave from '../components/buttons/ActionButtonSave';
+import ActionLinkBack from '../components/buttons/ActionLinkBack';
 import FloatingContainer from '../components/FloatingContainer';
 import NotePaper from '../components/NotePaper';
 import { HOME } from '../config/paths';
@@ -107,8 +108,8 @@ class NewNotePage extends React.Component {
           onBlur={inputFocusDeactivate}
         />
         <FloatingContainer>
-          {/* TODO: tambah tombol kembali disini */}
           <ActionButtonSave onClick={this.onSubmit} />
+          <ActionLinkBack to={HOME} />
         </FloatingContainer>
       </NotePaper>
     );
