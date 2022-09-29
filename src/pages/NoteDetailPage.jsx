@@ -8,6 +8,7 @@ import {
 import getFormattedDate from '../utils/getFormattedDate';
 import FloatingContainer from '../components/FloatingContainer';
 import ActionButtonArchive from '../components/buttons/ActionButtonArchive';
+import ActionLinkBack from '../components/buttons/ActionLinkBack';
 import ActionButtonUnarchive from '../components/buttons/ActionButtonUnarchive';
 import ActionButtonDelete from '../components/buttons/ActionButtonDelete';
 import NotePaper from '../components/NotePaper';
@@ -90,11 +91,11 @@ function NoteDetailPage() {
           </div>
         </NotePaper>
         <FloatingContainer>
-          {/* TODO: Atau tambah tombol kembali disini */}
           {note.archived
             ? <ActionButtonUnarchive onClick={unarchiveNoteHandler} />
             : <ActionButtonArchive onClick={archiveNoteHandler} />}
           <ActionButtonDelete onClick={deleteNoteHandler} />
+          <ActionLinkBack to={note.archived ? ARCHIVE : HOME} />
         </FloatingContainer>
       </>
     );
