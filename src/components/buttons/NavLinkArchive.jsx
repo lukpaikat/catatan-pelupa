@@ -5,8 +5,6 @@ import { Archive } from 'phosphor-react';
 import LocaleContext from '../../contexts/LocaleContext';
 import dictionary from '../../languages/dictionary';
 
-// TODO: jadikan satu, ikuti format HamMenuButton
-
 function NavLinkArchive({ to, end }) {
   const { locale } = React.useContext(LocaleContext);
   const srText = dictionary[locale].archiveSR;

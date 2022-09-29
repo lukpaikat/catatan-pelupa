@@ -5,7 +5,6 @@ import { PushPin } from 'phosphor-react';
 import LocaleContext from '../../contexts/LocaleContext';
 import dictionary from '../../languages/dictionary';
 
-// TODO: jadikan satu, ikuti format HamMenuButton
 function NavLinkPushPin({ to, end }) {
   const { locale } = React.useContext(LocaleContext);
   const srText = dictionary[locale].activeNotesPageSR;
