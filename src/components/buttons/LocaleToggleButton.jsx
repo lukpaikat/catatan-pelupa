@@ -4,7 +4,7 @@ import LocaleContext from '../../contexts/LocaleContext';
 import dictionary from '../../languages/dictionary';
 
 // komponen ini tidak bisa pakai class hidden
-// terjadi bug icon hilang saat transisi
+// jika pakai terjadi bug icon hilang saat transisi
 function LocaleToggleButton() {
   const { locale, localeToggle } = React.useContext(LocaleContext);
   const idRef = React.useRef(null);

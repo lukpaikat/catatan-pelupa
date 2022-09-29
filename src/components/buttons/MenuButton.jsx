@@ -5,7 +5,7 @@ import { X } from 'phosphor-react';
 
 // This buttons shows x icon when its menu opened
 // komponen ini tidak bisa pakai class hidden
-// terjadi bug icon hilang saat transisi
+// jika pakai terjadi bug icon hilang saat transisi
 
 function MenuButton({
   onClick, isMenuDisplayed, icon, title, className,
