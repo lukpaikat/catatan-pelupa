@@ -106,7 +106,6 @@ function NoteDetailPage() {
   if (note !== null) {
     return (
       <>
-        {/* TODO: tambah tombol kembali disini */}
         <NotePaper noteTitle={note.title}>
           <h1 className="block placeholder-black placeholder-opacity-50 bg-transparent my-2 w-full rounded-lg  text-black-text-color dark:text-gray-200 text-2xl lg:text-4xl 2xl:text-6xl font-bold break-words">{note.title}</h1>
           <p className="lg:text-xl 2xl:text-2xl dark:text-gray-200 opacity-80">{getFormattedDate(note.createdAt, locale)}</p>
