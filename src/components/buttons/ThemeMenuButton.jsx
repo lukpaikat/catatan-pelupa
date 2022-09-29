@@ -59,12 +59,7 @@ function ThemeMenuButton({ onClick, isThemeMenuDisplayed }) {
 
 ThemeMenuButton.propTypes = {
   isThemeMenuDisplayed: PropTypes.bool.isRequired,
-  onClick: PropTypes.func,
-};
-
-ThemeMenuButton.defaultProps = {
-  // eslint-disable-next-line no-console
-  onClick: () => console.log('Theme button clicked'),
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ThemeMenuButton;

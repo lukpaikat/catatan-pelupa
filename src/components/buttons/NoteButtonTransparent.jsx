@@ -15,13 +15,8 @@ function NoteButtonTransparent({ onClick, text }) {
 }
 
 NoteButtonTransparent.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
-};
-
-NoteButtonTransparent.defaultProps = {
-  // eslint-disable-next-line no-console
-  onClick: () => console.log('button clicked'),
 };
 
 export default NoteButtonTransparent;
