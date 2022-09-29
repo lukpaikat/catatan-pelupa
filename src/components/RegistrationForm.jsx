@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { User } from 'phosphor-react';
+import { User, At, Key } from 'phosphor-react';
 import { toast } from 'react-toastify';
 import useInput from '../hooks/useInput';
 import LocaleContext from '../contexts/LocaleContext';
@@ -45,7 +45,7 @@ function RegistrationForm({ handleRegister, isRegistering }) {
         />
       </div>
       <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
-        <User className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
+        <At className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
         <input
           title={emailTitle}
           type="email"
@@ -56,7 +56,7 @@ function RegistrationForm({ handleRegister, isRegistering }) {
         />
       </div>
       <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
-        <User className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
+        <Key className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
         <input
           minLength={6}
           title={passwordTitle}
@@ -68,7 +68,7 @@ function RegistrationForm({ handleRegister, isRegistering }) {
         />
       </div>
       <div className="flex items-center bg-white-background-color dark:bg-gray-600 px-1 rounded-lg shadow">
-        <User className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
+        <Key className="shrink-0 mx-1 text-gray-text-color dark:text-white-text-color opacity-50" />
         <input
           minLength={6}
           title={passwordRepeatPlaceholder}
