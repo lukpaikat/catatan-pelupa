@@ -13,7 +13,7 @@ function ActionButtonBack({ to }) {
     <Link
       to={to}
       title={back}
-      className="h-[44px] w-[44px] drop-shadow-lg rounded-lg active:translate-y-1 active:drop-shadow-md transition-colors duration-300 bg-gray-600 hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-500"
+      className="h-[44px] w-[44px] drop-shadow-lg rounded-lg active:translate-y-1 active:drop-shadow-md transition-colors duration-300 bg-gray-600 hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-500 flex"
     >
       <ArrowLeft className="m-auto text-3xl text-white-text-color" weight="light" />
     </Link>
