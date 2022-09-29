@@ -17,6 +17,7 @@ import LocaleContext from '../contexts/LocaleContext';
 import Page404 from './Page404';
 import NotePaperSkeleton from '../components/NotePaperSkeleton';
 import dictionary from '../languages/dictionary';
+import { failedToastConfig, successToastConfig } from '../config/toastConfig';
 
 function NoteDetailPage() {
   const { id } = useParams();
@@ -45,34 +46,57 @@ function NoteDetailPage() {
   }, []);
 
   const deleteNoteHandler = async () => {
+    const { deleting, deletingSuccess, deletingFailed } = dictionary[locale];
+    const progress = toast.loading(`${deleting}`);
     const { error, message } = await deleteNote(note.id);
     if (error) {
-      toast.error(`${dictionary[locale].deletingFailed}: ${message}`);
-      return;
+      toast.update(progress, {
+        render: `${deletingFailed}: ${message}`,
+        ...failedToastConfig,
+      });
+    } else {
+      toast.update(progress, {
+        render: `${deletingSuccess}`,
+        ...successToastConfig,
+      });
+      navigate(HOME);
     }
-    if (note.archived) {
-      navigate(ARCHIVE);
-      return;
-    }
-    navigate(HOME);
   };
 
   const archiveNoteHandler = async () => {
+    const { archiving, archivingSuccess, archivingFailed } = dictionary[locale];
+    const progress = toast.loading(`${archiving}`);
     const { error, message } = await archiveNote(note.id);
     if (error) {
-      toast.error(`${dictionary[locale].archivingFailed}: ${message}`);
-      return;
+      toast.update(progress, {
+        render: `${archivingFailed}: ${message}`,
+        ...failedToastConfig,
+      });
+    } else {
+      toast.update(progress, {
+        render: `${archivingSuccess}`,
+        ...successToastConfig,
+      });
+      navigate(ARCHIVE);
     }
-    navigate(ARCHIVE);
   };
 
   const unarchiveNoteHandler = async () => {
+    const { activating, activatingSuccess, activatingFailed } = dictionary[locale];
+    const progress = toast.loading(`${activating}`);
     const { error, message } = await unarchiveNote(note.id);
     if (error) {
-      toast.error(`${dictionary[locale].activatingFailed}: ${message}`);
-      return;
+      toast.update(progress, {
+        render: `${activatingFailed}: ${message}`,
+        ...failedToastConfig,
+      });
+    } else {
+      toast.update(progress, {
+        render: `${activatingSuccess}`,
+        ...successToastConfig,
+      });
+      navigate(HOME);
     }
-    navigate(HOME);
   };
 
   if (isInitializing) {
