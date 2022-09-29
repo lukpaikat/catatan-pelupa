@@ -5,7 +5,7 @@ import { ArrowLeft } from 'phosphor-react';
 import LocaleContext from '../../contexts/LocaleContext';
 import dictionary from '../../languages/dictionary';
 
-function ActionButtonBack({ to }) {
+function ActionLinkBack({ to }) {
   const { locale } = React.useContext(LocaleContext);
   const { back } = dictionary[locale];
 
@@ -20,8 +20,8 @@ function ActionButtonBack({ to }) {
   );
 }
 
-ActionButtonBack.propTypes = {
+ActionLinkBack.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-export default ActionButtonBack;
+export default ActionLinkBack;
