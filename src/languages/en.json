@@ -57,6 +57,8 @@
   "registrationFailed": "Registration failed",
   "registrationSuccess": "Registration success, please try to log in",
   "save": "Save",
+  "saving": "Saving note",
+  "savingSuccess": "Note Saved",
   "savingFailed": "Saving note failed",
   "searchBoxSR": "Search box",
   "searchPlaceholder": "Search",

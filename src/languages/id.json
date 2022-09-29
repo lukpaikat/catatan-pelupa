@@ -57,6 +57,8 @@
   "registrationFailed": "Pendaftaran gagal",
   "registrationSuccess": "Pendaftaran berhasil, silahkan coba login",
   "save": "Simpan",
+  "saving": "Menyimpan catatan",
+  "savingSuccess": "Catatan disimpan",
   "savingFailed": "Gagal menyimpan catatan",
   "searchBoxSR": "kotak pencarian",
   "searchPlaceholder": "cari",
